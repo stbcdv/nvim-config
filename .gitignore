@@ -1,2 +1,2 @@
-./plugin/
-.DS_Store
+plugin/
+*.DS_Store
