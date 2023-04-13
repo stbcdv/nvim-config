@@ -25,7 +25,7 @@ autopairs.setup({
 	},
 	enable_check_bracket_line = false,
 })
-(|foobar
+
 -- import nvim-autopairs completion functionality safely
 local cmp_autopairs_setup, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
 if not cmp_autopairs_setup then

@@ -27,7 +27,11 @@ telescope.setup({
 				["<C-k>"] = actions.move_selection_previous,
 				["<C-j>"] = actions.move_selection_next,
 				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+				["<esc>"] = actions.close, -- ["<C-c>"] = actions.close
 			},
+			n = {
+				["<esc>"] = actions.close,
+			}
 		},
 		sorting_strategy = 'ascending',
 		layout_strategy = 'horizontal',
@@ -58,4 +62,4 @@ telescope.setup({
 -- local historyaa = builtin.oldfiles()
 telescope.load_extension("fzf")
 telescope.load_extension("projects")
-telescope.load_extension("lazygit")
+-- telescope.load_extension("lazygit")

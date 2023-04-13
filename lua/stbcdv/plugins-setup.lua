@@ -87,7 +87,7 @@ return packer.startup(function(use)
 
 	-- git signs plugins
 	use("lewis6991/gitsigns.nvim")
-	use("kdheepak/lazygit.nvim")
+	-- use("kdheepak/lazygit.nvim")
 
 	use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
@@ -120,12 +120,7 @@ return packer.startup(function(use)
 			require("stbcdv.plugins.undotree").config()
 		end,
 	}
-	-- use {
-	--  	"jiaoshijie/undotree",
-	--  	requires = {
-	--    	"nvim-lua/plenary.nvim",
-	--  	},
-	-- } -- undo list, record what do you do in this file
+	use { 'akinsho/toggleterm.nvim' }
 
 	if packer_bootstrap then
 		require("packer").sync()
