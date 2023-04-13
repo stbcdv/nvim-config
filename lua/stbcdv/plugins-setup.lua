@@ -31,7 +31,7 @@ return packer.startup(function(use)
 	-- use("bluz71/vim-nightfly-guicolors") -- color
 	-- https://vimcolorschemes.com/folke/tokyonight.nvim
 	use 'folke/tokyonight.nvim'
-	use 'shaunsingh/nord.nvim'
+	-- use 'shaunsingh/nord.nvim'
 	-- use 'navarasu/onedark.nvim'
 
 	use("christoomey/vim-tmux-navigator")
