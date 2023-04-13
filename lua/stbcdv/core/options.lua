@@ -55,3 +55,6 @@ opt.foldmethod='syntax'
 opt.foldenable = false
 
 opt.updatetime=6000
+
+opt.conceallevel = 1 -- so than `` can display in markdown file
+

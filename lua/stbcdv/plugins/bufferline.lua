@@ -5,30 +5,30 @@ local highlights = require("nord").bufferline.highlights({
 	fill = "#181c24"
 })
 require("bufferline").setup{
-  options = {
-    -- 使用 nvim 内置lsp
-    diagnostics = "nvim_lsp",
+	options = {
+		-- 使用 nvim 内置lsp
+		diagnostics = "nvim_lsp",
 		separator_style = "slant",
-    offsets = {{
-      filetype = "NvimTree",
-      text = "File Explorer",
-      highlight = "Director",
-      text_align = "center"
-    }},
+		offsets = {{
+			filetype = "NvimTree",
+			text = "File Explorer",
+			highlight = "Director",
+			text_align = "center"
+		}},
 		close_icon = '',
 		buffer_close_icon = '',
 		-- indicator = {
 		-- 	style = 'underline',
 		-- },
 
-    hover = {
-      enabled = true,
-      delay = 200,
-      reveal = {'close'}
-    },
-    numbers = "ordinal",
+		hover = {
+			enabled = true,
+			delay = 200,
+			reveal = {'close'}
+		},
+		numbers = "ordinal",
 
-  },
+	},
 	-- highlights = highlights,
 }
 -- 快速在buffer间跳转

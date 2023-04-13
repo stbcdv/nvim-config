@@ -12,8 +12,20 @@ autopairs.setup({
 		javascript = { "template_string" }, -- don't add pairs in javscript template_string treesitter nodes
 		java = false, -- don't check treesitter on java
 	},
+	fast_wrap = {
+		map = "<M-e>", -- <M> 代表这 Meta 键，即option(mac)，win(windous)
+		chars = { "{", "[", "(", '"', "'"},
+		pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+		offset = 0, -- Offset from pattern match
+		end_key = "$",
+		keys = "qwertyuiopzxcvbnmasdfghjkl",
+		check_comma = true,
+		highlight = "PmenuSel",
+		highlight_grey = "LineNr",
+	},
+	enable_check_bracket_line = false,
 })
-
+(|foobar
 -- import nvim-autopairs completion functionality safely
 local cmp_autopairs_setup, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
 if not cmp_autopairs_setup then
