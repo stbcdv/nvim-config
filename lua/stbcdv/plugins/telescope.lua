@@ -22,6 +22,10 @@ table.insert(vimgrep_arguments, "!**/.git/*")
 telescope.setup({
 	defaults = {
 		vimgrep_arguments = vimgrep_arguments,
+		prompt_prefix = " ",
+		selection_caret = " ",
+		path_display = { "smart" },
+
 		mappings = {
 			i = {
 				["<C-k>"] = actions.move_selection_previous,
