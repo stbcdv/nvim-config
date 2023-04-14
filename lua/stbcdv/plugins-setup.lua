@@ -120,7 +120,7 @@ return packer.startup(function(use)
 			require("stbcdv.plugins.undotree").config()
 		end,
 	}
-	use { 'akinsho/toggleterm.nvim' }
+	use { 'akinsho/toggleterm.nvim' }  -- 终端工具
 
 	if packer_bootstrap then
 		require("packer").sync()

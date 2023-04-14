@@ -50,6 +50,8 @@ keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git co
 keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
+keymap.set("n","<leader>py", "<cmd>lua _PYTHON_TOGGLE()<cr>") -- belongs to toggleterm.nvim
+keymap.set("n","<leader>br", "<cmd>lua _BROOT_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 keymap.set("n","<leader>lg", "<cmd>lua _LAZYGIT_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 -- keymap.set("n","<leader>lg", "<cmd>LazyGit<cr>") -- 属于 lazygit.nvim
 -- undotree keymaps

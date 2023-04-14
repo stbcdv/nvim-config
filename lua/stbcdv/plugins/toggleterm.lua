@@ -45,6 +45,24 @@ function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
 end
 
+local htop = Terminal:new({ cmd = "htop", hidden = true })
+
+function _HTOP_TOGGLE()
+	htop:toggle()
+end
+
+local python = Terminal:new({ cmd = "python3", hidden = true })
+
+function _PYTHON_TOGGLE()
+	python:toggle()
+end
+
+-- local broot = Terminal:new({ cmd = "br", hidden = true })
+--
+-- function _BROOT_TOGGLE()
+-- 	broot:toggle()
+-- end
+
 -- local node = Terminal:new({ cmd = "node", hidden = true })
 
 -- function _NODE_TOGGLE()
@@ -56,15 +74,3 @@ end
 -- function _NCDU_TOGGLE()
 	-- ncdu:toggle()
 -- end
-
-local htop = Terminal:new({ cmd = "htop", hidden = true })
-
-function _HTOP_TOGGLE()
-	htop:toggle()
-end
-
-local python = Terminal:new({ cmd = "python", hidden = true })
-
-function _PYTHON_TOGGLE()
-	python:toggle()
-end
