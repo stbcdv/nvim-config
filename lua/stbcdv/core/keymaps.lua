@@ -53,6 +53,7 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current c
 keymap.set("n","<leader>py", "<cmd>lua _PYTHON_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 keymap.set("n","<leader>br", "<cmd>lua _BROOT_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 keymap.set("n","<leader>lg", "<cmd>lua _LAZYGIT_TOGGLE()<cr>") -- belongs to toggleterm.nvim
+keymap.set("n","<leader>ht", "<cmd>lua _HTOP_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 -- keymap.set("n","<leader>lg", "<cmd>LazyGit<cr>") -- 属于 lazygit.nvim
 -- undotree keymaps
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)

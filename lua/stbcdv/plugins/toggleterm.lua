@@ -45,7 +45,7 @@ function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
 end
 
-local htop = Terminal:new({ cmd = "htop", hidden = true })
+local htop = Terminal:new({ cmd = "top", hidden = true }) -- can change cmd = "top" to cmd = "htop"
 
 function _HTOP_TOGGLE()
 	htop:toggle()
@@ -57,11 +57,11 @@ function _PYTHON_TOGGLE()
 	python:toggle()
 end
 
--- local broot = Terminal:new({ cmd = "br", hidden = true })
---
--- function _BROOT_TOGGLE()
--- 	broot:toggle()
--- end
+local broot = Terminal:new({ cmd = "broot", hidden = true }) -- file explore
+
+function _BROOT_TOGGLE()
+	broot:toggle()
+end
 
 -- local node = Terminal:new({ cmd = "node", hidden = true })
 
