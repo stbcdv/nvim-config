@@ -39,12 +39,12 @@ opt.splitbelow = true
 
 opt.iskeyword:append("-")
 
+-- opt.syntax = rue
 
 -- my setting
 opt.mouse = 'a'
-opt.clipboard:append('unnamedplus')
-
 opt.mousemoveevent = true
+opt.fileencoding = "utf-8"
 
 -- 显示缩进线 enter为eol = '⤶',
 vim.opt.listchars = { trail = '✚', extends = '◀', precedes = '▶', space = '_', tab = '|~'}
@@ -56,5 +56,5 @@ opt.foldenable = false
 
 opt.updatetime=6000
 
-opt.conceallevel = 1 -- so than `` can display in markdown file
+opt.conceallevel = 0 -- so than `` can display in markdown file
 

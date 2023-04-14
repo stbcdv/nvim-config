@@ -1,5 +1,8 @@
 # NeoVim Configuration
 This config is for `systemverilog`
+**可参考的配置**
+[Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch)
+## nvim 的语法高亮是真的有毒
 
 ## nvim options
 这里主要说明几个不常用的
@@ -18,7 +21,7 @@ opt.foldenable = false
 
 opt.updatetime=6000
 
-opt.conceallevel = 1 -- so than `` can display in markdown file
+opt.conceallevel = 0 -- so than `` can display in markdown file
 ```
 ## Plugins
 
@@ -61,4 +64,10 @@ opt.conceallevel = 1 -- so than `` can display in markdown file
 |\<leader\>fb|搜索 buffer 标签|
 |\<leader\>ft|搜索 tags|
 
+以下是搜索记录
+/Users/user_name/.local/share/nvim/telescope_history
+/Users/user_name/.local/share/nvim/project_nvim
+## 窗口管理
+- [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
+- [vim-maximizer](https://github.com/szw/vim-maximizer)
 

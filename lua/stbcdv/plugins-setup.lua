@@ -33,9 +33,10 @@ return packer.startup(function(use)
 	use 'folke/tokyonight.nvim'
 	-- use 'shaunsingh/nord.nvim'
 	-- use 'navarasu/onedark.nvim'
+	-- use 'nachumk/systemverilog.vim'
+	use {'vhda/verilog_systemverilog.vim'}
 
 	use("christoomey/vim-tmux-navigator")
-
 	use("szw/vim-maximizer")
 
 	use("tpope/vim-surround") -- ''""()[]
@@ -91,7 +92,6 @@ return packer.startup(function(use)
 
 	use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
-	use {'vhda/verilog_systemverilog.vim'}
 	-- config dashboard
 	use {
 		'glepnir/dashboard-nvim',
