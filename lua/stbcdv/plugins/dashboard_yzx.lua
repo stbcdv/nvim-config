@@ -54,7 +54,7 @@ custom_center = {
 		icon = "  ",
 		desc = "Open Nvim config                        ",
 		action = "tabnew $MYVIMRC | tcd %:p:h",
-		-- shortcut = "<Leader>v",
+		-- shortcut = "n",
 	},
 	{
 		icon = "  ",

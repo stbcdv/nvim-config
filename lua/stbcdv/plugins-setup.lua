@@ -38,6 +38,7 @@ return packer.startup(function(use)
 
 	use("christoomey/vim-tmux-navigator")
 	use("szw/vim-maximizer")
+	use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
 	use("tpope/vim-surround") -- ''""()[]
 	use("vim-scripts/ReplaceWithRegister")
@@ -90,29 +91,8 @@ return packer.startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 	-- use("kdheepak/lazygit.nvim")
 
-	use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
-
 	-- config dashboard
-	use {
-		'glepnir/dashboard-nvim',
-		-- event = 'VimEnter',
-		-- config = function()
-		-- 	require("plugins.dashboard_yzx")
-		-- end,
-		-- config = [[require('plugins.dashboard')]],
-		-- require('dashboard').setup {
-		-- 	theme = 'hyper', --  theme is doom and hyper default is hyper
-		-- disable_move,    --  defualt is false disable move keymap for hyper
-		-- shortcut_type,   --  shorcut type 'letter' or 'number'
-		-- change_to_vcs_root, -- default is false,for open file in hyper mru. it will change to the root of vcs
-		-- config = {
-		-- header = 
-		-- },--  config used for theme
-		--},
-		-- }
-		-- end,
-		-- requires = {'nvim-tree/nvim-web-devicons'}
-	}
+	use {'glepnir/dashboard-nvim'}
 	use 'lewis6991/impatient.nvim'
 	use {
 		'mbbill/undotree',

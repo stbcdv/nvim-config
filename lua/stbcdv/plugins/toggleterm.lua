@@ -45,7 +45,7 @@ function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
 end
 
-local htop = Terminal:new({ cmd = "top", hidden = true }) -- can change cmd = "top" to cmd = "htop"
+local htop = Terminal:new({ cmd = "htop", hidden = true }) -- can change cmd = "top" to cmd = "htop"
 
 function _HTOP_TOGGLE()
 	htop:toggle()
