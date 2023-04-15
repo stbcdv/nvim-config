@@ -23,14 +23,14 @@ opt.updatetime=6000
 
 opt.conceallevel = 0 -- so than `` can display in markdown file
 ```
-## Plugins
+## **Plugins**
 
 ## [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua)
 文件树展示
 ### 快捷键
 |快捷键|功能|
 |:-:|:-:|
-|<leader>e|唤起文件树界面|
+|\<leader\>e|唤起文件树界面|
 |q|退出文件树|
 
 ## [impatient.nvim](https://github.com/lewis6991/impatient.nvim)
@@ -40,7 +40,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 在 neovim 内部调用终端
 - 如何确保路径，首先进入 neovim 后第一次到的路径就是以后所有的路径, 想要修改有点麻烦
 - 替代了 lazygit.nvim 插件
-- 可以呼出 broot，文件浏览窗口
+- 可以呼出 broot, 文件浏览窗口
 - 可以使用 top 查看系统资源信息，当然也可以将 top 替换为 htop 命令
 - 可以调用 python 环境
 ### 快捷键
@@ -52,7 +52,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 |\<leader\>py|python3|
 |\<leader\>ht|top or htop|
 
-# [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+## [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 ### 搭配使用的插件
 - [project.nvim](https://github.com/ahmedkhalf/project.nvim)
 - [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
@@ -82,21 +82,39 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
 - [cmp-path](https://github.com/hrsh7th/cmp-path)
-- [LuaSnip]()
-- [cmp_luasnip]()
-- [friendly-snippets]()
+- [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
+- [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip)
+- [friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
+### 快捷键
+|快捷键|功能|
+|:-:|:-:|
+|shift-k|查看提示|
 
 ## lsp
-- [mason.nvim]()
-- [mason-lspconfig.nvim]()
-- [nvim-lspconfig]()
-- [cmp-nvim-lsp]()
-- [lspsaga.nvim]()
-- [lspkind.nvim]()
-
-
+- [mason.nvim](https://github.com/williamboman/mason.nvim)
+- [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- [lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim)
+- [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
+- [lspkind.nvim](https://github.com/onsails/lspkind.nvim)
+### 快捷键
+许多快捷键是在lsp下工作的，没有lsp有的会出现问题
+|快捷键|功能|
+|:-:|:-:|
+|gf|lsp_find|
+|gD||
+|gd||
+|gi||
+|[d|diagnostic_jump_prev|
+|]d|diagnostic_jump_next|
+|K|参看文档定义|
+|\<leader\>o|LSoutlineToggle|
+|\<leader\>ca|code action|
+|\<leader\>rn|变量重新命名|
+|\<leader\>D|show line diagnostic|
+|\<leader\>d|show cursor diagnostic|
 ## [Comment.nvim](https://github.com/numToStr/Comment.nvim)
 注释
 ```lua
@@ -108,7 +126,18 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 |:-:|:-:|
 |gcc|注释单行/取消注释|
 |gc number j/k|向下/上注释 number 行|
+|gbc|注释块|
+|gb number j/k|向下/上多行注释块|
 
+## [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+查询 git 的状态
+### 快捷键
+|快捷键|功能|
+|:-:|:-:|
+|\<leader\>gc|查询 commit|
+|\<leader\>gfc|查询 git_bcommits|
+|\<leader\>gb|查询 branch|
+|\<leader\>gs|查询 git 状态|
 
 ## 窗口管理
 - [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
@@ -137,6 +166,6 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 - [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
-[主题网站](https://vimcolorschemes.com/folke/tokyonight.nvim)
+[主题网站](https://vimcolorschemes.com/folke/tokyonight.nvim), 感兴趣的可以自己查找
 - [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
 

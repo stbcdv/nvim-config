@@ -11,7 +11,7 @@ end
 
 local packer_bootstrap = ensure_packer()
 
--- attention:: filename 
+-- attention:: filename
 vim.cmd([[
   augroup packer_user_config
   autocmd!
