@@ -52,7 +52,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 |\<leader\>py|python3|
 |\<leader\>ht|top or htop|
 
-## [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+# [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 ### 搭配使用的插件
 - [project.nvim](https://github.com/ahmedkhalf/project.nvim)
 - [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
@@ -87,6 +87,28 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 - [friendly-snippets]()
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
+
+## lsp
+- [mason.nvim]()
+- [mason-lspconfig.nvim]()
+- [nvim-lspconfig]()
+- [cmp-nvim-lsp]()
+- [lspsaga.nvim]()
+- [lspkind.nvim]()
+
+
+## [Comment.nvim](https://github.com/numToStr/Comment.nvim)
+注释
+```lua
+-- 不知道为什么会需要自己设置，可能是修改了 systemverilog 的高亮文件
+local ft = require('Comment.ft')
+ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格式
+```
+|快捷键|功能|
+|:-:|:-:|
+|gcc|注释单行/取消注释|
+|gc number j/k|向下/上注释 number 行|
+
 
 ## 窗口管理
 - [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
