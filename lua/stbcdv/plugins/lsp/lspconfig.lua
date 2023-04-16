@@ -32,7 +32,7 @@ local on_attach = function(client, bufnr)
 	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
 	keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side, something gets trouble
-
+	keymap.set("n", "<leader>fm", "<cmd>lua vim.lsp.buf.format()<CR>", opts) -- use lsp to format code
 end
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -44,7 +44,6 @@ for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
-
 
 -- configure tailwindcss server
 -- lspconfig["tailwindcss"].setup({
@@ -77,50 +76,49 @@ lspconfig["svls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	cmd = {
-		"svls"
+		"svls",
 	},
 	filetypes = {
 		"verilog",
-		"systemverilog"
+		"systemverilog",
 	},
 	root_dir = util.find_git_ancestor,
 })
 
-lspconfig["svlangserver"].setup{
+lspconfig["svlangserver"].setup({
 	cmd = {
-		"svlangserver"
+		"svlangserver",
 	},
-	filetypes = {"verilog", "systemverilog"},
-	linter="/usr/local/bin/verilator",
-	launchConfiguration="/usr/local/bin/verilator -sv -Wall --lint-only",
+	filetypes = { "verilog", "systemverilog" },
+	linter = "/usr/local/bin/verilator",
+	launchConfiguration = "/usr/local/bin/verilator -sv -Wall --lint-only",
 	-- root_dir = root_pattern(".svlangserver", ".git"),
 	settings = {
 		systemverilog = {
-			includeIndexing = {"*.{v,vh,sv,svh}","**/*.{v,vh,sv,svh}"},
+			includeIndexing = { "*.{v,vh,sv,svh}", "**/*.{v,vh,sv,svh}" },
 		},
 	},
-	sigle_file_support = true
-}
+	sigle_file_support = true,
+})
 
 lspconfig["pyright"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = {
-		pyright = {
-
-		},
+		pyright = {},
 		python = {
 			analysis = {
 				autoSearchPaths = true,
 				diagnosticMode = "workspace",
 				useLibraryCodeForTypes = true,
-				typeCheckingMode = "off"
-			}
+				typeCheckingMode = "off",
+			},
 		},
 		cmd = {
-			"pyright-langserver","--stdio"
-		}
-	}
+			"pyright-langserver",
+			"--stdio",
+		},
+	},
 })
 -- configure lua server (with special settings)
 lspconfig["lua_ls"].setup({
@@ -142,4 +140,3 @@ lspconfig["lua_ls"].setup({
 		},
 	},
 })
-

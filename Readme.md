@@ -88,7 +88,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 - [friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
-- [vim-surround]()
+- [vim-surround](https://github.com/tpope/vim-surround)
 [如何使用 LuaSnip 编写代码片段](https://zjp-cn.github.io/neovim0.6-blogs/nvim/luasnip/doc1.html)
 ### 快捷键
 |快捷键|功能|
@@ -105,6 +105,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 - [lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim)
 - [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
 - [lspkind.nvim](https://github.com/onsails/lspkind.nvim)
+- [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
 ### 快捷键
 许多快捷键是在lsp下工作的，没有lsp有的会出现问题
 |快捷键|功能|
@@ -121,6 +122,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 |\<leader\>rn|变量重新命名|
 |\<leader\>D|show line diagnostic|
 |\<leader\>d|show cursor diagnostic|
+|\<leader\>fm|formating code|
 
 ### 注意点
 变量，class，method 等图标是由 lspsaga 插件提供的，有时候官方的可能会出现乱码，可能是图标编码除了问题；解决方法：等官方解决，第二种自己修改(有些图标没找见，可能得再看看)

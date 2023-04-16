@@ -1,9 +1,9 @@
 local ensure_packer = function()
 	local fn = vim.fn
-	local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-		vim.cmd [[packadd packer.nvim]]
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd([[packadd packer.nvim]])
 		return true
 	end
 	return false
@@ -29,20 +29,22 @@ return packer.startup(function(use)
 
 	-- use("bluz71/vim-nightfly-guicolors") -- color
 	-- https://vimcolorschemes.com/folke/tokyonight.nvim
-	use 'folke/tokyonight.nvim'
+	use("folke/tokyonight.nvim")
 	-- use 'shaunsingh/nord.nvim'
 	-- use 'navarasu/onedark.nvim'
+
+	-- systemverilog syntax
 	-- use 'nachumk/systemverilog.vim'
-	use {'vhda/verilog_systemverilog.vim'}
+	-- use({ "vhda/verilog_systemverilog.vim" })
 
 	use("christoomey/vim-tmux-navigator")
 	use("szw/vim-maximizer")
-	use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+	use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
 
 	use("tpope/vim-surround") -- ''""()[]
-	use("vim-scripts/ReplaceWithRegister")
+	-- use("vim-scripts/ReplaceWithRegister")
 	use("nvim-lua/plenary.nvim")
-	use 'numToStr/Comment.nvim' -- comment
+	use("numToStr/Comment.nvim") -- comment
 	use("nvim-tree/nvim-tree.lua") -- just like nerdtree
 	use("kyazdani42/nvim-web-devicons")
 	-- use( "jiangmiao/auto-pairs" ) -- auto complement '' "" [] ()
@@ -50,12 +52,7 @@ return packer.startup(function(use)
 
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- need make in his dirctory
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
-	use({
-		"ahmedkhalf/project.nvim",
-		config = function()
-			-- require("plugins.projects")
-		end,
-	})
+	use({ "ahmedkhalf/project.nvim" })
 
 	-- autocompletion
 	use("hrsh7th/nvim-cmp")
@@ -70,7 +67,11 @@ return packer.startup(function(use)
 	-- configuring lsp servers
 	use("neovim/nvim-lspconfig") -- easily configure language servers
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
-	use({ "glepnir/lspsaga.nvim", branch = "main", requires = {{"nvim-tree/nvim-web-devicons"},{"nvim-treesitter"},} }) -- enhanced lsp uis
+	use({
+		"glepnir/lspsaga.nvim",
+		branch = "main",
+		requires = { { "nvim-tree/nvim-web-devicons" }, { "nvim-treesitter" } },
+	}) -- enhanced lsp uis
 	-- use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
@@ -85,25 +86,24 @@ return packer.startup(function(use)
 
 	-- auto-pairs
 	use("windwp/nvim-autopairs")
-	use({"windwp/nvim-ts-autotag", after = "nvim-treesitter"})
+	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
 
 	-- git signs plugins
 	use("lewis6991/gitsigns.nvim")
 	-- use("kdheepak/lazygit.nvim")
 
 	-- config dashboard
-	use {'glepnir/dashboard-nvim'}
-	use 'lewis6991/impatient.nvim'
-	use {
-		'mbbill/undotree',
+	use({ "glepnir/dashboard-nvim" })
+	use("lewis6991/impatient.nvim")
+	use({
+		"mbbill/undotree",
 		config = function()
 			require("stbcdv.plugins.undotree").config()
 		end,
-	}
-	use { 'akinsho/toggleterm.nvim' }  -- 终端工具
+	})
+	use({ "akinsho/toggleterm.nvim" }) -- 终端工具
 
 	if packer_bootstrap then
 		require("packer").sync()
 	end
 end)
-
