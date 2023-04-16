@@ -6,6 +6,9 @@ end
 
 -- import luasnip plugin safely
 local luasnip_status, luasnip = pcall(require, "luasnip")
+local i = luasnip.insert_node
+local s = luasnip.snippet
+local t = luasnip.text_node
 if not luasnip_status then
   return
 end
@@ -94,4 +97,11 @@ cmp.setup({
 			ellipsis_char = "...",
 		}),
 	},
+})
+
+luasnip.add_snippets("systemverilog", {
+    s("ternary", {
+        -- equivalent to "${1:cond} ? ${2:then} : ${3:else}"
+        i(1, "cond"), t(" ? "), i(2, "then"), t(" : "), i(3, "else")
+    })
 })

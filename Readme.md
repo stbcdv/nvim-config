@@ -3,6 +3,7 @@ This config is for `systemverilog`
 **可参考的配置**
 [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch)
 ## nvim 的语法高亮是真的有毒
+nvim 中自带的语法高亮是在不行，感觉需要修改的地方很多，奈何自己不会写，存粹取别人的长处以弥补
 
 ## nvim options
 这里主要说明几个不常用的
@@ -87,10 +88,15 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 - [friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
+- [vim-surround]()
+[如何使用 LuaSnip 编写代码片段](https://zjp-cn.github.io/neovim0.6-blogs/nvim/luasnip/doc1.html)
 ### 快捷键
 |快捷键|功能|
 |:-:|:-:|
-|shift-k|查看提示|
+|cs\[\(|把 \[\] 替换为 ()|
+|ysw(|给字符添加 ()|
+|ds\[|移除 \[\]|
+|yss(|将整行使用 () 包裹|
 
 ## lsp
 - [mason.nvim](https://github.com/williamboman/mason.nvim)
@@ -103,7 +109,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 许多快捷键是在lsp下工作的，没有lsp有的会出现问题
 |快捷键|功能|
 |:-:|:-:|
-|gf|lsp_find|
+|gf|lsp_find, 类似于文件跳转|
 |gD||
 |gd||
 |gi||
@@ -115,6 +121,10 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 |\<leader\>rn|变量重新命名|
 |\<leader\>D|show line diagnostic|
 |\<leader\>d|show cursor diagnostic|
+
+### 注意点
+变量，class，method 等图标是由 lspsaga 插件提供的，有时候官方的可能会出现乱码，可能是图标编码除了问题；解决方法：等官方解决，第二种自己修改(有些图标没找见，可能得再看看)
+
 ## [Comment.nvim](https://github.com/numToStr/Comment.nvim)
 注释
 ```lua
