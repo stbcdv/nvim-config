@@ -35,7 +35,7 @@ return packer.startup(function(use)
 
 	-- systemverilog syntax
 	-- use 'nachumk/systemverilog.vim'
-	-- use({ "vhda/verilog_systemverilog.vim" })
+	use({ "vhda/verilog_systemverilog.vim" })
 
 	use("christoomey/vim-tmux-navigator")
 	use("szw/vim-maximizer")

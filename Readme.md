@@ -4,6 +4,7 @@ This config is for `systemverilog`
 [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch)
 ## nvim 的语法高亮是真的有毒
 nvim 中自带的语法高亮是在不行，感觉需要修改的地方很多，奈何自己不会写，存粹取别人的长处以弥补
+[verilog_systemverilog]()
 
 ## nvim options
 这里主要说明几个不常用的
@@ -43,7 +44,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 - 替代了 lazygit.nvim 插件
 - 可以呼出 broot, 文件浏览窗口
 - 可以使用 top 查看系统资源信息，当然也可以将 top 替换为 htop 命令
-- 可以调用 python 环境
+- 可以调用 python 环境, 并在其中执行命令
 ### 快捷键
 |快捷键|功能|
 |:-:|:-:|
@@ -62,7 +63,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 |:-:|:-:|
 |\<leader\>ff|模糊搜索文件|
 |\<leader\>fr|搜索编辑过的文件|
-|\<leader\>fp|搜索查看过的文件夹|
+|\<leader\>fp|搜索查看过的工程|
 |\<leader\>fa|搜索执行过的命令|
 |\<leader\>fs|搜索整个字符串|
 |\<leader\>fb|搜索 buffer 标签|
@@ -105,9 +106,11 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 - [lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim)
 - [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
 - [lspkind.nvim](https://github.com/onsails/lspkind.nvim)
-- [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
+- [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim): Linters and Formatters
+- [nvim-treesitter]()
+不知道 [coc.nvim](https://github.com/neoclide/coc.nvim) 功能怎么样
 ### 快捷键
-许多快捷键是在lsp下工作的，没有lsp有的会出现问题
+许多快捷键是在lsp下工作的，没有lsp有的会出现问题, 得仔细考虑下 nvim-lsp 和 coc.nvim 之间的差别
 |快捷键|功能|
 |:-:|:-:|
 |gf|lsp_find, 类似于文件跳转|
@@ -126,6 +129,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 
 ### 注意点
 变量，class，method 等图标是由 lspsaga 插件提供的，有时候官方的可能会出现乱码，可能是图标编码除了问题；解决方法：等官方解决，第二种自己修改(有些图标没找见，可能得再看看)
+formatter 的功能是格式化内容，并不会对内容的对错进行 linter，在运行 formatter 前需要确保内容编写的正确性。
 
 ## [Comment.nvim](https://github.com/numToStr/Comment.nvim)
 注释
@@ -180,4 +184,13 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 [主题网站](https://vimcolorschemes.com/folke/tokyonight.nvim), 感兴趣的可以自己查找
 - [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
+### 快捷键
+dashboard 界面
+|快捷键|功能|
+|:-:|:-:|
+|e|新建文件|
+|q|quit nvim|
+
+## 其他
+- [plenary.nvim]()
 
