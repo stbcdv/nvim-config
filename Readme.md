@@ -25,6 +25,18 @@ opt.updatetime=6000
 
 opt.conceallevel = 0 -- so than `` can display in markdown file
 ```
+
+## vim 自带的快捷键
+|快捷键|功能|
+|:-:|:-:|
+|jk|在插入模式下使用退出插入模式进入 normal 模式|
+|\<C-d\>|向下跳转9行|
+|\<C-u\>|向上跳转9行|
+|\<leader\>nh|取消高亮|
+|\<leader\>-|数字减1|
+|\<leader\>+|数字增1|
+|x|"_x"|
+
 ## **Plugins**
 
 ## [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua)
@@ -48,7 +60,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 ### 快捷键
 |快捷键|功能|
 |:-:|:-:|
-|c-/|呼出终端窗口(原来是c-\,但是该键被占用了)|
+|\<c-/\>|呼出终端窗口(原来是c-\,但是该键被占用了)|
 |\<leader\>br|broot|
 |\<leader\>lg|lazygit|
 |\<leader\>py|python3|
@@ -61,7 +73,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 ### 快捷键
 |快捷键|功能|
 |:-:|:-:|
-|\<leader\>ff|模糊搜索文件|
+|\<leader\>ff|模糊搜索文件, 如果输入 test test, 等价于 test, 可以使用 testtest 搜索|
 |\<leader\>fr|搜索编辑过的文件|
 |\<leader\>fp|搜索查看过的工程|
 |\<leader\>fa|搜索执行过的命令|
@@ -98,6 +110,9 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 |ysw(|给字符添加 ()|
 |ds\[|移除 \[\]|
 |yss(|将整行使用 () 包裹|
+|tab|在候选框中选择|
+|\<c-f\>|snippet 待写位置向下跳转|
+|\<c-b\>|snippet 待写位置向上跳转，可以在 insert 模式下跳转|
 
 ## lsp
 - [mason.nvim](https://github.com/williamboman/mason.nvim)
