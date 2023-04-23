@@ -1,7 +1,9 @@
 local project_nvim = require("project_nvim")
 local recent_projects = project_nvim.get_recent_projects()
 -- local dp = project_nvim.get_cache_dir()
-project_nvim.setup{
+
+project_nvim.setup({
+	manual_mode = false, -- add this, if in a directory path print nvim command, then this plugin can record this path, feel nothing to work
 	active = true,
 
 	-- on_config_done = nil,
@@ -12,7 +14,8 @@ project_nvim.setup{
 	--- can also delete or rearangne the detection methods.
 	-- detection_methods = { "lsp", "pattern" }, -- NOTE: lsp detection will get annoying with multiple langs in one project
 	detection_methods = { "pattern" },
-	patterns = {".lua", ".sv", "src", "Makefile", "makefile", "readme", "ReadMe"},
+	patterns = { ".git", ".lua", ".sv", "src", "Makefile", "makefile", "readme", "ReadMe" },
+
 	-- Table of lsp clients to ignore by name
 	-- eg: { "efm", ... }
 	ignore_lsp = {},
@@ -37,6 +40,6 @@ project_nvim.setup{
 	---@type string
 	---@usage path to store the project history for use in telescope
 	-- datapath = dp,
-}
+})
 
 -- print(vim.inspect(recent_projects))

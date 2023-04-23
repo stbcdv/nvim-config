@@ -9,7 +9,7 @@ treesitter.setup({
 	-- enable syntax highlighting
 	highlight = {
 		enable = true,
-		disable = {'verilog'},
+		disable = { "verilog" },
 	},
 	-- enable indentation
 	indent = { enable = true },
@@ -25,7 +25,7 @@ treesitter.setup({
 		"lua",
 		"gitignore",
 		"markdown",
-		"make", 
+		"make",
 		"perl",
 		"python",
 		"vim",
@@ -34,11 +34,11 @@ treesitter.setup({
 	incremental_selection = {
 		enable = true,
 		keymaps = {
-			init_selection = '<CR>',
-			node_incremental = '<CR>',
-			node_decremental = '<BS>',
-			scope_incremental = '<TAB>',
-		}
+			init_selection = "<CR>",
+			node_incremental = "<CR>",
+			node_decremental = "<BS>",
+			scope_incremental = "<TAB>",
+		},
 	},
 	-- auto install above language parsers
 	auto_install = true,
@@ -47,6 +47,6 @@ treesitter.setup({
 	},
 })
 -- 开启 Folding
-vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 vim.wo.foldlevel = 99

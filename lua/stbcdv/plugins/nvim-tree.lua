@@ -13,7 +13,7 @@ nvimtree.setup({
 	respect_buf_cwd = true,
 	update_focused_file = {
 		enable = true,
-		update_root = true
+		update_root = true,
 	},
 	renderer = {
 		root_folder_modifier = ":t",
@@ -52,7 +52,7 @@ nvimtree.setup({
 	},
 	filters = {
 		dotfiles = true,
-	},	
+	},
 	diagnostics = {
 		enable = true,
 		show_on_dirs = true,

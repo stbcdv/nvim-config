@@ -1,4 +1,24 @@
-local status, _ = pcall(vim.cmd, "colorscheme tokyonight-night")
+local status, ColorTheme = pcall(vim.cmd, "colorscheme tokyonight-storm")
+-- local status, ColorTheme = pcall(vim.cmd, "colorscheme nightfly")
+-- local cursor_color = vim.api.nvim_get_option("guicursor")
+vim.api.nvim_set_option("guicursor", "n-v:block-Cursor/lCursor,i-c-ci:ver25")
+
+-- vim.api.nvim_command("set guicursor+=i:ver25")
+-- vim.api.nvim_command("set guicursor+=c:ver25")
+-- vim.api.nvim_command("set guicursor+=ci:ver25")
+
+vim.api.nvim_command([[
+  highlight! CursorLineNr guibg=Gray40 guifg=White
+  highlight! CursorLine   guibg=Gray20
+  highlight! CursorColumn guibg=Gray20
+  highlight! Cursor       guifg=white guibg=red
+  highlight! iCursor 	  guifg=white guibg=steelblue
+]])
+
+-- Orange1
+-- vim.api.nvim_set_option("guicursor", cursor_color)
+
+-- vim.api.nvim_command("highlight CursorLine guibg=#00ff00")
 -- local status, _ = pcall(vim.cmd, "colorscheme nord")
 
 -- if not status then

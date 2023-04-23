@@ -14,7 +14,7 @@ autopairs.setup({
 	},
 	fast_wrap = {
 		map = "<M-e>", -- <M> 代表这 Meta 键，即option(mac)，win(windous)
-		chars = { "{", "[", "(", '"', "'"},
+		chars = { "{", "[", "(", '"', "'" },
 		pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
 		offset = 0, -- Offset from pattern match
 		end_key = "$",

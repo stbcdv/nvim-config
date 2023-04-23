@@ -42,19 +42,18 @@ opt.iskeyword:append("-")
 -- opt.syntax = rue
 
 -- my setting
-opt.mouse = 'a'
+opt.mouse = "a"
 opt.mousemoveevent = true
 opt.fileencoding = "utf-8"
 
 -- 显示缩进线 enter为eol = '⤶',
-vim.opt.listchars = { trail = '✚', extends = '◀', precedes = '▶', space = '_', tab = '|~'}
+vim.opt.listchars = { trail = "✚", extends = "◀", precedes = "▶", space = "_", tab = "|~", eol = "⤶" }
 vim.opt.list = true
 
-opt.foldmethod='indent'
-opt.foldmethod='syntax'
+opt.foldmethod = "indent"
+opt.foldmethod = "syntax"
 opt.foldenable = false
 
-opt.updatetime=6000
+opt.updatetime = 6000
 
 opt.conceallevel = 0 -- so than `` can display in markdown file
-

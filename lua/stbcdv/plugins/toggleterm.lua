@@ -27,50 +27,74 @@ toggleterm.setup({
 })
 
 function _G.set_terminal_keymaps()
-  local opts = {noremap = true}
-  vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-/><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-/><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-/><C-n><C-W>h]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-/><C-n><C-W>j]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-/><C-n><C-W>k]], opts)
-  vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-/><C-n><C-W>l]], opts)
+	local opts = { noremap = true }
+	vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-/><C-n>]], opts)
+	vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-/><C-n><C-W>h]], opts)
+	vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-/><C-n><C-W>j]], opts)
+	vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-/><C-n><C-W>k]], opts)
+	vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-/><C-n><C-W>l]], opts)
+	-- vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-/><C-n>]], opts)  -- 这个在 lazygit 中有点不好用, 向下选择会有延迟
 end
 
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
 
+local function feedkeys(keys)
+	local key_termcode = vim.api.nvim_replace_termcodes(keys, true, true, true)
+	vim.api.nvim_feedkeys(key_termcode, "n", false)
+end
+
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
 function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
 end
 
 local htop = Terminal:new({ cmd = "htop", hidden = true }) -- can change cmd = "top" to cmd = "htop"
-
 function _HTOP_TOGGLE()
 	htop:toggle()
 end
 
 local python = Terminal:new({ cmd = "python3", hidden = true })
-
 function _PYTHON_TOGGLE()
 	python:toggle()
 end
 
-local broot = Terminal:new({ cmd = "broot", hidden = true }) -- file explore
-
+local broot = Terminal:new({ cmd = "broot -d -p -s", hidden = true }) -- file explore
 function _BROOT_TOGGLE()
 	broot:toggle()
 end
 
--- local node = Terminal:new({ cmd = "node", hidden = true })
+local ranger_tmpfile = vim.fn.tempname()
+local ranger = Terminal:new({
+	cmd = 'ranger --choosefiles="' .. ranger_tmpfile .. '"',
+	hidden = true,
+	on_exit = function(term)
+		local file = io.open(ranger_tmpfile, "r")
+		if file ~= nil then
+			local file_name = file:read("*a")
+			file:close()
+			os.remove(ranger_tmpfile)
+			-- Until edit buffer goes to the correct buffer,
+			-- emulate keystrokes to do the same
+			vim.cmd("vs " .. file_name)
+			vim.cmd("set nu") -- 必须有这些，否则重新打开的窗口有些配置不起作用
+			vim.cmd("set relativenumber")
+			feedkeys("<C-w>h")
+			feedkeys("<C-w>q")
+		end
+	end,
+})
+function _RANGER_TOGGLE()
+	ranger:toggle()
+end
 
+-- local node = Terminal:new({ cmd = "node", hidden = true })
 -- function _NODE_TOGGLE()
 -- 	node:toggle()
 -- end
 
--- local ncdu = Terminal:new({ cmd = "ncdu", hidden = true })
-
+-- local ncdu = Terminal:new({ cmd = "ncdu --sort name", hidden = true }) -- file explore
 -- function _NCDU_TOGGLE()
-	-- ncdu:toggle()
+-- 	ncdu:toggle()
 -- end

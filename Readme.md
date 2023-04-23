@@ -4,7 +4,7 @@ This config is for `systemverilog`
 [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch)
 ## nvim 的语法高亮是真的有毒
 nvim 中自带的语法高亮是在不行，感觉需要修改的地方很多，奈何自己不会写，存粹取别人的长处以弥补
-[verilog_systemverilog]()
+[verilog_systemverilog](https://github.com/vhda/verilog_systemverilog.vim)
 
 ## nvim options
 这里主要说明几个不常用的
@@ -62,9 +62,14 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 |:-:|:-:|
 |\<c-/\>|呼出终端窗口(原来是c-\,但是该键被占用了)|
 |\<leader\>br|broot|
+|\<leader\>rn|ranger, 类似于 broot, 但是支持预览文件, 但是编辑文件时并不会跳转到当前的vim窗口中|
 |\<leader\>lg|lazygit|
 |\<leader\>py|python3|
 |\<leader\>ht|top or htop|
+|\<leader\>nc|ncdu: 查看当前目录下的文件及其大小, 该快捷键被关闭|
+以上命令都是交互式的命令，如果命令是输出结果则并不会 hold 窗口
+[如何从 toggleterm 终端中跳转到当前 vim 文件窗口中](https://github.com/akinsho/toggleterm.nvim/issues/377)
+[neovim-remote 使用方法](https://www.youtube.com/watch?v=xO5yMutC-rM)
 
 ## [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 ### 搭配使用的插件
@@ -75,11 +80,13 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 |:-:|:-:|
 |\<leader\>ff|模糊搜索文件, 如果输入 test test, 等价于 test, 可以使用 testtest 搜索|
 |\<leader\>fr|搜索编辑过的文件|
-|\<leader\>fp|搜索查看过的工程|
 |\<leader\>fa|搜索执行过的命令|
 |\<leader\>fs|搜索整个字符串|
 |\<leader\>fb|搜索 buffer 标签|
 |\<leader\>ft|搜索 tags|
+|\<leader\>fp|搜索查看过的工程, 不清楚是不是需要 nvim file 后才会被记录|
+|d or \<C-d\>|在 project window, in normal model, delete selected project list or in insert model|
+|w or \<C-w\>|change_working_directory in normal or insert model, but not work toggleterm.nvim|
 
 以下是搜索记录
 /Users/user_name/.local/share/nvim/telescope_history
@@ -196,8 +203,7 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 ## 界面美化
 - [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-- [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
-[主题网站](https://vimcolorschemes.com/folke/tokyonight.nvim), 感兴趣的可以自己查找
+- [tokyonight.nvim](https://github.com/folke/tokyonight.nvim): [主题网站](https://vimcolorschemes.com/folke/tokyonight.nvim), 感兴趣的可以自己查找
 - [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
 ### 快捷键
 dashboard 界面
@@ -207,5 +213,9 @@ dashboard 界面
 |q|quit nvim|
 
 ## 其他
-- [plenary.nvim]()
+- [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
 
+# neovim
+特殊小知识
+- 环境路径: `:lua print(vim.inspect(vim.api.nvim_list_runtime_paths()))`
+- `:checkhealth`

@@ -31,7 +31,7 @@ return packer.startup(function(use)
 	-- https://vimcolorschemes.com/folke/tokyonight.nvim
 	use("folke/tokyonight.nvim")
 	-- use 'shaunsingh/nord.nvim'
-	-- use 'navarasu/onedark.nvim'
+	-- use("navarasu/onedark.nvim")
 
 	-- systemverilog syntax
 	-- use 'nachumk/systemverilog.vim'

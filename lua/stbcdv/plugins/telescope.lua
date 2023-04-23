@@ -1,13 +1,13 @@
 local telescope_setup, telescope = pcall(require, "telescope")
 if not telescope_setup then
-  return
+	return
 end
 -- local builtin = require('telescope.builtin')
 local telescopeConfig = require("telescope.config")
 
 local actions_setup, actions = pcall(require, "telescope.actions")
 if not actions_setup then
-  return
+	return
 end
 
 -- Clone the default Telescope configuration
@@ -35,13 +35,13 @@ telescope.setup({
 			},
 			n = {
 				["<esc>"] = actions.close,
-			}
+			},
 		},
-		sorting_strategy = 'ascending',
-		layout_strategy = 'horizontal',
+		sorting_strategy = "ascending",
+		layout_strategy = "horizontal",
 		layout_config = {
 			horizontal = {
-				prompt_position = 'top',
+				prompt_position = "top",
 				preview_width = 0.55,
 				results_width = 0.8,
 			},
@@ -58,7 +58,7 @@ telescope.setup({
 			-- theme = "dropdown",
 			-- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
 			find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
-		}
+		},
 	},
 })
 
