@@ -1,28 +1,34 @@
 # NeoVim Configuration
-This config is for `systemverilog`
+This configuration of neovim is for `systemverilog` and `UVM`
 **可参考的配置**
 [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch)
 ## nvim 的语法高亮是真的有毒
 nvim 中自带的语法高亮是在不行，感觉需要修改的地方很多，奈何自己不会写，存粹取别人的长处以弥补
 [verilog_systemverilog](https://github.com/vhda/verilog_systemverilog.vim)
 
+## require
+**must** 
+
+git, lazygit, fzf, fd, bat, clang or gcc, make, python(pyenv, virtual env), rust, cargo, luajit, nerd-font, ripgrep
+
+**option**
+
+ranger, broot, htop, procs
+
 ## nvim options
 这里主要说明几个不常用的
 ```lua
+local opt  = vim.opt
 opt.mouse = 'a' -- 开启鼠标控制
 opt.mousemoveevent = true
 opt.clipboard:append('unnamedplus') -- 访问剪贴板
-
 -- 显示缩进线 enter为eol = '⤶', 简单的可以替代一些缩进的插件
 vim.opt.listchars = { trail = '✚', extends = '◀', precedes = '▶', space = '_', tab = '|~'}
 vim.opt.list = true
-
 opt.foldmethod='indent'
 opt.foldmethod='syntax'
 opt.foldenable = false
-
 opt.updatetime=6000
-
 opt.conceallevel = 0 -- so than `` can display in markdown file
 ```
 
@@ -44,41 +50,47 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 
 ## [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua)
 文件树展示
-### 快捷键
 |快捷键|功能|
 |:-:|:-:|
 |\<leader\>e|唤起文件树界面|
 |q|退出文件树|
-|file edit|还有其他文件移动, 重命名等快捷键|
+|file edit|其他文件移动, 重命名等快捷键|
 
 ## [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
 在 neovim 内部调用终端
 - 如何确保路径，首先进入 neovim 后第一次到的路径就是以后所有的路径, 想要修改有点麻烦
-- 替代了 lazygit.nvim 插件
+- 替代 lazygit.nvim 插件
 - 可以呼出 broot, 文件浏览窗口
-- 可以使用 top 查看系统资源信息，当然也可以将 top 替换为 htop 命令
+- 可以使用 (h)top 查看系统资源信息
 - 可以调用 python 环境, 并在其中执行命令
-### 快捷键
+
 |快捷键|功能|
 |:-:|:-:|
-|\<c-/\>|呼出终端窗口(原来是c-\,但是该键被占用了)|
+|\<c-`\>|呼出终端窗口(原来是c-\,但是该键被占用了), 另一种方法是使用 tmux|
 |\<leader\>br|broot|
 |\<leader\>rg|ranger, 类似于 broot, 但是支持预览文件, 但是编辑文件时并不会跳转到当前的vim窗口中(已解决)|
 |\<leader\>lg|lazygitg
-g\<leader\>py|python3|
+|\<leader\>py|python3|
 |\<leader\>ht|top or htop|
-|\<leader\>nc|ncdu: 查看当前目录下的文件及其大小, 该快捷键被关闭|
+|\<leader\>nc|ncdu: 查看当前目录下的文件及其大小(该快捷键被取消)|
 
-以上命令都是交互式的命令，如果命令是输出结果则并不会 hold 窗口
+以上命令都是交互式的命令，如果命令是输出结果则并不会 hold 窗口(例如 dust)
+
 [如何从 toggleterm 终端中跳转到当前 vim 文件窗口中](https://github.com/akinsho/toggleterm.nvim/issues/377)
+
 [neovim-remote 使用方法](https://www.youtube.com/watch?v=xO5yMutC-rM)
+
 [终端路径如何根据当前的工作路径一起变化](https://github.com/akinsho/toggleterm.nvim/issues/304)
+
+[终端路径如何根据当前的工作路径一起变化(method two)](https://github.com/akinsho/toggleterm.nvim/issues/346)
+
+在 nvim 中唤起终端后，在另一文件路径下唤起终端，路径是不变的，除否 exit 之前的终端，然后再次唤起(针对\<C-/\>)
 
 ## [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 ### 搭配使用的插件
 - [project.nvim](https://github.com/ahmedkhalf/project.nvim)
 - [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
-### 快捷键
+
 |快捷键|功能|
 |:-:|:-:|
 |\<leader\>ff|模糊搜索文件, 如果输入 test test, 等价于 test, 可以使用 testtest 搜索|
@@ -96,8 +108,8 @@ g\<leader\>py|python3|
 /Users/user_name/.local/share/nvim/project_nvim
 
 ## [undotree](https://github.com/mbbill/undotree)
-记录文件修改信息，类似于 git，可以直接回滚到文件未修改的版本
-### 快捷键
+记录文件内容的修改信息，类似于 git，可以直接回滚到文件未修改的版本
+
 |快捷键|功能|
 |:-:|:-:|
 |\<leader\>u|唤出文件修改记录|
@@ -113,7 +125,7 @@ g\<leader\>py|python3|
 - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
 - [vim-surround](https://github.com/tpope/vim-surround)
 [如何使用 LuaSnip 编写代码片段](https://zjp-cn.github.io/neovim0.6-blogs/nvim/luasnip/doc1.html)
-### 快捷键
+
 |快捷键|功能|
 |:-:|:-:|
 |cs\[\(|把 \[\] 替换为 ()|
@@ -132,9 +144,9 @@ g\<leader\>py|python3|
 - [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
 - [lspkind.nvim](https://github.com/onsails/lspkind.nvim)
 - [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim): Linters and Formatters
-- [nvim-treesitter]()
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 不知道 [coc.nvim](https://github.com/neoclide/coc.nvim) 功能怎么样
-### 快捷键
+
 许多快捷键是在lsp下工作的，没有lsp有的会出现问题, 得仔细考虑下 nvim-lsp 和 coc.nvim 之间的差别
 |快捷键|功能|
 |:-:|:-:|
@@ -153,7 +165,7 @@ g\<leader\>py|python3|
 |\<leader\>fm|formating code|
 ### 注意点
 变量，class，method 等图标是由 lspsaga 插件提供的，有时候官方的可能会出现乱码，可能是图标编码除了问题；解决方法：等官方解决，第二种自己修改(有些图标没找见，可能得再看看)
-formatter 的功能是格式化内容，并不会对内容的对错进行 linter，在运行 formatter 前需要确保内容编写的正确性。
+formatter 的功能是格式化内容，并不会对内容的对错进行 linter，在运行 formatter 前可能需要确保内容编写的正确性。
 
 ## [Comment.nvim](https://github.com/numToStr/Comment.nvim)
 注释
@@ -171,7 +183,7 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 
 ## [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 查询 git 的状态
-### 快捷键
+
 |快捷键|功能|
 |:-:|:-:|
 |\<leader\>gc|查询 commit|
@@ -183,7 +195,7 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 - [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
 - [vim-maximizer](https://github.com/szw/vim-maximizer)
 - [bufferline](https://github.com/akinsho/bufferline.nvim)
-### 快捷键
+
 |快捷键|功能|
 |:-:|:-:|
 |\<leader\>sm|最大化当前窗口|
@@ -193,7 +205,7 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 |\<leader\>cx|关闭当前编辑的文件页中的分屏|
 |\<leader\>tx|关闭当前标签页(感觉有点问题)|
 |\<leader\>ta|新建一个标签页|
-|\<leader\>number|跳转到相应标签页|
+|\<leader\>number|跳转到相应标签页, 只支持1-9, 其实够用不到那么多(\<leader\>1 是指当前标签栏的第一个标签, 并不是指 buffer 数字)|
 |\<leader\>bg|BufferLinePick|
 |\<leader\>tn|跳转到下一个标签页|
 |\<leader\>tp|跳转到上一个标签页|
@@ -205,10 +217,9 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 ## 界面美化
 - [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-- [tokyonight.nvim](https://github.com/folke/tokyonight.nvim): [主题网站](https://vimcolorschemes.com/folke/tokyonight.nvim), 感兴趣的可以自己查找
+- [tokyonight.nvim](https://github.com/folke/tokyonight.nvim): [vim 主题网站](https://vimcolorschemes.com/folke/tokyonight.nvim), 感兴趣的可以自己查找
 - [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
-### 快捷键
-dashboard 界面
+
 |快捷键|功能|
 |:-:|:-:|
 |e|新建文件|

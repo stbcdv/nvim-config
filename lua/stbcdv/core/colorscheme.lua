@@ -1,4 +1,4 @@
-local status, ColorTheme = pcall(vim.cmd, "colorscheme tokyonight-storm")
+local status, ColorTheme = pcall(vim.cmd, "colorscheme tokyonight-moon")
 -- local status, ColorTheme = pcall(vim.cmd, "colorscheme nightfly")
 -- local cursor_color = vim.api.nvim_get_option("guicursor")
 vim.api.nvim_set_option("guicursor", "n-v:block-Cursor/lCursor,i-c-ci:ver25")

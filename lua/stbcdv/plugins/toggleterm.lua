@@ -5,7 +5,7 @@ end
 
 toggleterm.setup({
 	size = 20,
-	open_mapping = [[<c-/>]],
+	open_mapping = [[<c-`>]],
 	hide_numbers = true,
 	shade_filetypes = {},
 	shade_terminals = true,
@@ -28,12 +28,12 @@ toggleterm.setup({
 
 function _G.set_terminal_keymaps()
 	local opts = { noremap = true }
-	vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-/><C-n>]], opts)
-	vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-/><C-n><C-W>h]], opts)
-	vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-/><C-n><C-W>j]], opts)
-	vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-/><C-n><C-W>k]], opts)
-	vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-/><C-n><C-W>l]], opts)
-	-- vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-/><C-n>]], opts)  -- 这个在 lazygit 中有点不好用, 向下选择会有延迟
+	vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-`><C-n>]], opts)
+	vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-`><C-n><C-W>h]], opts)
+	vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-`><C-n><C-W>j]], opts)
+	vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-`><C-n><C-W>k]], opts)
+	vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-`><C-n><C-W>l]], opts)
+	-- vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-`><C-n>]], opts)  -- 这个在 lazygit 中有点不好用, 向下选择会有延迟
 end
 
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
@@ -45,22 +45,23 @@ local function feedkeys(keys)
 	vim.api.nvim_feedkeys(key_termcode, "n", false)
 end
 
--- local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+-- vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+-- local cur_cwd = vim.fn.getcwd()
+
 -- function _LAZYGIT_TOGGLE()
+-- 	-- cwd is the root of project. if cwd is changed, change the git.
+-- 	local cwd = vim.fn.getcwd()
+-- 	if cwd ~= cur_cwd then
+-- 		cur_cwd = cwd
+-- 		lazygit:close()
+-- 		lazygit = Terminal:new({ cmd = "lazygit", direction = "float" })
+-- 	end
 -- 	lazygit:toggle()
 -- end
-vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
-local lazygit = Terminal:new({ cmd = "lazygit", direction = "float" })
-local cur_cwd = vim.fn.getcwd()
 
 function _LAZYGIT_TOGGLE()
-	-- cwd is the root of project. if cwd is changed, change the git.
-	local cwd = vim.fn.getcwd()
-	if cwd ~= cur_cwd then
-		cur_cwd = cwd
-		lazygit:close()
-		lazygit = Terminal:new({ cmd = "lazygit", direction = "float" })
-	end
+	lazygit.dir = vim.fn.expand("%:p:h") -- current working directory for the active buffer
 	lazygit:toggle()
 end
 
@@ -76,12 +77,13 @@ end
 
 local broot = Terminal:new({ cmd = "broot -d -p -s", hidden = true }) -- file explore
 function _BROOT_TOGGLE()
-	local cwd = vim.fn.getcwd()
-	if cwd ~= cur_cwd then
-		cur_cwd = cwd
-		broot:close()
-		broot = Terminal:new({ cmd = "broot -d -p -s", hidden = true }) -- file explore
-	end
+	-- local cwd = vim.fn.getcwd()
+	-- if cwd ~= cur_cwd then
+	-- 	cur_cwd = cwd
+	-- 	broot:close()
+	-- 	broot = Terminal:new({ cmd = "broot -d -p -s", hidden = true }) -- file explore
+	-- end
+	broot.dir = vim.fn.expand("%:p:h") -- current working directory for the active buffer
 	broot:toggle()
 end
 
@@ -106,30 +108,31 @@ local ranger = Terminal:new({
 	end,
 })
 function _RANGER_TOGGLE()
-	local cwd = vim.fn.getcwd()
-	if cwd ~= cur_cwd then
-		cur_cwd = cwd
-		ranger:close()
-		ranger = Terminal:new({
-			cmd = 'ranger --choosefiles="' .. ranger_tmpfile .. '"',
-			hidden = true,
-			on_exit = function(term)
-				local file = io.open(ranger_tmpfile, "r")
-				if file ~= nil then
-					local file_name = file:read("*a")
-					file:close()
-					os.remove(ranger_tmpfile)
-					-- Until edit buffer goes to the correct buffer,
-					-- emulate keystrokes to do the same
-					vim.cmd("vs " .. file_name)
-					vim.cmd("set nu") -- 必须有这些，否则重新打开的窗口有些配置不起作用
-					vim.cmd("set relativenumber")
-					feedkeys("<C-w>h")
-					feedkeys("<C-w>q")
-				end
-			end,
-		})
-	end
+	-- local cwd = vim.fn.getcwd()
+	-- if cwd ~= cur_cwd then
+	-- 	cur_cwd = cwd
+	-- 	ranger:close()
+	-- 	ranger = Terminal:new({
+	-- 		cmd = 'ranger --choosefiles="' .. ranger_tmpfile .. '"',
+	-- 		hidden = true,
+	-- 		on_exit = function(term)
+	-- 			local file = io.open(ranger_tmpfile, "r")
+	-- 			if file ~= nil then
+	-- 				local file_name = file:read("*a")
+	-- 				file:close()
+	-- 				os.remove(ranger_tmpfile)
+	-- 				-- Until edit buffer goes to the correct buffer,
+	-- 				-- emulate keystrokes to do the same
+	-- 				vim.cmd("vs " .. file_name)
+	-- 				vim.cmd("set nu") -- 必须有这些，否则重新打开的窗口有些配置不起作用
+	-- 				vim.cmd("set relativenumber")
+	-- 				feedkeys("<C-w>h")
+	-- 				feedkeys("<C-w>q")
+	-- 			end
+	-- 		end,
+	-- 	})
+	-- end
+	ranger.dir = vim.fn.expand("%:p:h") -- current working directory for the active buffer
 	ranger:toggle()
 end
 
