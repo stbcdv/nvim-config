@@ -57,3 +57,6 @@ opt.foldenable = false
 opt.updatetime = 6000
 
 opt.conceallevel = 0 -- so than `` can display in markdown file
+
+-- let g:python3_host_prog = '/usr/local/bin/python3' writre instead by lua
+vim.g.python3_host_prog = "/usr/local/bin/python3"

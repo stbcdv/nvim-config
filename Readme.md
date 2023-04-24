@@ -39,6 +39,9 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 
 ## **Plugins**
 
+## [impatient.nvim](https://github.com/lewis6991/impatient.nvim)
+提高插件的启动效率, 注意该插件最好放在所有插件之前，具体看 `./lua/stbcdv/plugins-setup.lua`
+
 ## [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua)
 文件树展示
 ### 快捷键
@@ -46,9 +49,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 |:-:|:-:|
 |\<leader\>e|唤起文件树界面|
 |q|退出文件树|
-
-## [impatient.nvim](https://github.com/lewis6991/impatient.nvim)
-提高插件的启动效率
+|file edit|还有其他文件移动, 重命名等快捷键|
 
 ## [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
 在 neovim 内部调用终端
@@ -62,14 +63,15 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 |:-:|:-:|
 |\<c-/\>|呼出终端窗口(原来是c-\,但是该键被占用了)|
 |\<leader\>br|broot|
-|\<leader\>rn|ranger, 类似于 broot, 但是支持预览文件, 但是编辑文件时并不会跳转到当前的vim窗口中|
-|\<leader\>lg|lazygit|
-|\<leader\>py|python3|
+|\<leader\>rg|ranger, 类似于 broot, 但是支持预览文件, 但是编辑文件时并不会跳转到当前的vim窗口中(已解决)|
+|\<leader\>lg|lazygitg
+g\<leader\>py|python3|
 |\<leader\>ht|top or htop|
 |\<leader\>nc|ncdu: 查看当前目录下的文件及其大小, 该快捷键被关闭|
 以上命令都是交互式的命令，如果命令是输出结果则并不会 hold 窗口
 [如何从 toggleterm 终端中跳转到当前 vim 文件窗口中](https://github.com/akinsho/toggleterm.nvim/issues/377)
 [neovim-remote 使用方法](https://www.youtube.com/watch?v=xO5yMutC-rM)
+[终端路径如何根据当前的工作路径一起变化](https://github.com/akinsho/toggleterm.nvim/issues/304)
 
 ## [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 ### 搭配使用的插件
@@ -148,7 +150,6 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 |\<leader\>D|show line diagnostic|
 |\<leader\>d|show cursor diagnostic|
 |\<leader\>fm|formating code|
-
 ### 注意点
 变量，class，method 等图标是由 lspsaga 插件提供的，有时候官方的可能会出现乱码，可能是图标编码除了问题；解决方法：等官方解决，第二种自己修改(有些图标没找见，可能得再看看)
 formatter 的功能是格式化内容，并不会对内容的对错进行 linter，在运行 formatter 前需要确保内容编写的正确性。
@@ -191,7 +192,6 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 |\<leader\>cx|关闭当前编辑的文件页中的分屏|
 |\<leader\>tx|关闭当前标签页(感觉有点问题)|
 |\<leader\>ta|新建一个标签页|
-|\<C-hjkl\>|分页之间的相互切换|
 |\<leader\>number|跳转到相应标签页|
 |\<leader\>bg|BufferLinePick|
 |\<leader\>tn|跳转到下一个标签页|
@@ -199,6 +199,7 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 |\<leader\>tc|关闭标签页|
 |\<leader\>bc|关闭当前buffer|
 |\<leader\>bo|只保留当前buffer|
+|\<C-hjkl\>|分页之间的相互切换|
 
 ## 界面美化
 - [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
@@ -215,7 +216,11 @@ dashboard 界面
 ## 其他
 - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
 
-# neovim
-特殊小知识
+## neovim 特殊小知识
 - 环境路径: `:lua print(vim.inspect(vim.api.nvim_list_runtime_paths()))`
 - `:checkhealth`
+- let g 和 vim.g
+```lua
+-- let g:python3_host_prog = '/usr/local/bin/python3' writre instead by lua
+vim.g.python3_host_prog = "/usr/local/bin/python3"
+```

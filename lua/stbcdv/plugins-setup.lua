@@ -25,6 +25,10 @@ if not status then
 end
 
 return packer.startup(function(use)
+	-- improve the effection
+	-- it is recommand putting this in front of other plugins
+	use("lewis6991/impatient.nvim")
+	-- plugins manager
 	use("wbthomason/packer.nvim")
 
 	-- use("bluz71/vim-nightfly-guicolors") -- color
@@ -36,7 +40,7 @@ return packer.startup(function(use)
 	-- systemverilog syntax
 	-- use 'nachumk/systemverilog.vim'
 	use({ "vhda/verilog_systemverilog.vim" })
-
+	-- windows manager
 	use("christoomey/vim-tmux-navigator")
 	use("szw/vim-maximizer")
 	use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
@@ -48,7 +52,6 @@ return packer.startup(function(use)
 	use("nvim-tree/nvim-tree.lua") -- just like nerdtree
 	use("kyazdani42/nvim-web-devicons")
 	-- use( "jiangmiao/auto-pairs" ) -- auto complement '' "" [] ()
-	use("nvim-lualine/lualine.nvim") -- status bar
 
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- need make in his dirctory
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
@@ -61,6 +64,9 @@ return packer.startup(function(use)
 	use("L3MON4D3/LuaSnip")
 	use("saadparwaiz1/cmp_luasnip")
 	use("rafamadriz/friendly-snippets")
+	-- auto-pairs
+	use("windwp/nvim-autopairs")
+	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
 
 	use("williamboman/mason-lspconfig.nvim")
 	use("williamboman/mason.nvim")
@@ -84,24 +90,22 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- auto-pairs
-	use("windwp/nvim-autopairs")
-	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
-
 	-- git signs plugins
 	use("lewis6991/gitsigns.nvim")
 	-- use("kdheepak/lazygit.nvim")
-
 	-- config dashboard
 	use({ "glepnir/dashboard-nvim" })
-	use("lewis6991/impatient.nvim")
+	-- status bar
+	use("nvim-lualine/lualine.nvim")
+	-- file editings history
 	use({
 		"mbbill/undotree",
 		config = function()
 			require("stbcdv.plugins.undotree").config()
 		end,
 	})
-	use({ "akinsho/toggleterm.nvim" }) -- 终端工具
+	-- 终端工具
+	use({ "akinsho/toggleterm.nvim" })
 
 	if packer_bootstrap then
 		require("packer").sync()

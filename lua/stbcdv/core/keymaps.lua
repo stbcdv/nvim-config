@@ -60,6 +60,8 @@ keymap.set("n", "<leader>py", "<cmd>lua _PYTHON_TOGGLE()<cr>") -- belongs to tog
 keymap.set("n", "<leader>br", "<cmd>lua _BROOT_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 keymap.set("n", "<leader>ht", "<cmd>lua _HTOP_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 keymap.set("n", "<leader>rg", "<cmd>lua _RANGER_TOGGLE()<cr>") -- belongs to toggleterm.nvim
+-- vim.api.nvim_set_keymap("", "<leader>aa", "<cmd>execute  v:count . \"ToggleTerm dir='%:p:h'\"<CR>", {})
+-- keymap.set("n", "<C-/>", "<cmd> ToggleTerm size=40<cr>") -- belongs to toggleterm.nvim
 -- keymap.set("n", "<leader>nc", "<cmd>lua _NCDU_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 --
 -- undotree keymaps
