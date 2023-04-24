@@ -68,6 +68,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 g\<leader\>py|python3|
 |\<leader\>ht|top or htop|
 |\<leader\>nc|ncdu: 查看当前目录下的文件及其大小, 该快捷键被关闭|
+
 以上命令都是交互式的命令，如果命令是输出结果则并不会 hold 窗口
 [如何从 toggleterm 终端中跳转到当前 vim 文件窗口中](https://github.com/akinsho/toggleterm.nvim/issues/377)
 [neovim-remote 使用方法](https://www.youtube.com/watch?v=xO5yMutC-rM)
