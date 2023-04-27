@@ -24,6 +24,11 @@ toggleterm.setup({
 			background = "Normal",
 		},
 	},
+	-- execs = {
+	-- 	{ nil, "<M-1>", "Horizontal Terminal", "horizontal", 0.3 },
+	-- 	{ nil, "<M-2>", "Vertical Terminal", "vertical", 0.4 },
+	-- 	{ nil, "<M-3>", "Float Terminal", "float", nil },
+	-- },
 })
 
 function _G.set_terminal_keymaps()
@@ -45,7 +50,6 @@ local function feedkeys(keys)
 	vim.api.nvim_feedkeys(key_termcode, "n", false)
 end
 
--- vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
 -- local cur_cwd = vim.fn.getcwd()
 
@@ -70,7 +74,7 @@ function _HTOP_TOGGLE()
 	htop:toggle()
 end
 
-local python = Terminal:new({ cmd = "python3", hidden = true })
+local python = Terminal:new({ cmd = "ipython", hidden = true })
 function _PYTHON_TOGGLE()
 	python:toggle()
 end
@@ -139,9 +143,4 @@ end
 -- local node = Terminal:new({ cmd = "node", hidden = true })
 -- function _NODE_TOGGLE()
 -- 	node:toggle()
--- end
-
--- local ncdu = Terminal:new({ cmd = "ncdu --sort name", hidden = true }) -- file explore
--- function _NCDU_TOGGLE()
--- 	ncdu:toggle()
 -- end

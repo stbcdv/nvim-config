@@ -62,8 +62,6 @@ telescope.setup({
 	},
 })
 
--- vim.keymap.set('n', '<leader>fr', builtin.oldfiles, {})
--- local historyaa = builtin.oldfiles()
 telescope.load_extension("fzf")
 telescope.load_extension("projects")
 -- telescope.load_extension("lazygit")

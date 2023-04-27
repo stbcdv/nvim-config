@@ -2,14 +2,14 @@ local api = vim.api
 local keymap = vim.keymap
 local status, db = pcall(require, "dashboard")
 local vim = vim
-local utils = require("dashboard.utils")
-event = "VimEnter"
+-- local utils = require("dashboard.utils")
+-- event = "VimEnter"
 if not status then
 	vim.notify("no dashboard", "error")
 	return
 end
 
-custom_header = {
+local custom_header = {
 	"",
 	"⡆⣐⢕⢕⢕⢕⢕⢕⢕⢕⠅⢗⢕⢕⢕⢕⢕⢕⢕⠕⠕⢕⢕⢕⢕⢕⢕⢕⢕⢕",
 	"⢐⢕⢕⢕⢕⢕⣕⢕⢕⠕⠁⢕⢕⢕⢕⢕⢕⢕⢕⠅⡄⢕⢕⢕⢕⢕⢕⢕⢕⢕",
@@ -28,9 +28,9 @@ custom_header = {
 	"",
 }
 
-custom_footer = { "", "", "Everyday is new day, don't listen this!" }
+local custom_footer = { "", "", "Everyday is new day, don't listen this!" }
 
-custom_center = {
+local custom_center = {
 	{
 		icon = "  ",
 		desc = "Find  File                              <leader>ff",
@@ -40,7 +40,7 @@ custom_center = {
 	{
 		icon = "  ",
 		desc = "Recently opened files                   <leader>fr",
-		action = "Telescope oldfiles", -- theme=dropdown
+		action = "Telescope oldfiles",
 		-- shortcut = "<Leader> f r",
 	},
 	{
@@ -61,13 +61,11 @@ custom_center = {
 		icon = "  ",
 		desc = "New file                                e",
 		action = "enew",
-		-- shortcut = "e",
 	},
 	{
 		icon = "  ",
 		desc = "Quit Nvim                               q",
 		action = "qa",
-		-- shortcut = "q",
 	},
 }
 

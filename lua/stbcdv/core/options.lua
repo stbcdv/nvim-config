@@ -50,13 +50,45 @@ opt.fileencoding = "utf-8"
 vim.opt.listchars = { trail = "✚", extends = "◀", precedes = "▶", space = "_", tab = "|~", eol = "⤶" }
 vim.opt.list = true
 
-opt.foldmethod = "indent"
-opt.foldmethod = "syntax"
-opt.foldenable = false
-
 opt.updatetime = 6000
 
 opt.conceallevel = 0 -- so than `` can display in markdown file
 
+opt.backupcopy = "yes" -- inode setting, after vim editing, the inode of file isn't changed.
+
 -- let g:python3_host_prog = '/usr/local/bin/python3' writre instead by lua
 vim.g.python3_host_prog = "/usr/local/bin/python3"
+
+-- code folding enable
+-- opt.foldmethod = "indent"
+-- opt.foldmethod = "syntax"
+-- opt.foldmethod = "expr"
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldenable = false
+opt.foldlevel = 99
+
+-- 下面的函数是为了打开一个文件后自动打开所有的折叠，但是我好像不需要
+-- local api = vim.api
+-- local M = {}
+-- function to create a list of commands and convert them to autocommands
+-------- This function is taken from https://github.com/norcalli/nvim_utils
+-- function M.nvim_create_augroups(definitions)
+-- 	for group_name, definition in pairs(definitions) do
+-- 		api.nvim_command("augroup " .. group_name)
+-- 		api.nvim_command("autocmd!")
+-- 		for _, def in ipairs(definition) do
+-- 			local command = table.concat(vim.tbl_flatten({ "autocmd", def }), " ")
+-- 			api.nvim_command(command)
+-- 		end
+-- 		api.nvim_command("augroup END")
+-- 	end
+-- end
+
+-- local autoCommands = {
+-- 	-- other autocommands
+-- 	open_folds = {
+-- 		{ "BufReadPost,FileReadPost", "*", "normal zR" },
+-- 	},
+-- }
+
+-- M.nvim_create_augroups(autoCommands)

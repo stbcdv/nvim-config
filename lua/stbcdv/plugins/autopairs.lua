@@ -9,9 +9,22 @@ autopairs.setup({
 	check_ts = true, -- enable treesitter
 	ts_config = {
 		lua = { "string" }, -- don't add pairs in lua string treesitter nodes
-		javascript = { "template_string" }, -- don't add pairs in javscript template_string treesitter nodes
-		java = false, -- don't check treesitter on java
+		-- javascript = { "template_string" }, -- don't add pairs in javscript template_string treesitter nodes
+		-- java = false, -- don't check treesitter on java
 	},
+	disable_filetype = { "TelescopePrompt", "spectre_panel" },
+	ignored_next_char = string.gsub([[ [%w%%%'%[%"%.] ]], "%s+", ""),
+	enable_moveright = true,
+	---@usage disable when recording or executing a macro
+	disable_in_macro = false,
+	---@usage add bracket pairs after quote
+	enable_afterquote = true,
+	---@usage map the <BS> key
+	map_bs = true,
+	---@usage map <c-w> to delete a pair if possible
+	map_c_w = false,
+	---@usage disable when insert after visual block mode
+	disable_in_visualblock = false,
 	fast_wrap = {
 		map = "<M-e>", -- <M> 代表这 Meta 键，即option(mac)，win(windous)
 		chars = { "{", "[", "(", '"', "'" },

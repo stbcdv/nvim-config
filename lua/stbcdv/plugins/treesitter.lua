@@ -9,7 +9,7 @@ treesitter.setup({
 	-- enable syntax highlighting
 	highlight = {
 		enable = true,
-		disable = { "verilog" },
+		disable = { "verilog", "systemverilog" },
 	},
 	-- enable indentation
 	indent = { enable = true },

@@ -1,5 +1,5 @@
 # NeoVim Configuration
-This configuration of neovim is for `systemverilog` and `UVM`
+This configuration of neovim is for `systemverilog`, `UVM`, lua and python
 **可参考的配置**
 [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch)
 ## nvim 的语法高亮是真的有毒
@@ -9,7 +9,7 @@ nvim 中自带的语法高亮是在不行，感觉需要修改的地方很多，
 ## require
 **must** 
 
-git, lazygit, fzf, fd, bat, clang or gcc, make, python(pyenv, virtual env), rust, cargo, luajit, nerd-font, ripgrep
+git, lazygit, fzf, fd, bat, ripgrep, clang or gcc, make, miniconda3, python(pyenv, virtual env), rust, cargo, luajit, nerd-font
 
 **option**
 
@@ -30,7 +30,9 @@ opt.foldmethod='syntax'
 opt.foldenable = false
 opt.updatetime=6000
 opt.conceallevel = 0 -- so than `` can display in markdown file
+opt.backupcopy = "yes" -- inode setting, after vim editing, the inode of file isn't changed.
 ```
+[indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
 
 ## vim 自带的快捷键
 |快捷键|功能|
@@ -58,9 +60,10 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 
 ## [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
 在 neovim 内部调用终端
-- 如何确保路径，首先进入 neovim 后第一次到的路径就是以后所有的路径, 想要修改有点麻烦
+- 如何确保路径，首先进入 neovim 后第一次到的路径就是以后所有的路径, 想要修改有点麻烦(已解决)
 - 替代 lazygit.nvim 插件
 - 可以呼出 broot, 文件浏览窗口
+- 可以呼出 ranger, 文件浏览窗口
 - 可以使用 (h)top 查看系统资源信息
 - 可以调用 python 环境, 并在其中执行命令
 
@@ -69,10 +72,10 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 |\<c-`\>|呼出终端窗口(原来是c-\,但是该键被占用了), 另一种方法是使用 tmux|
 |\<leader\>br|broot|
 |\<leader\>rg|ranger, 类似于 broot, 但是支持预览文件, 但是编辑文件时并不会跳转到当前的vim窗口中(已解决)|
-|\<leader\>lg|lazygitg
+|\<leader\>lg|lazygitg|
 |\<leader\>py|python3|
 |\<leader\>ht|top or htop|
-|\<leader\>nc|ncdu: 查看当前目录下的文件及其大小(该快捷键被取消)|
+|\<leader\>nc|ncdu: 查看当前目录下的文件及其大小(快捷键被取消)|
 
 以上命令都是交互式的命令，如果命令是输出结果则并不会 hold 窗口(例如 dust)
 
@@ -84,7 +87,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 
 [终端路径如何根据当前的工作路径一起变化(method two)](https://github.com/akinsho/toggleterm.nvim/issues/346)
 
-在 nvim 中唤起终端后，在另一文件路径下唤起终端，路径是不变的，除否 exit 之前的终端，然后再次唤起(针对\<C-/\>)
+在 nvim 中唤起终端后，在另一文件路径下唤起终端，路径是不变的，除否 exit 之前的终端，然后再次唤起(针对\<C-`\>)
 
 ## [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 ### 搭配使用的插件
@@ -103,7 +106,7 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 |d or \<C-d\>|在 project window, in normal model, delete selected project list or in insert model|
 |w or \<C-w\>|change_working_directory in normal or insert model, but not work toggleterm.nvim|
 
-以下是搜索记录
+以下是记录搜索历史的文件
 /Users/user_name/.local/share/nvim/telescope_history
 /Users/user_name/.local/share/nvim/project_nvim
 
@@ -120,7 +123,8 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 - [cmp-path](https://github.com/hrsh7th/cmp-path)
 - [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 - [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip)
-- [friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
+- [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
+- [friendly-snippets](https://github.com/rafamadriz/friendly-snippets): 提供了 systemverilog 的 snippet
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
 - [vim-surround](https://github.com/tpope/vim-surround)
@@ -141,10 +145,9 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 - [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 - [lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim)
-- [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
 - [lspkind.nvim](https://github.com/onsails/lspkind.nvim)
 - [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim): Linters and Formatters
-- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter): 提供了部分 formatting 和 code [folding](https://www.jmaguire.tech/posts/treesitter_folding/) 功能
 不知道 [coc.nvim](https://github.com/neoclide/coc.nvim) 功能怎么样
 
 许多快捷键是在lsp下工作的，没有lsp有的会出现问题, 得仔细考虑下 nvim-lsp 和 coc.nvim 之间的差别
@@ -206,13 +209,15 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 |\<leader\>tx|关闭当前标签页(感觉有点问题)|
 |\<leader\>ta|新建一个标签页|
 |\<leader\>number|跳转到相应标签页, 只支持1-9, 其实够用不到那么多(\<leader\>1 是指当前标签栏的第一个标签, 并不是指 buffer 数字)|
-|\<leader\>bg|BufferLinePick|
 |\<leader\>tn|跳转到下一个标签页|
 |\<leader\>tp|跳转到上一个标签页|
 |\<leader\>tc|关闭标签页|
 |\<leader\>bc|关闭当前buffer|
 |\<leader\>bo|只保留当前buffer|
 |\<C-hjkl\>|分页之间的相互切换|
+|\<leader\>bg|BufferLinePick, 标签页文件名首写字符高亮|
+|bufferline-groups|需要人为配置，根据 filename 和 postfix 对 buffer tab 进行分组|
+|:BufferLineTogglePin|也有其配置选项，函数归属于 bufferline.groups|
 
 ## 界面美化
 - [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
