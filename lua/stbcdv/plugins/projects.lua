@@ -1,6 +1,11 @@
-local project_nvim = require("project_nvim")
-local recent_projects = project_nvim.get_recent_projects()
+local project_setup, project_nvim = pcall(require, "project_nvim")
+-- local recent_projects = project_nvim.get_recent_projects()
 -- local dp = project_nvim.get_cache_dir()
+
+if not project_setup then
+	vim.notify("no project_nvim", vim.log.levels.ERROR)
+	return
+end
 
 project_nvim.setup({
 	manual_mode = false, -- add this, if in a directory path print nvim command, then this plugin can record this path, feel nothing to work

@@ -1,6 +1,7 @@
 local status, clipboard = pcall(require, "neoclip")
 
 if not status then
+	vim.notify("no clipboard", vim.log.levels.ERROR)
 	return
 end
 

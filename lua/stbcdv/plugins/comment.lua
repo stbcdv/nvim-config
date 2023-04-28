@@ -2,6 +2,7 @@ local setup, comment = pcall(require, "Comment")
 local ft = require("Comment.ft")
 
 if not setup then
+	vim.notify("no comment", vim.log.levels.ERROR)
 	return
 end
 

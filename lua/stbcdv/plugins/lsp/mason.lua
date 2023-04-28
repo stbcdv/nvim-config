@@ -1,10 +1,12 @@
 local mason_status, mason = pcall(require, "mason")
 if not mason_status then
+	vim.notify("no mason", vim.log.levels.ERROR)
 	return
 end
 
 local mason_lspconfig_status, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not mason_lspconfig_status then
+	vim.notify("no mason_lspconfig", vim.log.levels.ERROR)
 	return
 end
 

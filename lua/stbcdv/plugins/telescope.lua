@@ -1,5 +1,6 @@
 local telescope_setup, telescope = pcall(require, "telescope")
 if not telescope_setup then
+	vim.notify("no telescope", vim.log.levels.ERROR)
 	return
 end
 -- local builtin = require('telescope.builtin')
@@ -7,17 +8,28 @@ local telescopeConfig = require("telescope.config")
 
 local actions_setup, actions = pcall(require, "telescope.actions")
 if not actions_setup then
+	vim.notify("no telescope_actions", vim.log.levels.ERROR)
 	return
 end
 
 -- Clone the default Telescope configuration
-local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
-
--- I want to search in hidden/dot files.
-table.insert(vimgrep_arguments, "--hidden")
--- I don't want to search in the `.git` directory.
-table.insert(vimgrep_arguments, "--glob")
-table.insert(vimgrep_arguments, "!**/.git/*")
+-- local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+-- -- I want to search in hidden/dot files.
+-- table.insert(vimgrep_arguments, "--hidden")
+-- -- I don't want to search in the `.git` directory.
+-- table.insert(vimgrep_arguments, "--glob")
+-- table.insert(vimgrep_arguments, "!**/.git/*")
+local vimgrep_arguments = {
+	"rg",
+	"--color=never",
+	"--no-heading",
+	"--with-filename",
+	"--line-number",
+	"--column",
+	"--smart-case",
+	"--hidden",
+	"--glob=!.git/",
+}
 
 telescope.setup({
 	defaults = {

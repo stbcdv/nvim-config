@@ -5,6 +5,7 @@ local keymap = vim.keymap -- for conciseness
 -- general keymaps
 
 keymap.set("n", "<leader>w", ":w<CR>") -- 保存文件, 个人觉得应该没有其他的键会被占用
+keymap.set("n", "p", '""p') -- 保存文件, 个人觉得应该没有其他的键会被占用
 
 keymap.set("i", "jk", "<ESC>") -- in insert mode, then jk to esc
 -- keymap.set("v", "jk", "<ESC>") -- in insert mode, then jk to esc

@@ -5,7 +5,7 @@ local vim = vim
 -- local utils = require("dashboard.utils")
 -- event = "VimEnter"
 if not status then
-	vim.notify("no dashboard", "error")
+	vim.notify("no dashboard", vim.log.levels.ERROR)
 	return
 end
 
@@ -28,6 +28,7 @@ local custom_header = {
 	"⢑⢕⠃⡈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢃⢕⢕⢕",
 	"⣆⢕⠄⢱⣄⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢁⢕⢕⠕⢁",
 	"⣿⣦⡀⣿⣿⣷⣶⣬⣍⣛⣛⣛⡛⠿⠿⠿⠛⠛⢛⣛⣉⣭⣤⣂⢜⠕⢑⣡⣴⣿",
+	"",
 	"",
 }
 

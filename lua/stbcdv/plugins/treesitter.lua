@@ -1,6 +1,7 @@
 -- import nvim-treesitter plugin safely
 local status, treesitter = pcall(require, "nvim-treesitter.configs")
 if not status then
+	vim.notify("no treesitter", vim.log.levels.ERROR)
 	return
 end
 

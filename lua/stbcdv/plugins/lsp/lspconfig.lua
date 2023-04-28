@@ -1,12 +1,14 @@
 -- import lspconfig plugin safely
 local lspconfig_status, lspconfig = pcall(require, "lspconfig")
 if not lspconfig_status then
+	vim.notify("no lspconfig", vim.log.levels.ERROR)
 	return
 end
 
 -- import cmp-nvim-lsp plugin safely
 local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not cmp_nvim_lsp_status then
+	vim.notify("no cmp_nvim_lsp", vim.log.levels.ERROR)
 	return
 end
 

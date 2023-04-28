@@ -1,6 +1,7 @@
 -- import nvim-cmp plugin safely
 local cmp_status, cmp = pcall(require, "cmp")
 if not cmp_status then
+	vim.notify("no cmp", vim.log.levels.ERROR)
 	return
 end
 
@@ -10,12 +11,14 @@ local i = luasnip.insert_node
 local s = luasnip.snippet
 local t = luasnip.text_node
 if not luasnip_status then
+	vim.notify("no cmp", vim.log.levels.ERROR)
 	return
 end
 
 -- import lspkind plugin safely
 local lspkind_status, lspkind = pcall(require, "lspkind")
 if not lspkind_status then
+	vim.notify("no lspkind", vim.log.levels.ERROR)
 	return
 end
 

@@ -41,7 +41,11 @@ local function custom_filter(buf, buf_nums)
 	return (tab_num == last_tab and is_log) or (tab_num ~= last_tab and not is_log)
 end
 
-local bufferline = require("bufferline")
+local bufferline_status, bufferline = pcall(require, "bufferline")
+if not bufferline_status then
+	vim.notify("no bufferline", vim.log.levels.ERROR)
+	return
+end
 bufferline.setup({
 	options = {
 		-- 使用 nvim 内置lsp

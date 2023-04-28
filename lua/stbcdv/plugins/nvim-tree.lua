@@ -1,5 +1,6 @@
 local setup, nvimtree = pcall(require, "nvim-tree")
 if not setup then
+	vim.notify("no nvimtree", vim.log.levels.ERROR)
 	return
 end
 

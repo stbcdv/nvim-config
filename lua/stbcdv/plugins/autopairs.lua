@@ -1,6 +1,7 @@
 -- import nvim-autopairs safely
 local autopairs_setup, autopairs = pcall(require, "nvim-autopairs")
 if not autopairs_setup then
+	vim.notify("no autopairs", vim.log.levels.ERROR)
 	return
 end
 
@@ -42,12 +43,14 @@ autopairs.setup({
 -- import nvim-autopairs completion functionality safely
 local cmp_autopairs_setup, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
 if not cmp_autopairs_setup then
+	vim.notify("no cmp_autopairs", vim.log.levels.ERROR)
 	return
 end
 
 -- import nvim-cmp plugin safely (completions plugin)
 local cmp_setup, cmp = pcall(require, "cmp")
 if not cmp_setup then
+	vim.notify("no cmp", vim.log.levels.ERROR)
 	return
 end
 

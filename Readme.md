@@ -7,7 +7,7 @@ nvim 中自带的语法高亮是在不行，感觉需要修改的地方很多，
 [verilog_systemverilog](https://github.com/vhda/verilog_systemverilog.vim)
 
 ## require
-**must** 
+**must**
 
 git, lazygit, fzf, fd, bat, ripgrep, clang or gcc, make, miniconda3, python(pyenv, virtual env), rust, cargo, luajit, nerd-font
 
@@ -107,6 +107,7 @@ opt.backupcopy = "yes" -- inode setting, after vim editing, the inode of file is
 |w or \<C-w\>|change_working_directory in normal or insert model, but not work toggleterm.nvim|
 
 以下是记录搜索历史的文件
+
 /Users/user_name/.local/share/nvim/telescope_history
 /Users/user_name/.local/share/nvim/project_nvim
 
@@ -123,7 +124,8 @@ neovim clipboard manager, not work system clipboard
 |快捷键|功能|
 |:-:|:-:|
 |\<leader\>fv|唤出剪切板记录|
-|""p|粘贴, " 是一个寄存器名称, * 代表系统剪切板|
+|""p -> p|粘贴, " 是一个寄存器名称, * 代表系统剪切板|
+|P|代表系统剪切板|
 
 
 ## 自动补全
@@ -241,6 +243,7 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 
 ## 其他
 - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
+- [sqlite.lua](https://github.com/kkharji/sqlite.lua): 管理剪切板数据
 
 ## neovim 特殊小知识
 - 环境路径: `:lua print(vim.inspect(vim.api.nvim_list_runtime_paths()))`
