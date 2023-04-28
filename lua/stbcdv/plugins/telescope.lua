@@ -37,6 +37,9 @@ telescope.setup({
 				["<esc>"] = actions.close,
 			},
 		},
+		entry_prefix = "  ",
+		initial_mode = "insert",
+		selection_strategy = "reset",
 		sorting_strategy = "ascending",
 		layout_strategy = "horizontal",
 		layout_config = {
@@ -64,4 +67,5 @@ telescope.setup({
 
 telescope.load_extension("fzf")
 telescope.load_extension("projects")
+telescope.load_extension("neoclip")
 -- telescope.load_extension("lazygit")

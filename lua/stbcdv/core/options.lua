@@ -39,8 +39,6 @@ opt.splitbelow = true
 
 opt.iskeyword:append("-")
 
--- opt.syntax = rue
-
 -- my setting
 opt.mouse = "a"
 opt.mousemoveevent = true
@@ -56,7 +54,6 @@ opt.conceallevel = 0 -- so than `` can display in markdown file
 
 opt.backupcopy = "yes" -- inode setting, after vim editing, the inode of file isn't changed.
 
--- let g:python3_host_prog = '/usr/local/bin/python3' writre instead by lua
 vim.g.python3_host_prog = "/usr/local/bin/python3"
 
 -- code folding enable

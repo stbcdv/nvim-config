@@ -32,7 +32,6 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	-- use("bluz71/vim-nightfly-guicolors") -- color
-	-- https://vimcolorschemes.com/folke/tokyonight.nvim
 	use("folke/tokyonight.nvim")
 	-- use 'shaunsingh/nord.nvim'
 	-- use("navarasu/onedark.nvim")
@@ -78,7 +77,6 @@ return packer.startup(function(use)
 		branch = "main",
 		requires = { { "nvim-tree/nvim-web-devicons" }, { "nvim-treesitter" } },
 	}) -- enhanced lsp uis
-	-- use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
 	-- treesitter
@@ -104,8 +102,13 @@ return packer.startup(function(use)
 			require("stbcdv.plugins.undotree").config()
 		end,
 	})
-	-- 终端工具
+	-- iTerm tool
 	use({ "akinsho/toggleterm.nvim" })
+
+	-- clipboard manager
+	use({ "AckslD/nvim-neoclip.lua", requires = {
+		{ "kkharji/sqlite.lua", module = "sqlite" },
+	} })
 
 	if packer_bootstrap then
 		require("packer").sync()

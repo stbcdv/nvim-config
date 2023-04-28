@@ -42,10 +42,11 @@ keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- theme=dropdown
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>")
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
-keymap.set("n", "<leader>fp", "<cmd>Telescope projects<cr>")
 keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>")
 keymap.set("n", "<leader>fa", "<cmd>Telescope command_history<cr>")
 keymap.set("n", "<leader>ft", "<cmd>Telescope tags<cr>")
+keymap.set("n", "<leader>fp", "<cmd>Telescope projects<cr>")
+keymap.set("n", "<leader>fv", '<cmd>Telescope neoclip " <cr>')
 
 -- telescope git commands (not on youtube nvim video)
 keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
@@ -62,7 +63,6 @@ keymap.set("n", "<leader>ht", "<cmd>lua _HTOP_TOGGLE()<cr>") -- belongs to toggl
 keymap.set("n", "<leader>rg", "<cmd>lua _RANGER_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 -- vim.api.nvim_set_keymap("", "<leader>aa", "<cmd>execute  v:count . \"ToggleTerm dir='%:p:h'\"<CR>", {})
 -- keymap.set("n", "<C-/>", "<cmd> ToggleTerm size=40<cr>") -- belongs to toggleterm.nvim
--- keymap.set("n", "<leader>nc", "<cmd>lua _NCDU_TOGGLE()<cr>") -- belongs to toggleterm.nvim
---
+
 -- undotree keymaps
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)

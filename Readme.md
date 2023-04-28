@@ -117,6 +117,15 @@ opt.backupcopy = "yes" -- inode setting, after vim editing, the inode of file is
 |:-:|:-:|
 |\<leader\>u|唤出文件修改记录|
 
+## [nvim-neoclip.lua](https://github.com/AckslD/nvim-neoclip.lua)
+neovim clipboard manager, not work system clipboard
+[vim 寄存器介绍](https://zhuanlan.zhihu.com/p/25332320)
+|快捷键|功能|
+|:-:|:-:|
+|\<leader\>fv|唤出剪切板记录|
+|""p|粘贴, " 是一个寄存器名称, * 代表系统剪切板|
+
+
 ## 自动补全
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)

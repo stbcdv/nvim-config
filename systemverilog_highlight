@@ -482,7 +482,7 @@ syn keyword uvmMethod            run
 " uvm_sv/src/methodology/layered_stimulus/uvm_scenario.svh
 syn keyword uvmClass             uvm_scenario
 syn keyword uvmMethod            apply apply_request apply_send get_id get_scenario_path_name
-syn keyword uvmMethod            mid_apply post_apply pre_apply pre_body start
+syn keyword uvmMethod            mid_apply post_apply pre_apply pre_body
 
 " uvm_sv/src/methodology/layered_stimulus/uvm_scenario_controller.svh
 syn keyword uvmClass             uvm_scenario_controller
@@ -505,7 +505,7 @@ syn keyword uvmMethod            apply
 
 " uvm_sv/src/methodology/sequences/uvm_req_rsp_sequence.svh
 syn keyword uvmClass             uvm_sequence
-syn keyword uvmMethod            do_print start send_request get_current_item get_response put_response
+syn keyword uvmMethod            do_print send_request get_current_item get_response put_response
 syn keyword uvmMethod            set_sequencer set_response_queue_error_report_disabled
 syn keyword uvmMethod            get_response_queue_error_report_disabled set_response_queue_depth get_response_queue_depth
 
