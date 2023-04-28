@@ -4,7 +4,7 @@ if not telescope_setup then
 	return
 end
 -- local builtin = require('telescope.builtin')
-local telescopeConfig = require("telescope.config")
+-- local telescopeConfig = require("telescope.config")
 
 local actions_setup, actions = pcall(require, "telescope.actions")
 if not actions_setup then
@@ -50,6 +50,7 @@ telescope.setup({
 			},
 		},
 		entry_prefix = "  ",
+		multi_icon = " ",
 		initial_mode = "insert",
 		selection_strategy = "reset",
 		sorting_strategy = "ascending",
@@ -72,7 +73,8 @@ telescope.setup({
 		find_files = {
 			-- theme = "dropdown",
 			-- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
-			find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+			-- find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+			find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
 		},
 	},
 })
