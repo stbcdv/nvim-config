@@ -96,7 +96,7 @@ local ranger_tmpfile = vim.fn.tempname()
 local ranger = Terminal:new({
 	cmd = 'ranger --choosefiles="' .. ranger_tmpfile .. '"',
 	hidden = true,
-	on_exit = function(term)
+	on_exit = function()
 		local file = io.open(ranger_tmpfile, "r")
 		if file ~= nil then
 			local file_name = file:read("*a")
