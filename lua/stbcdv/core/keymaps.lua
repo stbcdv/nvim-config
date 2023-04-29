@@ -67,3 +67,5 @@ keymap.set("n", "<leader>rg", "<cmd>lua _RANGER_TOGGLE()<cr>") -- belongs to tog
 
 -- undotree keymaps
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+-- Tagbar keymaps
+vim.keymap.set("n", "<leader>tg", "<cmd>TagbarToggle<cr>")

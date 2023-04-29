@@ -127,10 +127,9 @@ neovim clipboard manager, not work system clipboard
 |""p -> p|粘贴, " 是一个寄存器名称, * 代表系统剪切板|
 |P|代表系统剪切板|
 
-
 ## 自动补全
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-- [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
+- [cmp-buffer](https://github.com/hrsh7th/cmp-buffer): 提供不同文件之间的 buffer 补全
 - [cmp-path](https://github.com/hrsh7th/cmp-path)
 - [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 - [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip)

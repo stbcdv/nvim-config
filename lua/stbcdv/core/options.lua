@@ -59,11 +59,58 @@ vim.g.python3_host_prog = "/usr/local/bin/python3"
 -- code folding enable
 -- opt.foldmethod = "indent"
 -- opt.foldmethod = "syntax"
--- opt.foldmethod = "expr"
--- opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldenable = false
 opt.foldlevel = 99
 
+-- ctags setting, about tagbar
+local kinds = {
+	"A:assertions",
+	"C:classes",
+	"E:enumerators",
+	"I:interfaces",
+	"K:packages",
+	"M:modports",
+	"P:programs",
+	"Q:prototypes",
+	"R:properties",
+	"S:structs and unions",
+	"T:type declarations",
+	"V:covergroups",
+	"b:blocks",
+	"c:constants",
+	"e:events",
+	"f:functions",
+	"m:modules",
+	"n:net data types",
+	"p:ports",
+	"r:register data types",
+	"t:tasks",
+}
+vim.g.tagbar_type_systemverilog = {
+	ctagstype = "systemverilog",
+	kinds = kinds,
+	sro = ".",
+	kind2scope = {
+		K = "package",
+		C = "class",
+		m = "module",
+		P = "program",
+		I = "interface",
+		M = "modport",
+		f = "function",
+		t = "task",
+	},
+	scope2kind = {
+		package = "K",
+		class = "C",
+		module = "m",
+		program = "P",
+		interface = "I",
+		modport = "M",
+		func = "f",
+		task = "t",
+	},
+}
 -- 下面的函数是为了打开一个文件后自动打开所有的折叠，但是我好像不需要
 -- local api = vim.api
 -- local M = {}

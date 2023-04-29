@@ -46,12 +46,6 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
--- configure tailwindcss server
--- lspconfig["tailwindcss"].setup({
---   capabilities = capabilities,
---   on_attach = on_attach,
--- })
-
 -- -- configure lua server (with special settings)
 -- lspconfig["sumneko_lua"].setup({
 --   capabilities = capabilities,

@@ -25,8 +25,7 @@ if not status then
 end
 
 return packer.startup(function(use)
-	-- improve the effection
-	-- it is recommand putting this in front of other plugins
+	-- improve the effection, it is recommand putting this in front of other plugins
 	use("lewis6991/impatient.nvim")
 	-- plugins manager
 	use("wbthomason/packer.nvim")
@@ -55,6 +54,10 @@ return packer.startup(function(use)
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- need make in his dirctory
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
 	use({ "ahmedkhalf/project.nvim" })
+	-- clipboard manager
+	use({ "AckslD/nvim-neoclip.lua", requires = {
+		{ "kkharji/sqlite.lua", module = "sqlite" },
+	} })
 
 	-- autocompletion
 	use("hrsh7th/nvim-cmp")
@@ -105,11 +108,7 @@ return packer.startup(function(use)
 	-- iTerm tool
 	use({ "akinsho/toggleterm.nvim" })
 
-	-- clipboard manager
-	use({ "AckslD/nvim-neoclip.lua", requires = {
-		{ "kkharji/sqlite.lua", module = "sqlite" },
-	} })
-
+	use({ "preservim/tagbar" })
 	if packer_bootstrap then
 		require("packer").sync()
 	end
