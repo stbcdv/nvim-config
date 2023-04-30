@@ -117,3 +117,13 @@ luasnip.add_snippets("systemverilog", {
 		i(3, "else"),
 	}),
 })
+
+luasnip.add_snippets("systemverilog", {
+	s("sformatf", {
+		t('$sformatf("'),
+		i(1, "strings"),
+		t('",'),
+		i(2, "%s"),
+		t(")"),
+	}),
+})

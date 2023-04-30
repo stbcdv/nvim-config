@@ -57,6 +57,7 @@ opt.backupcopy = "yes" -- inode setting, after vim editing, the inode of file is
 |\<leader\>e|唤起文件树界面|
 |q|退出文件树|
 |file edit|其他文件移动, 重命名等快捷键|
+|g?|查看详细 shortcut mapping|
 
 ## [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
 在 neovim 内部调用终端
@@ -125,7 +126,10 @@ neovim clipboard manager, not work system clipboard
 |:-:|:-:|
 |\<leader\>fv|唤出剪切板记录|
 |""p -> p|粘贴, " 是一个寄存器名称, * 代表系统剪切板|
-|P|代表系统剪切板|
+|P|系统剪切板|
+
+## [Tagbar](https://github.com/preservim/tagbar)
+[说明文档](https://github.com/preservim/tagbar/blob/master/doc/tagbar.txt)
 
 ## 自动补全
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)

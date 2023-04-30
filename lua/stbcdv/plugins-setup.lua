@@ -107,8 +107,9 @@ return packer.startup(function(use)
 	})
 	-- iTerm tool
 	use({ "akinsho/toggleterm.nvim" })
-
+	-- variable, method class list
 	use({ "preservim/tagbar" })
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end

@@ -1,4 +1,5 @@
 local opt = vim.opt -- for conciseness
+local g = vim.g
 
 -- line numbers
 opt.relativenumber = true
@@ -48,13 +49,12 @@ opt.fileencoding = "utf-8"
 vim.opt.listchars = { trail = "✚", extends = "◀", precedes = "▶", space = "_", tab = "|~", eol = "⤶" }
 vim.opt.list = true
 
-opt.updatetime = 6000
+opt.updatetime = 6000 -- interval for writing swap file to disk, also used by gitsigns
+opt.backupcopy = "yes" -- inode setting, after vim editing, the inode of file isn't changed. but ban the swap file generate, you must save now, when some reasons make the modify disappear
 
 opt.conceallevel = 0 -- so than `` can display in markdown file
 
-opt.backupcopy = "yes" -- inode setting, after vim editing, the inode of file isn't changed.
-
-vim.g.python3_host_prog = "/usr/local/bin/python3"
+g.python3_host_prog = "/usr/local/bin/python3"
 
 -- code folding enable
 -- opt.foldmethod = "indent"
@@ -82,11 +82,11 @@ local kinds = {
 	"f:functions",
 	"m:modules",
 	"n:net data types",
-	"p:ports",
+	-- "p:ports",
 	"r:register data types",
 	"t:tasks",
 }
-vim.g.tagbar_type_systemverilog = {
+g.tagbar_type_systemverilog = {
 	ctagstype = "systemverilog",
 	kinds = kinds,
 	sro = ".",
@@ -111,6 +111,14 @@ vim.g.tagbar_type_systemverilog = {
 		task = "t",
 	},
 }
+g.tagbar_autofocus = 1 -- tagbar open, the cursor is in tagbar windows
+g.tagbar_sort = 0 -- sort by the order in the source
+g.toggle_theme_icon = "   "
+
+-- command history
+opt.history = 100
+
+opt.termguicolors = true
 -- 下面的函数是为了打开一个文件后自动打开所有的折叠，但是我好像不需要
 -- local api = vim.api
 -- local M = {}
