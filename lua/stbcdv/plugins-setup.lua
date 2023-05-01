@@ -29,12 +29,12 @@ return packer.startup(function(use)
 	use("lewis6991/impatient.nvim")
 	-- plugins manager
 	use("wbthomason/packer.nvim")
-
+	-- theme
 	-- use("bluz71/vim-nightfly-guicolors") -- color
 	use("folke/tokyonight.nvim")
 	-- use 'shaunsingh/nord.nvim'
 	-- use("navarasu/onedark.nvim")
-
+	-- language syntax
 	-- systemverilog syntax
 	-- use 'nachumk/systemverilog.vim'
 	use({ "vhda/verilog_systemverilog.vim" })
@@ -49,7 +49,6 @@ return packer.startup(function(use)
 	use("numToStr/Comment.nvim") -- comment
 	use("nvim-tree/nvim-tree.lua") -- just like nerdtree
 	use("kyazdani42/nvim-web-devicons")
-	-- use( "jiangmiao/auto-pairs" ) -- auto complement '' "" [] ()
 
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- need make in his dirctory
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
@@ -68,7 +67,8 @@ return packer.startup(function(use)
 	use("rafamadriz/friendly-snippets")
 	-- auto-pairs
 	use("windwp/nvim-autopairs")
-	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
+	-- use( "jiangmiao/auto-pairs" ) -- auto complement '' "" [] ()
+	-- use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })
 
 	use("williamboman/mason-lspconfig.nvim")
 	use("williamboman/mason.nvim")
@@ -82,7 +82,6 @@ return packer.startup(function(use)
 	}) -- enhanced lsp uis
 	use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters
-	-- treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = function()

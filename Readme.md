@@ -222,10 +222,10 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 |\<leader\>cx|关闭当前编辑的文件页中的分屏|
 |\<leader\>tx|关闭当前标签页(感觉有点问题)|
 |\<leader\>ta|新建一个标签页|
-|\<leader\>number|跳转到相应标签页, 只支持1-9, 其实够用不到那么多(\<leader\>1 是指当前标签栏的第一个标签, 并不是指 buffer 数字)|
-|\<leader\>tn|跳转到下一个标签页|
-|\<leader\>tp|跳转到上一个标签页|
 |\<leader\>tc|关闭标签页|
+|\<leader\>number|跳转到相应标签页, 只支持1-9, 其实够用不到那么多(\<leader\>1 是指当前标签栏的第一个标签, 并不是指 buffer 数字)|
+|\<leader\>bn|移动当前标签页到下一个位置|
+|\<leader\>bp|移动当前标签页到上一个位置|
 |\<leader\>bc|关闭当前buffer|
 |\<leader\>bo|只保留当前buffer|
 |\<C-hjkl\>|分页之间的相互切换|

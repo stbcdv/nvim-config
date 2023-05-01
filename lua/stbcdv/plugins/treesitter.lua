@@ -41,6 +41,7 @@ treesitter.setup({
 			scope_incremental = "<TAB>",
 		},
 	},
+
 	-- auto install above language parsers
 	auto_install = true,
 	autopairs = {

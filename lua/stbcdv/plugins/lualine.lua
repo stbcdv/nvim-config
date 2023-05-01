@@ -4,39 +4,39 @@ if not status_ok then
 	return
 end
 
-local lualine_nightfly = require("lualine.themes.nightfly")
+-- local lualine_nightfly = require("lualine.themes.nightfly")
 
 -- blue = "#65D1FF",
 -- green = "3EFFDC",
 -- violet = "#FF61EF",
 -- yellow = "#FFDA7B",
 -- black = "#000000",
-local new_colors = {
-	bg = "#202328",
-	fg = "#bbc2cf",
-	yellow = "#ECBE7B",
-	cyan = "#008080",
-	darkblue = "#081633",
-	green = "#98be65",
-	orange = "#FF8800",
-	violet = "#a9a1e1",
-	magenta = "#c678dd",
-	purple = "#c678dd",
-	blue = "#51afef",
-	red = "#ec5f67",
-	black = "#000000",
-}
+-- local new_colors = {
+-- 	bg = "#202328",
+-- 	fg = "#bbc2cf",
+-- 	yellow = "#ECBE7B",
+-- 	cyan = "#008080",
+-- 	darkblue = "#081633",
+-- 	green = "#98be65",
+-- 	orange = "#FF8800",
+-- 	violet = "#a9a1e1",
+-- 	magenta = "#c678dd",
+-- 	purple = "#c678dd",
+-- 	blue = "#51afef",
+-- 	red = "#ec5f67",
+-- 	black = "#000000",
+-- }
 
-lualine_nightfly.normal.a.bg = new_colors.blue
-lualine_nightfly.insert.a.bg = new_colors.yellow
-lualine_nightfly.visual.a.bg = new_colors.violet
-lualine_nightfly.command = {
-	a = {
-		gui = "bold",
-		bg = new_colors.red,
-		fg = new_colors.black,
-	},
-}
+-- lualine_nightfly.normal.a.bg = new_colors.blue
+-- lualine_nightfly.insert.a.bg = new_colors.yellow
+-- lualine_nightfly.visual.a.bg = new_colors.violet
+-- lualine_nightfly.command = {
+-- 	a = {
+-- 		gui = "bold",
+-- 		bg = new_colors.red,
+-- 		fg = new_colors.black,
+-- 	},
+-- }
 
 local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
@@ -74,9 +74,9 @@ local date = {
 
 local mode = {
 	"mode",
-	fmt = function(str)
-		return "-- " .. str .. " --"
-	end,
+	-- fmt = function(str)
+	-- 	return "-- " .. str .. " --"
+	-- end,
 }
 
 local filetype = {
@@ -114,15 +114,15 @@ end
 lualine.setup({
 	options = {
 		icons_enabled = true,
-		theme = lualine_nightfly,
+		theme = "auto", -- powerline_dark
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
+		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "packer", "undotree", "tagbar" },
 		always_divide_middle = true,
 	},
 	sections = {
-		lualine_a = { branch, date, diagnostics },
-		lualine_b = { mode },
+		lualine_a = { mode, branch, date, diagnostics },
+		lualine_b = {},
 		lualine_c = {},
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },

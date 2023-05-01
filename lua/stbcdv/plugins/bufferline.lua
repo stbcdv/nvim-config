@@ -68,6 +68,12 @@ bufferline.setup({
 				highlight = "PanelHeading",
 				separator = true,
 			},
+			{
+				filetype = "tagbar",
+				text = "TagBar",
+				highlight = "Director",
+				text_align = "center",
+			},
 		},
 		close_icon = "",
 		buffer_close_icon = "",
@@ -114,8 +120,8 @@ vim.api.nvim_set_keymap("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", { norem
 vim.api.nvim_set_keymap("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>bg", ":BufferLinePick<CR>", { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap("n", "<leader>tn", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>tp", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>bn", ":BufferLineMoveNext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>bp", ":BufferLineMovePrev<CR>", { noremap = true, silent = true })
 --- 配置tabline快捷键，主要以 t开头代表 t
 --- 关闭当前标签页
 vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true, silent = true })
