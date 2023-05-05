@@ -76,7 +76,7 @@ bufferline.setup({
 			},
 		},
 		close_icon = "",
-		buffer_close_icon = "",
+		buffer_close_icon = "󰅖",
 		separator_style = "thin", -- slant 有时并不是很完美，则使用 padded_slant, :h bufferline-styling
 		indicator = {
 			icon = "▎", -- this should be omitted if indicator style is not 'icon'
@@ -128,7 +128,6 @@ vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true, si
 --- 关闭所有标签页，仅保留当前标签页
 vim.api.nvim_set_keymap("n", "<leader>to", ":tabonly<CR>", { noremap = true, silent = true })
 --- gt 切换到下一个，gT切换到上一个
-
 -- 感觉这才像关闭 tab 标签页
 vim.api.nvim_set_keymap("n", "<leader>bc", ":bdelete %<CR>", { noremap = true, silent = true })
 -- 关闭除当前的buffer之外的所有buffer

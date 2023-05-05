@@ -138,9 +138,9 @@ neovim clipboard manager, not work system clipboard
 - [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 - [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip)
 - [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
-- [friendly-snippets](https://github.com/rafamadriz/friendly-snippets): 提供了 systemverilog 的 snippet
+- [friendly-snippets](https://github.com/rafamadriz/friendly-snippets): 提供了 systemverilog 的 snippet, json 格式, 修改了 task 和 function 的snippet
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
-- [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
+- [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag): 删除了，该插件主要是针对 html 等语言
 - [vim-surround](https://github.com/tpope/vim-surround)
 [如何使用 LuaSnip 编写代码片段](https://zjp-cn.github.io/neovim0.6-blogs/nvim/luasnip/doc1.html)
 
@@ -158,8 +158,8 @@ neovim clipboard manager, not work system clipboard
 - [mason.nvim](https://github.com/williamboman/mason.nvim)
 - [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-- [lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim)
-- [lspkind.nvim](https://github.com/onsails/lspkind.nvim)
+- [lspsaga.nvim](https://github.com/nvimdev/lspsaga.nvim): 控制顶栏各变量属性等的 UI
+- [lspkind.nvim](https://github.com/onsails/lspkind.nvim): 控制 tab list 中的 UI
 - [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim): Linters and Formatters
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter): 提供了部分 formatting 和 code [folding](https://www.jmaguire.tech/posts/treesitter_folding/) 功能
 不知道 [coc.nvim](https://github.com/neoclide/coc.nvim) 功能怎么样
@@ -237,7 +237,7 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 - [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim): [vim 主题网站](https://vimcolorschemes.com/folke/tokyonight.nvim), 感兴趣的可以自己查找
-- [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
+- [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons): 控制 nvim-tree 中的文件 UI
 
 |快捷键|功能|
 |:-:|:-:|
@@ -256,3 +256,4 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 -- let g:python3_host_prog = '/usr/local/bin/python3' writre instead by lua
 vim.g.python3_host_prog = "/usr/local/bin/python3"
 ```
+- matchit: 属于 vim 自带的插件，使用 % 跳转语法块的开始和结尾

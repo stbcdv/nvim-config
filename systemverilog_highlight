@@ -134,7 +134,7 @@ syn keyword uvmMethod            set_report_default_file_hier set_report_id_acti
 syn keyword uvmMethod            set_report_severity_action_hier set_report_severity_file_hier
 syn keyword uvmMethod            set_report_severity_id_action_hier set_report_severity_id_file_hier
 syn keyword uvmMethod            set_report_verbosity_level_hier set_type_override set_type_override_by_type
-syn keyword uvmMethod            start_of_simulation status stop suspend
+syn keyword uvmMethod            start_of_simulation stop suspend
 syn keyword uvmDeprecatedMethod  configure export_connections find_component find_components get_component
 syn keyword uvmDeprecatedMethod  get_num_components
 "syn keyword uvmDeprecatedMethod  global_stop_request

@@ -10,10 +10,14 @@ local luasnip_status, luasnip = pcall(require, "luasnip")
 local i = luasnip.insert_node
 local s = luasnip.snippet
 local t = luasnip.text_node
+local f = luasnip.function_node
 if not luasnip_status then
 	vim.notify("no cmp", vim.log.levels.ERROR)
 	return
 end
+-- load vs-code like snippets from plugins (e.g. friendly-snippets)
+require("luasnip/loaders/from_vscode").lazy_load()
+-- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim" } })
 
 -- import lspkind plugin safely
 local lspkind_status, lspkind = pcall(require, "lspkind")
@@ -21,9 +25,47 @@ if not lspkind_status then
 	vim.notify("no lspkind", vim.log.levels.ERROR)
 	return
 end
-
--- load vs-code like snippets from plugins (e.g. friendly-snippets)
-require("luasnip/loaders/from_vscode").lazy_load()
+-- tab list icon
+lspkind.init({
+	mode = "symbol_text",
+	preset = "codicons",
+	symbol_map = {
+		Text = "",
+		Method = "M",
+		Function = "󰊕",
+		Constructor = "",
+		Field = "",
+		Variable = "",
+		Class = "",
+		Interface = "",
+		Module = "",
+		Property = "",
+		Unit = "",
+		Value = "",
+		Enum = "",
+		Keyword = "",
+		Snippet = "",
+		Color = "",
+		File = "",
+		Reference = "",
+		Folder = "",
+		EnumMember = "",
+		Constant = "",
+		Struct = "",
+		Event = "",
+		Operator = "",
+		TypeParameter = "",
+	},
+})
+-- file icon setting, also can override_by_filename and override_by_extension by using different function, see more infomation in Readme
+-- require("nvim-web-devicons").set_icon {
+--   zsh = {
+--     icon = "",
+--     color = "#428850",
+--     cterm_color = "65",
+--     name = "Zsh"
+--   }
+-- }
 
 vim.opt.completeopt = "menu,menuone,noselect"
 local select_opts = { behavior = cmp.SelectBehavior.Select }
@@ -108,22 +150,25 @@ cmp.setup({
 })
 
 luasnip.add_snippets("systemverilog", {
-	s("ternary", {
-		-- equivalent to "${1:cond} ? ${2:then} : ${3:else}"
-		i(1, "cond"),
-		t(" ? "),
-		i(2, "then"),
-		t(" : "),
-		i(3, "else"),
-	}),
-})
-
-luasnip.add_snippets("systemverilog", {
-	s("sformatf", {
+	s({ trig = "sformatf", dscr = "System method: strings output" }, {
 		t('$sformatf("'),
 		i(1, "strings"),
 		t('",'),
 		i(2, "%s"),
 		t(")"),
+	}),
+})
+luasnip.add_snippets("systemverilog", {
+	s({ trig = "always", dscr = "Insert an always block" }, {
+		t({ "always @(" }),
+		i(1, "clock"),
+		t({ ") : " }), -- "" 是换行
+		i(2, "blockName"),
+		t({ "", "\t" }),
+		i(3),
+		t({ "", "end : " }),
+		f(function(args, snip)
+			return args[1][1]
+		end, { 2 }),
 	}),
 })

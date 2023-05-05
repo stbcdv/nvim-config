@@ -30,44 +30,46 @@ local custom_header = {
 	"⣿⣦⡀⣿⣿⣷⣶⣬⣍⣛⣛⣛⡛⠿⠿⠿⠛⠛⢛⣛⣉⣭⣤⣂⢜⠕⢑⣡⣴⣿",
 	"",
 	"",
+	"",
 }
 
 local custom_footer = { "", "", "Everyday is new day, don't listen this!" }
 
 local custom_center = {
 	{
-		icon = "  ",
+		icon = "󰮗  ",
 		desc = "Find  File                              <leader>ff",
 		action = "Telescope find_files",
 		-- shortcut = "<Leader> f f",
 	},
 	{
-		icon = "  ",
+		icon = "󱋢  ",
 		desc = "Recently opened files                   <leader>fr",
 		action = "Telescope oldfiles",
 		-- shortcut = "<Leader> f r",
 	},
 	{
-		-- 
-		icon = "  ",
-		desc = "Project grep                            <leader>fp",
+		-- 
+		icon = "󰪻  ",
+		desc = "Projects grep                           <leader>fp",
 		action = "Telescope projects",
 		-- action = "Telescope projects theme=dropdown",
 		-- shortcut = "<Leader> f g",
 	},
 	{
-		icon = "  ",
+		-- 󱁻
+		icon = "󰡇  ",
 		desc = "Open Nvim config                        ",
 		action = "tabnew $MYVIMRC | tcd %:p:h",
 		-- shortcut = "n",
 	},
 	{
-		icon = "  ",
+		icon = "󰻭  ",
 		desc = "New file                                e",
 		action = "enew",
 	},
 	{
-		icon = "  ",
+		icon = "󱐤  ",
 		desc = "Quit Nvim                               q",
 		action = "qa",
 	},
