@@ -16,8 +16,11 @@ if not luasnip_status then
 	return
 end
 -- load vs-code like snippets from plugins (e.g. friendly-snippets)
-require("luasnip/loaders/from_vscode").lazy_load()
--- require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim" } })
+require("luasnip.loaders.from_vscode").load({
+	include = { "c", "python", "json", "lua", "markdown", "verilog", "systemverilog", "sh", "make" },
+})
+-- require("luasnip/loaders/from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.expand("~/.config/nvim/my_snippets") } })
 
 -- import lspkind plugin safely
 local lspkind_status, lspkind = pcall(require, "lspkind")
@@ -130,6 +133,8 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" }, -- lsp
 		{ name = "luasnip" }, -- snippets
+		{ name = "path" }, -- file system paths
+		{ name = "nvim_lua" },
 		{
 			name = "buffer",
 			option = {
@@ -138,13 +143,22 @@ cmp.setup({
 				end,
 			},
 		}, -- text within current buffer
-		{ name = "path" }, -- file system paths
 	}),
 	-- configure lspkind for vs-code like icons
 	formatting = {
 		format = lspkind.cmp_format({
+			with_text = false,
+			mode = "symbol_text",
 			maxwidth = 50,
 			ellipsis_char = "...",
+			menu = {
+				nvim_lsp = "[LSP]",
+				nvim_lua = "[Lua]",
+				path = "[Path]",
+				buffer = "[Buffer]",
+				luasnip = "[LuaSnip]",
+				treesitter = "[TS]",
+			},
 		}),
 	},
 })
@@ -156,19 +170,5 @@ luasnip.add_snippets("systemverilog", {
 		t('",'),
 		i(2, "%s"),
 		t(")"),
-	}),
-})
-luasnip.add_snippets("systemverilog", {
-	s({ trig = "always", dscr = "Insert an always block" }, {
-		t({ "always @(" }),
-		i(1, "clock"),
-		t({ ") : " }), -- "" 是换行
-		i(2, "blockName"),
-		t({ "", "\t" }),
-		i(3),
-		t({ "", "end : " }),
-		f(function(args, snip)
-			return args[1][1]
-		end, { 2 }),
 	}),
 })

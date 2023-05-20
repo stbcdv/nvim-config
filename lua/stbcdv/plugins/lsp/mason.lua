@@ -18,9 +18,9 @@ mason_lspconfig.setup({
 		-- verible,
 		-- "flake8",
 		-- "python-lsp-server",
-		pyright,
-		svls,
-		lua_ls,
+		"pyright",
+		"svls",
+		"lua_ls",
 	},
 })
 

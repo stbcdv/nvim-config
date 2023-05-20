@@ -1,7 +1,6 @@
 local api = vim.api
 local keymap = vim.keymap
 local status, db = pcall(require, "dashboard")
-local vim = vim
 -- local utils = require("dashboard.utils")
 -- event = "VimEnter"
 if not status then
@@ -40,28 +39,17 @@ local custom_center = {
 		icon = "󰮗  ",
 		desc = "Find  File                              <leader>ff",
 		action = "Telescope find_files",
-		-- shortcut = "<Leader> f f",
 	},
 	{
 		icon = "󱋢  ",
 		desc = "Recently opened files                   <leader>fr",
 		action = "Telescope oldfiles",
-		-- shortcut = "<Leader> f r",
 	},
 	{
 		-- 
 		icon = "󰪻  ",
 		desc = "Projects grep                           <leader>fp",
 		action = "Telescope projects",
-		-- action = "Telescope projects theme=dropdown",
-		-- shortcut = "<Leader> f g",
-	},
-	{
-		-- 󱁻
-		icon = "󰡇  ",
-		desc = "Open Nvim config                        ",
-		action = "tabnew $MYVIMRC | tcd %:p:h",
-		-- shortcut = "n",
 	},
 	{
 		icon = "󰻭  ",
@@ -69,8 +57,14 @@ local custom_center = {
 		action = "enew",
 	},
 	{
+		-- 󱁻
+		icon = "󰡇  ",
+		desc = "Open Nvim config                        ",
+		action = "tabnew $MYVIMRC | tcd %:p:h",
+	},
+	{
 		icon = "󱐤  ",
-		desc = "Quit Nvim                               q",
+		desc = "Quit Nvim                               ",
 		action = "qa",
 	},
 }

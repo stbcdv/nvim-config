@@ -26,14 +26,14 @@ local on_attach = function(client, bufnr)
 	keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
 	keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
 	keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
-	keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
+	keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
 	keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
 	keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
 	keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
 	keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
 	keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
-	keymap.set("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opts) -- see outline on right hand side, something gets trouble
+	keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts) -- see outline on right hand side, something gets trouble
 	keymap.set("n", "<leader>fm", "<cmd>lua vim.lsp.buf.format()<CR>", opts) -- use lsp to format code
 end
 -- used to enable autocompletion (assign to every lsp server config)
@@ -45,6 +45,34 @@ for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
+
+local config = {
+	-- disable virtual text
+	virtual_text = false, -- systemverilog lsp not work well
+	-- show signs
+	signs = {
+		active = signs,
+	},
+	update_in_insert = true,
+	underline = true,
+	severity_sort = true,
+	float = {
+		focusable = false,
+		style = "minimal",
+		border = "rounded",
+		source = "always",
+		header = "",
+		prefix = "",
+		suffix = "",
+	},
+}
+vim.diagnostic.config(config)
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+	border = "rounded",
+})
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	border = "rounded",
+})
 
 lspconfig["svls"].setup({
 	capabilities = capabilities,
@@ -93,6 +121,7 @@ lspconfig["pyright"].setup({
 			"--stdio",
 		},
 	},
+	sigle_file_support = true,
 })
 -- configure lua server (with special settings)
 lspconfig["lua_ls"].setup({
@@ -111,27 +140,10 @@ lspconfig["lua_ls"].setup({
 					[vim.fn.stdpath("config") .. "/lua"] = true,
 				},
 			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
+			},
 		},
 	},
 })
-
--- -- configure lua server (with special settings)
--- lspconfig["sumneko_lua"].setup({
---   capabilities = capabilities,
---   on_attach = on_attach,
---   settings = { -- custom settings for lua
---     Lua = {
---       -- make the language server recognize "vim" global
---       diagnostics = {
---         globals = { "vim" },
---       },
---       workspace = {
---         -- make language server aware of runtime files
---         library = {
---           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
---           [vim.fn.stdpath("config") .. "/lua"] = true,
---         },
---       },
---     },
---   },
--- })

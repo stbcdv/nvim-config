@@ -5,16 +5,16 @@ if not status_ok then
 end
 
 toggleterm.setup({
-	size = 20,
-	open_mapping = [[<c-`>]],
+	size = 15,
+	open_mapping = [[<leader>te]], -- this keymap need to consider again
 	hide_numbers = true,
 	shade_filetypes = {},
 	shade_terminals = true,
 	shading_factor = 2,
 	start_in_insert = true,
-	insert_mappings = true,
+	insert_mappings = false, -- disable <leader>te in insert mode
 	persist_size = true,
-	direction = "float",
+	direction = "horizontal", -- float
 	close_on_exit = true,
 	shell = vim.o.shell,
 	float_opts = {
@@ -33,12 +33,13 @@ toggleterm.setup({
 })
 
 function _G.set_terminal_keymaps()
-	local opts = { noremap = true }
-	vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-`><C-n>]], opts)
-	vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-`><C-n><C-W>h]], opts)
-	vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-`><C-n><C-W>j]], opts)
-	vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-`><C-n><C-W>k]], opts)
-	vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-`><C-n><C-W>l]], opts)
+	-- local opts = { noremap = true }
+	local opts = { buffer = 0 }
+	-- vim.keymap.set("t", "<esc>", [[<leader>te<C-n>]], opts)
+	vim.keymap.set("t", "<C-h>", [[<leader>te<C-n><C-W>h]], opts)
+	vim.keymap.set("t", "<C-j>", [[<C-`><C-n><C-W>j]], opts)
+	vim.keymap.set("t", "<C-k>", [[<C-`><C-n><C-W>k]], opts)
+	vim.keymap.set("t", "<C-l>", [[<C-`><C-n><C-W>l]], opts)
 	-- vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-`><C-n>]], opts)  -- 这个在 lazygit 中有点不好用, 向下选择会有延迟
 end
 
@@ -51,7 +52,7 @@ local function feedkeys(keys)
 	vim.api.nvim_feedkeys(key_termcode, "n", false)
 end
 
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
 -- local cur_cwd = vim.fn.getcwd()
 
 -- function _LAZYGIT_TOGGLE()
@@ -70,7 +71,7 @@ function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
 end
 
-local htop = Terminal:new({ cmd = "htop", hidden = true }) -- can change cmd = "top" to cmd = "htop"
+local htop = Terminal:new({ cmd = "htop", hidden = true, direction = "float" }) -- can change cmd = "top" to cmd = "htop"
 function _HTOP_TOGGLE()
 	htop:toggle()
 end
@@ -80,14 +81,8 @@ function _PYTHON_TOGGLE()
 	python:toggle()
 end
 
-local broot = Terminal:new({ cmd = "broot -d -p -s", hidden = true }) -- file explore
+local broot = Terminal:new({ cmd = "broot -d -p -s", hidden = true, direction = "float" }) -- file explore
 function _BROOT_TOGGLE()
-	-- local cwd = vim.fn.getcwd()
-	-- if cwd ~= cur_cwd then
-	-- 	cur_cwd = cwd
-	-- 	broot:close()
-	-- 	broot = Terminal:new({ cmd = "broot -d -p -s", hidden = true }) -- file explore
-	-- end
 	broot.dir = vim.fn.expand("%:p:h") -- current working directory for the active buffer
 	broot:toggle()
 end
@@ -96,6 +91,7 @@ local ranger_tmpfile = vim.fn.tempname()
 local ranger = Terminal:new({
 	cmd = 'ranger --choosefiles="' .. ranger_tmpfile .. '"',
 	hidden = true,
+	direction = "float",
 	on_exit = function()
 		local file = io.open(ranger_tmpfile, "r")
 		if file ~= nil then
@@ -113,30 +109,6 @@ local ranger = Terminal:new({
 	end,
 })
 function _RANGER_TOGGLE()
-	-- local cwd = vim.fn.getcwd()
-	-- if cwd ~= cur_cwd then
-	-- 	cur_cwd = cwd
-	-- 	ranger:close()
-	-- 	ranger = Terminal:new({
-	-- 		cmd = 'ranger --choosefiles="' .. ranger_tmpfile .. '"',
-	-- 		hidden = true,
-	-- 		on_exit = function(term)
-	-- 			local file = io.open(ranger_tmpfile, "r")
-	-- 			if file ~= nil then
-	-- 				local file_name = file:read("*a")
-	-- 				file:close()
-	-- 				os.remove(ranger_tmpfile)
-	-- 				-- Until edit buffer goes to the correct buffer,
-	-- 				-- emulate keystrokes to do the same
-	-- 				vim.cmd("vs " .. file_name)
-	-- 				vim.cmd("set nu") -- 必须有这些，否则重新打开的窗口有些配置不起作用
-	-- 				vim.cmd("set relativenumber")
-	-- 				feedkeys("<C-w>h")
-	-- 				feedkeys("<C-w>q")
-	-- 			end
-	-- 		end,
-	-- 	})
-	-- end
 	ranger.dir = vim.fn.expand("%:p:h") -- current working directory for the active buffer
 	ranger:toggle()
 end

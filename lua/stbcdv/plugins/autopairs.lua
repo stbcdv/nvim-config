@@ -48,11 +48,7 @@ if not cmp_autopairs_setup then
 end
 
 -- import nvim-cmp plugin safely (completions plugin)
-local cmp_setup, cmp = pcall(require, "cmp")
-if not cmp_setup then
-	vim.notify("no cmp", vim.log.levels.ERROR)
-	return
-end
+local cmp = require("cmp")
 
 -- make autopairs and completion work together
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

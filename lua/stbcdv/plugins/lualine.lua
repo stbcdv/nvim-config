@@ -4,40 +4,6 @@ if not status_ok then
 	return
 end
 
--- local lualine_nightfly = require("lualine.themes.nightfly")
-
--- blue = "#65D1FF",
--- green = "3EFFDC",
--- violet = "#FF61EF",
--- yellow = "#FFDA7B",
--- black = "#000000",
--- local new_colors = {
--- 	bg = "#202328",
--- 	fg = "#bbc2cf",
--- 	yellow = "#ECBE7B",
--- 	cyan = "#008080",
--- 	darkblue = "#081633",
--- 	green = "#98be65",
--- 	orange = "#FF8800",
--- 	violet = "#a9a1e1",
--- 	magenta = "#c678dd",
--- 	purple = "#c678dd",
--- 	blue = "#51afef",
--- 	red = "#ec5f67",
--- 	black = "#000000",
--- }
-
--- lualine_nightfly.normal.a.bg = new_colors.blue
--- lualine_nightfly.insert.a.bg = new_colors.yellow
--- lualine_nightfly.visual.a.bg = new_colors.violet
--- lualine_nightfly.command = {
--- 	a = {
--- 		gui = "bold",
--- 		bg = new_colors.red,
--- 		fg = new_colors.black,
--- 	},
--- }
-
 local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
 end
@@ -97,6 +63,41 @@ local location = {
 	padding = 0,
 }
 
+-- local buffers = {
+-- 	"buffers",
+-- 	show_filename_only = true, -- Shows shortened relative path when set to false.
+-- 	hide_filename_extension = true, -- Hide filename extension when set to true.
+-- 	show_modified_status = true, -- Shows indicator when the buffer is modified.
+
+-- 	mode = 0, -- 0: Shows buffer name
+-- 	-- 1: Shows buffer index
+-- 	-- 2: Shows buffer name + buffer index
+-- 	-- 3: Shows buffer number
+-- 	-- 4: Shows buffer name + buffer number
+
+-- 	-- max_length = vim.o.columns * 2 / 3,
+-- 	max_length = 1,
+-- }
+
+local filename = {
+	"filename",
+	file_status = true, -- Displays file status (readonly status, modified status)
+	newfile_status = false, -- Display new file status (new file means no write after created)
+	path = 0, -- 0: Just the filename
+	-- 1: Relative path
+	-- 2: Absolute path
+	-- 3: Absolute path, with tilde as the home directory
+	-- 4: Filename and parent dir, with tilde as the home directory
+
+	shorting_target = 40, -- Shortens path to leave 40 spaces in the window
+	-- for other components. (terrible name, any suggestions?)
+	symbols = {
+		modified = "[+]", -- Text to show when the file is modified.
+		readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
+		unnamed = "[No Name]", -- Text to show for unnamed buffers.
+		newfile = "[New]", -- Text to show for newly created file before first write
+	},
+}
 -- cool function for progress
 local progress = function()
 	local current_line = vim.fn.line(".")
@@ -117,13 +118,22 @@ lualine.setup({
 		theme = "auto", -- powerline_dark
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "packer", "undotree", "tagbar" },
+		disabled_filetypes = {
+			"alpha",
+			"dashboard",
+			"NvimTree",
+			"Outline",
+			"packer",
+			"undotree",
+			"tagbar",
+			"lspsagaoutline",
+		},
 		always_divide_middle = true,
 	},
 	sections = {
-		lualine_a = { mode, branch, date, diagnostics },
-		lualine_b = {},
-		lualine_c = {},
+		lualine_a = { mode, branch, filename },
+		lualine_b = { date },
+		lualine_c = { diagnostics },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_y = { location },
@@ -132,7 +142,7 @@ lualine.setup({
 	inactive_sections = {
 		lualine_a = {},
 		lualine_b = {},
-		lualine_c = { "filename" },
+		lualine_c = { filename },
 		lualine_x = { "location" },
 		lualine_y = {},
 		lualine_z = {},

@@ -1,18 +1,28 @@
 local status, ColorTheme = pcall(vim.cmd, "colorscheme tokyonight-moon")
 -- local status, ColorTheme = pcall(vim.cmd, "colorscheme nightfly")
 -- local cursor_color = vim.api.nvim_get_option("guicursor")
-vim.api.nvim_set_option("guicursor", "n-v:block-Cursor/lCursor,i-c-ci:ver25")
+
+-- vim.api.nvim_set_option("guicursor", "n-v:block-Cursor/lCursor,i-c-ci:ver25")
 
 -- vim.api.nvim_command("set guicursor+=i:ver25")
 -- vim.api.nvim_command("set guicursor+=c:ver25")
 -- vim.api.nvim_command("set guicursor+=ci:ver25")
 
+-- 光标跳动及颜色设置
 vim.api.nvim_command([[
+  set guicursor=n-v:block-Cursor/lCursor
+  set guicursor+=i:ver100-iCursor
+  set guicursor+=n-v-c:blinkon0
+  set guicursor+=i:blinkwait10
+  set guicursor+=i:ver25
+  set guicursor+=c:ver25
+  set guicursor+=ci:ver25
+  set guicursor+=a:blinkon1
   highlight! CursorLineNr guibg=Gray40 guifg=White
   highlight! CursorLine   guibg=Gray20
   highlight! CursorColumn guibg=Gray20
-  highlight! Cursor       guifg=white guibg=red
-  highlight! iCursor 	  guifg=white guibg=steelblue
+  highlight! Cursor       guifg=white guibg=green
+  highlight! iCursor 	  guifg=white guibg=red
 ]])
 
 -- Orange1

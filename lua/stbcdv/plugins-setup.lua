@@ -108,7 +108,41 @@ return packer.startup(function(use)
 	use({ "akinsho/toggleterm.nvim" })
 	-- variable, method class list
 	use({ "preservim/tagbar" })
-
+	-- quick jump
+	use({
+		"phaazon/hop.nvim",
+		branch = "v2", -- optional but strongly recommended
+		config = function()
+			-- you can configure Hop the way you like here; see :h hop-config
+			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+		end,
+	})
+	use({ "mg979/vim-visual-multi", branch = "master" })
+	-- configure statuscol
+	-- use("luukvbaal/statuscol.nvim")
+	-- Packer
+	use({
+		"folke/noice.nvim",
+		requires = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		},
+	})
+	-- use("simrat39/symbols-outline.nvim") -- 本来想代替 tagbar，后面还是算了，systemverilog 支持不太好, 需要依赖 lsp
+	-- 自动保存文件
+	-- use({
+	-- 	"Pocco81/auto-save.nvim",
+	-- 	config = function()
+	-- 		require("auto-save").setup({
+	-- 			-- your config goes here
+	-- 			-- or just leave it empty :)
+	-- 		})
+	-- 	end,
+	-- })
 	if packer_bootstrap then
 		require("packer").sync()
 	end

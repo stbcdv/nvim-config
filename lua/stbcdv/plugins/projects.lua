@@ -19,7 +19,7 @@ project_nvim.setup({
 	--- can also delete or rearangne the detection methods.
 	-- detection_methods = { "lsp", "pattern" }, -- NOTE: lsp detection will get annoying with multiple langs in one project
 	detection_methods = { "pattern" },
-	patterns = { ".git", ".lua", ".sv", "src", "Makefile", "makefile", "readme", "ReadMe" },
+	patterns = { ".git", ".lua", ".py", ".sv", "src", "Makefile", "makefile", "readme", "ReadMe" },
 
 	-- Table of lsp clients to ignore by name
 	-- eg: { "efm", ... }

@@ -1,4 +1,3 @@
-vim.opt.termguicolors = true
 -- local icons = require("stbcdv.plugins.icons")
 local function diagnostics_indicator(num, _, diagnostics, _)
 	local result = {}

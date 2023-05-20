@@ -4,13 +4,13 @@ local keymap = vim.keymap -- for conciseness
 
 -- general keymaps
 
-keymap.set("n", "<leader>w", ":w<CR>") -- 保存文件, 个人觉得应该没有其他的键会被占用
+keymap.set("n", "<leader>w", "<cmd>w<CR>") -- 保存文件, 个人觉得应该没有其他的键会被占用
 keymap.set("n", "p", '""p') -- 保存文件, 个人觉得应该没有其他的键会被占用
 
 keymap.set("i", "jk", "<ESC>") -- in insert mode, then jk to esc
 -- keymap.set("v", "jk", "<ESC>") -- in insert mode, then jk to esc
 
-keymap.set("n", "<leader>nh", ":nohl<CR>") -- search then normal, space and nh
+keymap.set("n", "<leader>nh", "<cmd>nohl<CR>") -- search then normal, space and nh
 
 keymap.set("n", "<C-u>", "9k") -- 向上移动9行
 
@@ -27,15 +27,15 @@ keymap.set("n", "<leader>sh", "<C-w>s") -- 水平分割
 keymap.set("n", "<leader>se", "<C-w>=")
 keymap.set("n", "<leader>ta", ":tabnew<CR>") --.open new tab
 keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab 关闭当前标签页
-keymap.set("n", "<leader>cx", ":close<CR>") -- 关闭当前编辑的文件页
+keymap.set("n", "<leader>cx", "<cmd>close<CR>") -- 关闭当前编辑的文件页
 -- keymap.set("n", "<leader>tn", ":tabn<CR>") -- go to next tab
 -- keymap.set("n", "<leader>tp", ":tabp<CR>") -- go to previous tab
 
 -- vim-maximizer
-keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- 最大化当前的session
+keymap.set("n", "<leader>sm", "<cmd>MaximizerToggle<CR>") -- 最大化当前的session
 
 -- nerd-tree
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
 
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
@@ -62,10 +62,27 @@ keymap.set("n", "<leader>py", "<cmd>lua _PYTHON_TOGGLE()<cr>") -- belongs to tog
 keymap.set("n", "<leader>br", "<cmd>lua _BROOT_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 keymap.set("n", "<leader>ht", "<cmd>lua _HTOP_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 keymap.set("n", "<leader>rg", "<cmd>lua _RANGER_TOGGLE()<cr>") -- belongs to toggleterm.nvim
--- vim.api.nvim_set_keymap("", "<leader>aa", "<cmd>execute  v:count . \"ToggleTerm dir='%:p:h'\"<CR>", {})
--- keymap.set("n", "<C-/>", "<cmd> ToggleTerm size=40<cr>") -- belongs to toggleterm.nvim
+-- keymap.set("n", "<leader>T", "<cmd>ToggleTerm<CR>") -- belongs to toggleterm.nvim
+-- vim.api.nvim_set_keymap("", "<leader>aa", "<cmd>execute  v:count . \"ToggleTerm dir='%:p:h'\"<CR>", {})keykeykey
 
 -- undotree keymaps
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 -- Tagbar keymaps
-vim.keymap.set("n", "<leader>tg", "<cmd>TagbarToggle<cr>")
+keymap.set("n", "<leader>tg", "<cmd>TagbarToggle<cr>")
+
+-- vim.cmd([[
+-- let g:VM_maps = {}
+-- let g:VM_default_mappings = 0
+-- let g:VM_silent_exit = 1
+-- let g:VM_set_statusline = 0
+-- let g:VM_maps['Find Under']            = '<C-n>'
+-- let g:VM_maps['Find Subword Under']    = '<C-n>'
+-- let g:VM_maps["Select Cursor Down"]    = '<C-A-Down>'
+-- let g:VM_maps["Add Cursor Down"]    	= '<C-Down>'
+-- let g:VM_maps["Select Cursor Up"]      = '<C-A-Up>'
+-- let g:VM_maps["Add Cursor up"] 	   	= '<C-Up>'
+-- let g:VM_maps["Find Next"]             = ']'
+-- let g:VM_maps["Find Prev"]             = '['
+-- let g:VM_maps["Goto Next"]             = '}'
+-- let g:VM_maps["Goto Prev"]             = '{'
+-- ]])

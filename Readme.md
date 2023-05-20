@@ -1,5 +1,6 @@
 # NeoVim Configuration
 This configuration of neovim is for `systemverilog`, `UVM`, lua and python
+关于 LSP 的问题，svls 是会在 git 下有效，svlangserver 在任意文件夹下有效
 **可参考的配置**
 [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch)
 ## nvim 的语法高亮是真的有毒
@@ -71,6 +72,7 @@ opt.backupcopy = "yes" -- inode setting, after vim editing, the inode of file is
 |快捷键|功能|
 |:-:|:-:|
 |\<c-`\>|呼出终端窗口(原来是c-\,但是该键被占用了), 另一种方法是使用 tmux|
+|number\<c-`>|在normal mode 下执行，唤起多个 terminal|
 |\<leader\>br|broot|
 |\<leader\>rg|ranger, 类似于 broot, 但是支持预览文件, 但是编辑文件时并不会跳转到当前的vim窗口中(已解决)|
 |\<leader\>lg|lazygitg|
@@ -154,6 +156,23 @@ neovim clipboard manager, not work system clipboard
 |\<c-f\>|snippet 待写位置向下跳转|
 |\<c-b\>|snippet 待写位置向上跳转，可以在 insert 模式下跳转|
 
+```lua
+-- luasnip 使用
+luasnip.add_snippets("systemverilog", {
+	s({ trig = "always", dscr = "Insert an always block" }, {
+		t({ "always @(" }),
+		i(1, "clock"),
+		t({ ") : " }), -- "" 是换行
+		i(2, "blockName"),
+		t({ "", "\t" }),
+		i(3),
+		t({ "", "end : " }),
+		f(function(args, snip)
+			return args[1][1]
+		end, { 2 }),
+	}),
+})
+```
 ## lsp
 - [mason.nvim](https://github.com/williamboman/mason.nvim)
 - [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
@@ -244,6 +263,16 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 |e|新建文件|
 |q|quit nvim|
 
+## hop.nvim
+这个插件给我的感觉是功能很强大，但是又很少回去用
+|快捷键|功能|
+|:-:|:-:|
+|:HopWord|hop 界面中所有的 work, A/BC->the word after/before cursor|
+|:HopChar|字符|
+|:HopLine|行|
+|:HopLineStart|行的第一个字符|
+|:HopVertical|光标的垂直|
+|:HopPattern|这应该是最好用的, 输入该命令后接着输入需要查找的字符串|
 ## 其他
 - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
 - [sqlite.lua](https://github.com/kkharji/sqlite.lua): 管理剪切板数据
