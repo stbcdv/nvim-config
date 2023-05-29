@@ -22,7 +22,6 @@ treesitter.setup({
 		"c",
 		"cpp",
 		"json",
-		-- "yaml",
 		"lua",
 		"gitignore",
 		"markdown",

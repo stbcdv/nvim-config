@@ -3,6 +3,18 @@ if not noice_status then
 	vim.notify("no noice", vim.log.levels.ERROR)
 	return
 end
+
+-- local notify_status, notify = pcall(require, "noice")
+-- if not notify_status then
+-- 	vim.notify("no notify", vim.log.levels.ERROR)
+-- 	return
+-- end
+
+-- notify.setup({
+-- 	render = "compact",
+-- 	stages = "slide",
+-- })
+
 noice.setup({
 	lsp = {
 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -56,6 +68,14 @@ noice.setup({
 				event = "msg_show",
 				kind = "",
 				find = "%d+ 行",
+			},
+			opts = { skip = true },
+		},
+		{
+			filter = {
+				event = "msg_show",
+				kind = "",
+				find = "%d+ line",
 			},
 			opts = { skip = true },
 		},

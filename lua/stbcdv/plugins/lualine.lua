@@ -135,7 +135,7 @@ lualine.setup({
 		lualine_b = { date },
 		lualine_c = { diagnostics },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_x = { diff, spaces, "encoding", filetype },
+		lualine_x = { diff, spaces, "encoding", "fileformat", filetype },
 		lualine_y = { location },
 		lualine_z = { progress },
 	},

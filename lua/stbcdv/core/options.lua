@@ -113,7 +113,11 @@ g.tagbar_type_systemverilog = {
 }
 g.tagbar_autofocus = 1 -- tagbar open, the cursor is in tagbar windows
 g.tagbar_sort = 0 -- sort by the order in the source
-g.toggle_theme_icon = "   "
+-- g.toggle_theme_icon = "   "
+
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 -- command history
 opt.history = 100

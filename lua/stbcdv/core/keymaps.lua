@@ -5,6 +5,7 @@ local keymap = vim.keymap -- for conciseness
 -- general keymaps
 
 keymap.set("n", "<leader>w", "<cmd>w<CR>") -- 保存文件, 个人觉得应该没有其他的键会被占用
+keymap.set("n", "<leader>q", "<cmd>q<CR>")
 keymap.set("n", "p", '""p') -- 保存文件, 个人觉得应该没有其他的键会被占用
 
 keymap.set("i", "jk", "<ESC>") -- in insert mode, then jk to esc
@@ -25,8 +26,8 @@ keymap.set("n", "<leader>-", "<C-x>") -- decrement
 keymap.set("n", "<leader>sv", "<C-w>v") -- 垂直分割
 keymap.set("n", "<leader>sh", "<C-w>s") -- 水平分割
 keymap.set("n", "<leader>se", "<C-w>=")
-keymap.set("n", "<leader>ta", ":tabnew<CR>") --.open new tab
-keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab 关闭当前标签页
+-- 有一部分快捷键在 bufferline.lua 中
+keymap.set("n", "<leader>ta", "<cmd>tabnew<CR>") --.open new tab
 keymap.set("n", "<leader>cx", "<cmd>close<CR>") -- 关闭当前编辑的文件页
 -- keymap.set("n", "<leader>tn", ":tabn<CR>") -- go to next tab
 -- keymap.set("n", "<leader>tp", ":tabp<CR>") -- go to previous tab
@@ -42,12 +43,13 @@ keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- theme=dropdown
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>")
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
-keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>")
 keymap.set("n", "<leader>fa", "<cmd>Telescope command_history<cr>")
 keymap.set("n", "<leader>ft", "<cmd>Telescope tags<cr>")
 keymap.set("n", "<leader>fp", "<cmd>Telescope projects<cr>")
 keymap.set("n", "<leader>fv", '<cmd>Telescope neoclip " <cr>')
+keymap.set("n", "<leader>fh", "<cmd>Telescope search_history<cr>") -- search history list
+-- keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- look help doc
 
 -- telescope git commands (not on youtube nvim video)
 keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
@@ -56,17 +58,14 @@ keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git bra
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
 -- toggleterm.nvim keymaps
--- keymap.set("n","<leader>lg", "<cmd>LazyGit<cr>") -- 属于 lazygit.nvim
 keymap.set("n", "<leader>lg", "<cmd>lua _LAZYGIT_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 keymap.set("n", "<leader>py", "<cmd>lua _PYTHON_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 keymap.set("n", "<leader>br", "<cmd>lua _BROOT_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 keymap.set("n", "<leader>ht", "<cmd>lua _HTOP_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 keymap.set("n", "<leader>rg", "<cmd>lua _RANGER_TOGGLE()<cr>") -- belongs to toggleterm.nvim
--- keymap.set("n", "<leader>T", "<cmd>ToggleTerm<CR>") -- belongs to toggleterm.nvim
--- vim.api.nvim_set_keymap("", "<leader>aa", "<cmd>execute  v:count . \"ToggleTerm dir='%:p:h'\"<CR>", {})keykeykey
 
 -- undotree keymaps
-keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>")
 -- Tagbar keymaps
 keymap.set("n", "<leader>tg", "<cmd>TagbarToggle<cr>")
 

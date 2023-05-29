@@ -6,9 +6,7 @@ local function diagnostics_indicator(num, _, diagnostics, _)
 		warning = "",
 		info = "",
 	}
-	-- if not lvim.use_icons then
-	--   return "(" .. num .. ")"
-	-- end
+
 	for name, count in pairs(diagnostics) do
 		if symbols[name] and count > 0 then
 			table.insert(result, symbols[name] .. " " .. count)
@@ -45,6 +43,7 @@ if not bufferline_status then
 	vim.notify("no bufferline", vim.log.levels.ERROR)
 	return
 end
+
 bufferline.setup({
 	options = {
 		-- 使用 nvim 内置lsp
@@ -107,7 +106,7 @@ bufferline.setup({
 		},
 	},
 })
--- 快速在buffer间跳转
+-- 快速在buffer间跳转, 数字对应于当前页面所展示的标签页个数重新冲1排列，并不能存粹看标签页的数字
 vim.api.nvim_set_keymap("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>3", ":BufferLineGoToBuffer 3<CR>", { noremap = true, silent = true })
@@ -119,14 +118,15 @@ vim.api.nvim_set_keymap("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", { norem
 vim.api.nvim_set_keymap("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>bg", ":BufferLinePick<CR>", { noremap = true, silent = true })
 
+-- move buffer tab
 vim.api.nvim_set_keymap("n", "<leader>bn", ":BufferLineMoveNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>bp", ":BufferLineMovePrev<CR>", { noremap = true, silent = true })
+
 --- 配置tabline快捷键，主要以 t开头代表 t
 --- 关闭当前标签页
 vim.api.nvim_set_keymap("n", "<leader>tc", ":tabclose<CR>", { noremap = true, silent = true })
 --- 关闭所有标签页，仅保留当前标签页
 vim.api.nvim_set_keymap("n", "<leader>to", ":tabonly<CR>", { noremap = true, silent = true })
---- gt 切换到下一个，gT切换到上一个
 -- 感觉这才像关闭 tab 标签页
 vim.api.nvim_set_keymap("n", "<leader>bc", ":bdelete %<CR>", { noremap = true, silent = true })
 -- 关闭除当前的buffer之外的所有buffer

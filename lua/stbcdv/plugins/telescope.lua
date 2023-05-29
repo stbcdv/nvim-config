@@ -25,7 +25,7 @@ local vimgrep_arguments = {
 	"--no-heading",
 	"--with-filename",
 	"--line-number",
-	"--column",
+	-- "--column",
 	"--smart-case",
 	"--hidden",
 	"--glob=!.git/",
@@ -82,4 +82,3 @@ telescope.setup({
 telescope.load_extension("fzf")
 telescope.load_extension("projects")
 telescope.load_extension("neoclip")
--- telescope.load_extension("lazygit")

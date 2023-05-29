@@ -148,9 +148,9 @@ neovim clipboard manager, not work system clipboard
 
 |快捷键|功能|
 |:-:|:-:|
-|cs\[\(|把 \[\] 替换为 ()|
+|cs\[\(|把 \[\] 替换为 () change|
 |ysw(|给字符添加 ()|
-|ds\[|移除 \[\]|
+|ds\[|移除 \[\] delete|
 |yss(|将整行使用 () 包裹|
 |tab|在候选框中选择|
 |\<c-f\>|snippet 待写位置向下跳转|
@@ -248,7 +248,7 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 |\<leader\>bc|关闭当前buffer|
 |\<leader\>bo|只保留当前buffer|
 |\<C-hjkl\>|分页之间的相互切换|
-|\<leader\>bg|BufferLinePick, 标签页文件名首写字符高亮|
+|\<leader\>bg|BufferLinePick, 标签页文件名首写字符高亮, 随后按对应高亮的字母实现跳转|
 |bufferline-groups|需要人为配置，根据 filename 和 postfix 对 buffer tab 进行分组|
 |:BufferLineTogglePin|也有其配置选项，函数归属于 bufferline.groups|
 

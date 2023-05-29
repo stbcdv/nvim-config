@@ -8,7 +8,7 @@ local status, ColorTheme = pcall(vim.cmd, "colorscheme tokyonight-moon")
 -- vim.api.nvim_command("set guicursor+=c:ver25")
 -- vim.api.nvim_command("set guicursor+=ci:ver25")
 
--- 光标跳动及颜色设置
+-- 光标跳动及颜色设置, 改变 visual mode 下的颜色
 vim.api.nvim_command([[
   set guicursor=n-v:block-Cursor/lCursor
   set guicursor+=i:ver100-iCursor
@@ -23,6 +23,7 @@ vim.api.nvim_command([[
   highlight! CursorColumn guibg=Gray20
   highlight! Cursor       guifg=white guibg=green
   highlight! iCursor 	  guifg=white guibg=red
+  " hi! Visual term=reverse cterm=reverse guibg=Grey
 ]])
 
 -- Orange1

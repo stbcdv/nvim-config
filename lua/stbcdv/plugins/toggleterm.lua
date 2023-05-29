@@ -5,7 +5,13 @@ if not status_ok then
 end
 
 toggleterm.setup({
-	size = 15,
+	size = function(term)
+		if term.direction == "horizontal" then
+			return 15
+		elseif term.direction == "vertical" then
+			return vim.o.columns * 0.25
+		end
+	end,
 	open_mapping = [[<leader>te]], -- this keymap need to consider again
 	hide_numbers = true,
 	shade_filetypes = {},
