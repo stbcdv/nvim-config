@@ -20,7 +20,8 @@ require("luasnip.loaders.from_vscode").load({
 	include = { "c", "python", "json", "lua", "markdown", "verilog", "systemverilog", "sh", "make" },
 })
 -- require("luasnip/loaders/from_vscode").lazy_load(), has some problems
-require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.expand("~/.config/nvim/my_snippets") } })
+-- require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.expand("~/.config/nvim/my_snippets") } })
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/my_snippets/" } })
 
 -- import lspkind plugin safely
 local lspkind_status, lspkind = pcall(require, "lspkind")
@@ -129,6 +130,10 @@ cmp.setup({
 		end, { "i", "s" }),
 	},
 
+	-- 自动选中第一个待选项
+	completion = {
+		completeopt = "menu,menuone,noinsert",
+	},
 	-- sources for autocompletion
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" }, -- lsp

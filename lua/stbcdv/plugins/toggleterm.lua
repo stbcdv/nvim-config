@@ -21,14 +21,15 @@ toggleterm.setup({
 	insert_mappings = false, -- disable <leader>te in insert mode
 	persist_size = true,
 	direction = "horizontal", -- float
+	autochdir = true, -- auto change the work directory of term
 	close_on_exit = true,
 	shell = vim.o.shell,
 	float_opts = {
 		border = "curved",
 		winblend = 0,
 		highlights = {
-			border = "Normal",
-			background = "Normal",
+			border = "NormalFloat",
+			background = "TelescopeBorder",
 		},
 	},
 	-- execs = {
@@ -36,6 +37,9 @@ toggleterm.setup({
 	-- 	{ nil, "<M-2>", "Vertical Terminal", "vertical", 0.4 },
 	-- 	{ nil, "<M-3>", "Float Terminal", "float", nil },
 	-- },
+	winbar = {
+		enabled = false,
+	},
 })
 
 function _G.set_terminal_keymaps()

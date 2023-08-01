@@ -109,12 +109,18 @@ return packer.startup(function(use)
 	-- variable, method class list
 	use({ "preservim/tagbar" })
 	-- quick jump
+	-- use({
+	-- 	"phaazon/hop.nvim",
+	-- 	branch = "v2", -- optional but strongly recommended
+	-- 	config = function()
+	-- 		-- you can configure Hop the way you like here; see :h hop-config
+	-- 		require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+	-- 	end,
+	-- })
 	use({
-		"phaazon/hop.nvim",
-		branch = "v2", -- optional but strongly recommended
+		"folke/flash.nvim",
 		config = function()
-			-- you can configure Hop the way you like here; see :h hop-config
-			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+			require("flash").setup({})
 		end,
 	})
 	use({ "mg979/vim-visual-multi", branch = "master" })
@@ -132,6 +138,8 @@ return packer.startup(function(use)
 			"rcarriga/nvim-notify",
 		},
 	})
+	-- highlight and search TODO, BUG, WARNING, NOTE etc
+	use({ "folke/todo-comments.nvim" })
 	-- use("simrat39/symbols-outline.nvim") -- 本来想代替 tagbar，后面还是算了，systemverilog 支持不太好, 需要依赖 lsp
 	-- 自动保存文件
 	-- use({
@@ -143,6 +151,18 @@ return packer.startup(function(use)
 	-- 		})
 	-- 	end,
 	-- })
+	-- blackline
+	use({ "shellRaining/hlchunk.nvim" })
+	-- dap
+	use({
+		"mfussenegger/nvim-dap",
+		requires = {
+			{ "rcarriga/nvim-dap-ui" },
+			{ "mfussenegger/nvim-dap-python" },
+			{ "nvim-telescope/telescope-dap.nvim" },
+			{ "theHamsta/nvim-dap-virtual-text" },
+		},
+	})
 	if packer_bootstrap then
 		require("packer").sync()
 	end

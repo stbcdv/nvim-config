@@ -4,7 +4,7 @@ if not telescope_setup then
 	return
 end
 -- local builtin = require('telescope.builtin')
--- local telescopeConfig = require("telescope.config")
+local telescopeConfig = require("telescope.config")
 
 local actions_setup, actions = pcall(require, "telescope.actions")
 if not actions_setup then
@@ -25,7 +25,7 @@ local vimgrep_arguments = {
 	"--no-heading",
 	"--with-filename",
 	"--line-number",
-	-- "--column",
+	"--column",
 	"--smart-case",
 	"--hidden",
 	"--glob=!.git/",

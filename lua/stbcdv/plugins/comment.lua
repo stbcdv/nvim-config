@@ -6,7 +6,8 @@ if not setup then
 	return
 end
 
-ft.set("systemverilog", { "//%s", "/*%s*/" }) -- 设置 systemverilog 的注释格式
+-- comment support line comment, but comment block not work
+-- ft.set("systemverilog", { "/*%s*/" }) -- 设置 systemverilog 的注释格式
 
 comment.setup({
 	ignore = "^$",

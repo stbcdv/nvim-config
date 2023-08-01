@@ -49,6 +49,7 @@ keymap.set("n", "<leader>ft", "<cmd>Telescope tags<cr>")
 keymap.set("n", "<leader>fp", "<cmd>Telescope projects<cr>")
 keymap.set("n", "<leader>fv", '<cmd>Telescope neoclip " <cr>')
 keymap.set("n", "<leader>fh", "<cmd>Telescope search_history<cr>") -- search history list
+keymap.set("n", "<leader>fd", "<cmd>TodoTelescope<cr>")
 -- keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- look help doc
 
 -- telescope git commands (not on youtube nvim video)
@@ -69,6 +70,29 @@ keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>")
 -- Tagbar keymaps
 keymap.set("n", "<leader>tg", "<cmd>TagbarToggle<cr>")
 
+-- folke/flash.nvim keymaps
+-- 除了以下快捷键，按f{char} or F{char} 高亮 char, 随后重复按 f 可进行选择
+keymap.set({ "n", "x", "o" }, "s", function()
+	require("flash").jump()
+end, { desc = "Flash" })
+
+-- visual select
+keymap.set({ "n", "o", "x" }, "S", function()
+	require("flash").treesitter()
+end, { desc = "Flash Treesitter" })
+
+-- yr 进入模式，跳转到相应单词，按 w 复制那个文字，例如 yrRA
+keymap.set("o", "r", function()
+	require("flash").remote()
+end, { desc = "Remote Flash" })
+
+-- 同样按 yR 进入，复制的是一段函数
+keymap.set({ "o", "x" }, "R", function()
+	require("flash").treesitter_search()
+end, { desc = "Treesitter Search" })
+keymap.set({ "c" }, "<c-s>", function()
+	require("flash").toggle()
+end, { desc = "Toggle Flash Search" })
 -- vim.cmd([[
 -- let g:VM_maps = {}
 -- let g:VM_default_mappings = 0

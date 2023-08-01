@@ -1,5 +1,10 @@
 -- import nvim-autopairs safely
 local autopairs_setup, autopairs = pcall(require, "nvim-autopairs")
+local Rule = require("nvim-autopairs.rule")
+local cond = require("nvim-autopairs.conds")
+
+local brackets = { { "(", ")" }, { "[", "]" }, { "{", "}" } }
+
 if not autopairs_setup then
 	vim.notify("no autopairs", vim.log.levels.ERROR)
 	return
@@ -35,9 +40,85 @@ autopairs.setup({
 		highlight = "PmenuSel",
 		highlight_grey = "LineNr",
 	},
-	enable_check_bracket_line = false,
+	enable_check_bracket_line = true,
 })
 
+-- add rules
+autopairs.add_rules({
+	-- add spaces between parantheses
+	Rule(" ", " "):with_pair(function(opts)
+		local pair = opts.line:sub(opts.col - 1, opts.col)
+		return vim.tbl_contains({
+			brackets[1][1] .. brackets[1][2],
+			brackets[2][1] .. brackets[2][2],
+			brackets[3][1] .. brackets[3][2],
+		}, pair)
+	end),
+	-- auto add space on =
+	Rule("=", "", { "c", "verilog", "systemverilog", "matlab", "python", "perl", "lua" })
+		:with_pair(cond.not_inside_quote())
+		:with_pair(function(opts)
+			local last_char = opts.line:sub(opts.col - 1, opts.col - 1)
+			if last_char:match("[%w%=%s]") then
+				return true
+			end
+			return false
+		end)
+		:replace_endpair(function(opts)
+			local prev_2char = opts.line:sub(opts.col - 2, opts.col - 1)
+			local next_char = opts.line:sub(opts.col, opts.col)
+			next_char = next_char == " " and "" or " "
+			if prev_2char:match("%w$") then
+				return "<bs> =" .. next_char
+			end
+			if prev_2char:match("%=$") then
+				return next_char
+			end
+			if prev_2char:match("=") then
+				return "<bs><bs>=" .. next_char
+			end
+			return ""
+		end)
+		:set_end_pair_length(0)
+		:with_move(cond.none())
+		:with_del(cond.none()),
+})
+for _, bracket in pairs(brackets) do
+	autopairs.add_rules({
+		Rule(bracket[1] .. " ", " " .. bracket[2])
+			:with_pair(function()
+				return false
+			end)
+			:with_move(function(opts)
+				return opts.prev_char:match(".%" .. bracket[2]) ~= nil
+			end)
+			:use_key(bracket[2]),
+	})
+end
+-- Move past commas and semicolons, 有点看不明白
+for _, punct in pairs({ ",", ";" }) do
+	autopairs.add_rules({
+		Rule("", punct)
+			:with_move(function(opts)
+				return opts.char == punct
+			end)
+			:with_pair(function()
+				return false
+			end)
+			:with_del(function()
+				return false
+			end)
+			:with_cr(function()
+				return false
+			end)
+			:use_key(punct),
+	})
+end
+
+autopairs.remove_rule("`")
+autopairs.add_rules({
+	Rule("`", "`", { "markdown" }):with_pair(cond.done()),
+})
 -- import nvim-autopairs completion functionality safely
 local cmp_autopairs_setup, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
 if not cmp_autopairs_setup then

@@ -1,12 +1,13 @@
 {
-  "name": "package.json",
+  "name": "stbcdv_snippets",
+  "engines": {
+		"vscode": "v0.0.1"
+	},
   "contributes": {
     "snippets": [
       {
-        "language": [
-          "systemverilog"
-        ],
-        "path": "./systemverilog.json"
+        "language": "systemverilog",
+        "path": "./stbcdv_snippets/systemverilog.json"
       },
     ]
   }

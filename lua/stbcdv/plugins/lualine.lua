@@ -35,7 +35,8 @@ local diff = {
 
 local date = {
 	"datetime",
-	style = "%H:%M:%S",
+	-- style = "%H:%M:%S",
+	style = "%H:%M",
 }
 
 local mode = {
@@ -121,7 +122,7 @@ lualine.setup({
 		disabled_filetypes = {
 			"alpha",
 			"dashboard",
-			"NvimTree",
+			-- "NvimTree",
 			"Outline",
 			"packer",
 			"undotree",
@@ -148,5 +149,6 @@ lualine.setup({
 		lualine_z = {},
 	},
 	tabline = {},
-	extensions = {},
+	-- just show the plugins status line
+	extensions = { "toggleterm", "nvim-tree" },
 })
