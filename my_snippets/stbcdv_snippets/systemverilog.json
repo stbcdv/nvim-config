@@ -115,5 +115,18 @@
 			"end"
 		],
 		"description": "always block"
+	},
+
+	"method docs": {
+		"prefix": "docs",
+		"body": [
+			"// --------------${1:method name}  -----------",
+			"// parameters: ${2:args}",
+			"// description: ${3:the function of method}",
+			"// author: yuzengxian",
+			"// time: ${4:day and time}",
+			"// -------------------------------------------"
+		],
+		"description": "systemverilog method docs"
 	}
 }

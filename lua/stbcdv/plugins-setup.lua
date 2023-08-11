@@ -163,6 +163,10 @@ return packer.startup(function(use)
 			{ "theHamsta/nvim-dap-virtual-text" },
 		},
 	})
+	-- highlight the word selected
+	use({ "RRethy/vim-illuminate" })
+	-- align the context
+	use({ "godlygeek/tabular", cmd = { "Tabularize" } })
 	if packer_bootstrap then
 		require("packer").sync()
 	end
