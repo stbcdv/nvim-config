@@ -148,3 +148,17 @@ opt.termguicolors = true
 -- }
 
 -- M.nvim_create_augroups(autoCommands)
+
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "systemverilog",
+-- 	callback = function()
+-- 		vim.api.nvim_command("set filetype=verilog_systemverilog")
+-- 		vim.api.nvim_command("setfiletype verilog_systemverilog")
+-- 	end,
+-- })
+-- vim.cmd([[
+-- 	augroup systemverilog_tile
+-- 	autocmd!
+-- 	autocmd FileType *.sv : setfiletype verilog_systemverilog
+-- 	augroup end
+-- ]])

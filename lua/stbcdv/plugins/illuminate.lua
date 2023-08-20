@@ -20,6 +20,7 @@ illuminate.configure({
 		"TelescopePrompt",
 		"mason",
 		"packer",
+		"tagbar",
 	},
 	Illuminate_ftwhitelist = { "vim", "sh", "python", "sv", "svh", "c" },
 	under_cursor = true,

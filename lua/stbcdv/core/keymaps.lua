@@ -81,7 +81,7 @@ keymap.set({ "n", "o", "x" }, "S", function()
 	require("flash").treesitter()
 end, { desc = "Flash Treesitter" })
 
--- yr 进入模式，跳转到相应单词，按 w 复制那个文字，例如 yrRA
+-- yr 进入模式，跳转到相应单词，按 w 复制那个文字，例如 yrRAw
 keymap.set("o", "r", function()
 	require("flash").remote()
 end, { desc = "Remote Flash" })

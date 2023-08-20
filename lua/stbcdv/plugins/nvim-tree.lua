@@ -27,10 +27,10 @@ nvimtree.setup({
 		number = true,
 		relativenumber = true,
 		signcolumn = "yes",
-		mappings = {
-			custom_only = false,
-			list = {},
-		},
+		-- mappings = {
+		-- 	custom_only = false,
+		-- 	list = {},
+		-- },
 		float = {
 			enable = false,
 			quit_on_focus_loss = true,

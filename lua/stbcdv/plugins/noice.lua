@@ -65,11 +65,11 @@ noice.setup({
 	routes = {
 		{
 			filter = {
-				event = "msg_show",
+				event = { "msg_show" },
 				kind = "",
 				find = "%d+ 行",
 			},
-			opts = { skip = true },
+			opts = { title = "Error", skip = true },
 		},
 		{
 			filter = {
@@ -77,7 +77,7 @@ noice.setup({
 				kind = "",
 				find = "%d+ line",
 			},
-			opts = { skip = true },
+			opts = { title = "Error", skip = true },
 		},
 		{
 			filter = {
@@ -85,7 +85,15 @@ noice.setup({
 				kind = "",
 				find = "已写入",
 			},
-			opts = { skip = true },
+			opts = { title = "Error", skip = true },
+		},
+		{
+			filter = {
+				event = "notify",
+				-- kind = "hlchunk.chunk",
+				find = "no parser for",
+			},
+			opts = { title = "Notify", skip = true },
 		},
 	},
 })
