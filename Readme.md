@@ -278,14 +278,18 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 
 ## flash.nvim
 内容位置快速跳转
-|     快捷键    |                              功能                             |
-|:-------------:|                        :-------------:                        |
-|    f<chars>   |按f进入向后查找(并不局限于一行的内容)，再次按f则跳转下一个chars|
-|    F<chars>   |                            向前查找                           |
-|    s<chars>   |                 查找范围为当前屏幕中的所有内容                |
-|   yr<chars>w  | 屏幕内容中选中并复制<chars>所在的word，并跳回原先光标所在位置 |
-|   yR<chars>   |            选中并复制一段函数,depend on treesitter            |
-|       S       |                 选中一段内容，按y复制，按d删除                |
+|     快捷键    |                                  功能                                 |
+|:-------------:|                            :-------------:                            |
+|    f<chars>   |    按f进入向后查找(并不局限于一行的内容)，再次按f则跳转下一个chars    |
+|    F<chars>   |                                向前查找                               |
+|    s<chars>   |                     查找范围为当前屏幕中的所有内容                    |
+|   yr<chars>w  |     屏幕内容中选中并复制<chars>所在的word，并跳回原先光标所在位置     |
+|  yr<chars>3y  |屏幕内容中选中并复制<chars>所在的行及下面的两行，并跳回原先光标所在位置|
+|   yR<chars>   |                选中并复制一段函数,depend on treesitter                |
+|   dr<chars>w  |                               删除 chars                              |
+|  dr<chars>3d  |                 删除 chars 所在的行及其下面的两行内容                 |
+|       S       |                     选中一段内容，按y复制，按d删除                    |
+如果一个屏幕中显示了两个文件的内容，使用 `/` 查找字符会得到屏幕的所有符合字符，并且跳转的时候不会限制你之前光标所在的文件
 
 ## Tabular
 文字对齐，需要一定的正则表达式知识, 格式 `Tabularize patten`

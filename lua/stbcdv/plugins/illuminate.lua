@@ -21,6 +21,7 @@ illuminate.configure({
 		"mason",
 		"packer",
 		"tagbar",
+		"markdown",
 	},
 	Illuminate_ftwhitelist = { "vim", "sh", "python", "sv", "svh", "c" },
 	under_cursor = true,

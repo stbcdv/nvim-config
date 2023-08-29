@@ -21,11 +21,11 @@ vim.api.nvim_command([[
   highlight! CursorLineNr guibg=Gray40 guifg=White
   highlight! CursorLine   guibg=Gray20
   highlight! CursorColumn guibg=Gray20
-  highlight! Cursor       guifg=white guibg=green
+  highlight! Cursor       guifg=white guibg=#38ff9c
   highlight! iCursor 	  guifg=white guibg=red
 
-  highlight! GitSignsAdd  guifg=green
-  highlight! GitSignsChange guifg=green " modify gitsigns color
+  highlight! GitSignsAdd  guifg=#38ff9c
+  highlight! GitSignsChange guifg=#38ff9c " modify gitsigns color
   " hi! Visual term=reverse cter =reverse guibg=Grey
 ]])
 
