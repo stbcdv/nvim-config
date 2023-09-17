@@ -305,6 +305,10 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
 - [sqlite.lua](https://github.com/kkharji/sqlite.lua): 管理剪切板数据
 
+|      快捷键     |       功能      |
+|:---------------:|:---------------:|
+|   \<leader\>it  |  插入当前的时间 |
+
 ## neovim 特殊小知识
 - 环境路径: `:lua print(vim.inspect(vim.api.nvim_list_runtime_paths()))`
 - `:checkhealth`

@@ -93,6 +93,9 @@ end, { desc = "Treesitter Search" })
 keymap.set({ "c" }, "<c-s>", function()
 	require("flash").toggle()
 end, { desc = "Toggle Flash Search" })
+
+-- other
+keymap.set("n", "<leader>it", "<cmd>InsertDateTime<cr>") -- insert time
 -- vim.cmd([[
 -- let g:VM_maps = {}
 -- let g:VM_default_mappings = 0

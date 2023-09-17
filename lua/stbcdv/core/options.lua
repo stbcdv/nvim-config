@@ -123,6 +123,16 @@ vim.cmd([[let &t_Ce = "\e[4:0m"]])
 opt.history = 100
 
 opt.termguicolors = true
+
+-- add currect time
+local function insert_date_time()
+	local date = os.date("%Y-%m-%d")
+	local time = os.date("%H:%M:%S")
+	vim.api.nvim_put({ date .. " at " .. time }, "c", true, true)
+end
+vim.api.nvim_create_user_command("InsertDateTime", function()
+	insert_date_time()
+end, {})
 -- 下面的函数是为了打开一个文件后自动打开所有的折叠，但是我好像不需要
 -- local api = vim.api
 -- local M = {}
