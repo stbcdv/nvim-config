@@ -314,3 +314,14 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 vim.g.python3_host_prog = "/usr/local/bin/python3"
 ```
 - matchit: 属于 vim 自带的插件，使用 % 跳转语法块的开始和结尾
+```vim
+" get out bracket
+func SkipPair()
+    if getline('.')[col('.') - 1] == ')' || getline('.')[col('.') - 1] == ']' || getline('.')[col('.') - 1] == '"' || getline('.')[col('.') - 1] == "'" || getline('.')[col('.') - 1] == '}'
+        return "\<ESC>la"
+    else
+        return "\t"
+    endif
+endfunc
+" need keymaps
+```

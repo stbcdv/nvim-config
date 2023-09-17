@@ -89,6 +89,14 @@ noice.setup({
 		},
 		{
 			filter = {
+				event = "msg_show",
+				kind = "",
+				find = "发生改变",
+			},
+			opts = { title = "Error", skip = true },
+		},
+		{
+			filter = {
 				event = "notify",
 				-- kind = "hlchunk.chunk",
 				find = "no parser for",

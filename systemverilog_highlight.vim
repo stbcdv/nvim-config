@@ -141,7 +141,7 @@ syn keyword uvmDeprecatedMethod  get_num_components
 syn keyword uvmDeprecatedMethod  import_connections post_new pre_run
 syn keyword uvmDeprecatedClass   uvm_threaded_component
 
-" my-setting
+" my-setting yzx
 syn keyword verilogStatement       uvm_phase
 syn keyword uvmClass 				  uvm_reg_field uvm_reg uvm_reg_block uvm_mem uvm_reg_map uvm_reg_adapter uvm_reg_predictor
 " reg_sequence

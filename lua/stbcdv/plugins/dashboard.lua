@@ -42,13 +42,13 @@ local custom_center = {
 	},
 	{
 		icon = "󱋢  ",
-		desc = "Recently opened files                   <leader>fr",
+		desc = "Recently files                          <leader>fr",
 		action = "Telescope oldfiles",
 	},
 	{
 		-- 
 		icon = "󰪻  ",
-		desc = "Projects grep                           <leader>fp",
+		desc = "Recently Projects                       <leader>fp",
 		action = "Telescope projects",
 	},
 	{
