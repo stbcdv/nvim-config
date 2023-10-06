@@ -143,7 +143,8 @@ syn keyword uvmDeprecatedClass   uvm_threaded_component
 
 " my-setting yzx
 syn keyword verilogStatement       uvm_phase
-syn keyword uvmClass 				  uvm_reg_field uvm_reg uvm_reg_block uvm_mem uvm_reg_map uvm_reg_adapter uvm_reg_predictor
+syn keyword uvmClass 				  uvm_reg_field uvm_reg uvm_reg_block uvm_mem uvm_reg_map uvm_reg_adapter uvm_reg_predictor uvm_cmdline_processor
+" syn keyword uvmDeprecatedMethod    sum size delete product sort rsort shuffle reserve
 " reg_sequence
 syn keyword uvmClass               uvm_reg_mem_hdl_paths_seq uvm_reg_single_access_seq uvm_reg_access_seq uvm_reg_file
 syn keyword uvmStatement		     uvm_status_e uvm_reg_data_t

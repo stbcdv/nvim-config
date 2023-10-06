@@ -60,6 +60,16 @@ opt.backupcopy    = "yes" -- inode setting, after vim editing, the inode of file
 |     q     |         退出文件树         |
 | file edit |其他文件移动, 重命名等快捷键|
 |     g?    |  查看详细 shortcut mapping |
+|    `e`    |      Rename: Basename      |
+|     D     |            trash           |
+|     d     |           delete           |
+|     c     |            copy            |
+|     p     |            paste           |
+|     r     |           rename           |
+|     a     |         create file        |
+|     E     |   expand all a directory   |
+|     x     |             cut            |
+
 
 ## [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
 在 neovim 内部调用终端

@@ -94,6 +94,16 @@
         "description": "function (...) ... endfunction"
     },
 
+	"efunction": {
+        "prefix": "efunction",
+        "body": [
+            "function ${1:$TM_FILENAME_BASE}::${2:functionName}(${3:param});",
+            "\t$0",
+            "endfunction : $2"
+        ],
+        "description": "function class::(...) ... endfunction"
+    },
+
     "always_ff block": {
         "prefix": "always_ff",
         "body": [
@@ -250,6 +260,17 @@
             "task ${1:taskName}(${2:arguments});",
             "\t$0",
             "endtask : $1"
+        ],
+        "description": "task name; ... endtask"
+    },
+
+
+    "etask": {
+        "prefix": "etask",
+        "body": [
+            "task ${1:$TM_FILENAME_BASE}::${2:taskName}(${3:arguments});",
+            "\t$0",
+            "endtask : $2"
         ],
         "description": "task name; ... endtask"
     },
@@ -1111,22 +1132,12 @@
         "prefix": "uvm_test",
         "body": [
             "class ${1:$TM_FILENAME_BASE} extends uvm_test;",
-            "\t${2:SEQ} seq;",
+            "\t$2",
             "\t",
             "\t`uvm_component_utils(${1:$TM_FILENAME_BASE});\n",
             "\tfunction new(string name = \"${1:$TM_FILENAME_BASE}\", uvm_component parent);",
             "\t\tsuper.new(name, parent);",
             "\tendfunction\n",
-				"\n",
-				"\tfunction void build_phase(uvm_phase phase);\n",
-				"\t\tseq = $2::type_id::create(\"seq\");\n",
-				"\tendfunction : build_phase\n",
-				"\n",
-				"\t virtual task run_phase(uvm_phase phase);\n",
-				"\t\tphase.raise_objection(this);\n",
-				"\t\tseq.start(null);\n",
-				"\t\tphase.drop_objection(this);\n",
-				"\tendtask : run_phase\n",
             "\t$0",
             "endclass"
         ],
@@ -1388,5 +1399,13 @@
 			"// -------------------------------------------"
 		],
 		"description": "systemverilog method docs"
+	},
+
+	"get_arg_value":{
+		"prefix": "get_arg_value",
+		"body": [
+			"get_arg_value(\"+${1:arg}\", ${2:value});$0"
+		],
+		"description": "uvm_cmdline_processor builtin method"
 	}
 }

@@ -141,16 +141,6 @@ return packer.startup(function(use)
 	-- highlight and search TODO, BUG, WARNING, NOTE etc
 	use({ "folke/todo-comments.nvim" })
 	-- use("simrat39/symbols-outline.nvim") -- 本来想代替 tagbar，后面还是算了，systemverilog 支持不太好, 需要依赖 lsp
-	-- 自动保存文件
-	-- use({
-	-- 	"Pocco81/auto-save.nvim",
-	-- 	config = function()
-	-- 		require("auto-save").setup({
-	-- 			-- your config goes here
-	-- 			-- or just leave it empty :)
-	-- 		})
-	-- 	end,
-	-- })
 	-- blackline
 	use({ "shellRaining/hlchunk.nvim" })
 	-- dap
