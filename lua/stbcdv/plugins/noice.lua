@@ -73,6 +73,14 @@ noice.setup({
 		},
 		{
 			filter = {
+				event = { "msg_show" },
+				kind = "",
+				find = "%d+ line",
+			},
+			opts = { title = "Error", skip = true },
+		},
+		{
+			filter = {
 				event = "msg_show",
 				kind = "",
 				find = "%d+ line",
