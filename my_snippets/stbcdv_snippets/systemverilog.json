@@ -1059,7 +1059,7 @@
             "\t\tsuper.new(name, parent);",
             "\tendfunction\n",
             "\t$0",
-            "endclass"
+            "endclass : $1\n"
         ],
         "description": "UVM driver class template"
     },
@@ -1075,7 +1075,7 @@
             "\t\tsuper.new(name, parent);",
             "\tendfunction\n",
             "\t$0",
-            "endclass"
+            "endclass : $1\n"
         ],
         "description": "UVM monitor class template"
     },
@@ -1091,7 +1091,7 @@
             "\t\tsuper.new(name, parent);",
             "\tendfunction\n",
             "\t$0",
-            "endclass"
+            "endclass : $1\n"
         ],
         "description": "UVM sequencer class template"
     },
@@ -1107,7 +1107,7 @@
             "\t\tsuper.new(name, parent);",
             "\tendfunction\n",
             "\t$0",
-            "endclass"
+            "endclass : $1\n"
         ],
         "description": "UVM scoreboard class template"
     },
@@ -1123,7 +1123,7 @@
             "\t\tsuper.new(name, parent);",
             "\tendfunction\n",
             "\t$0",
-            "endclass"
+            "endclass : $1\n"
         ],
         "description": "UVM env class template"
     },
@@ -1139,7 +1139,7 @@
             "\t\tsuper.new(name, parent);",
             "\tendfunction\n",
             "\t$0",
-            "endclass"
+            "endclass : $1\n"
         ],
         "description": "UVM test class template"
     },
@@ -1155,7 +1155,7 @@
             "\t\tsuper.new(name);",
             "\tendfunction\n",
             "\t$0",
-            "endclass"
+            "endclass : $1\n"
         ],
         "description": "UVM sequence class template"
     },
@@ -1218,7 +1218,7 @@
             "\t\tsuper.new(name);",
             "\tendfunction\n",
             "\t$0",
-            "endclass"
+            "endclass : $1\n"
         ],
         "description": "UVM object class template"
     },
@@ -1249,7 +1249,7 @@
             "\t\tsuper.new(name, parent);",
             "\tendfunction\n",
             "\t$0",
-            "endclass"
+            "endclass : $1\n"
         ],
         "description": "UVM component class template"
     },
@@ -1332,7 +1332,8 @@
 			"\t\t// create->configure",
 			"\tendfunction : build",
 			"\t$0",
-			"endclass"
+			"endclass : $1",
+			""
 		],
 		"description": "UVM reg class template"
 	},
@@ -1353,7 +1354,8 @@
 			"\t\t// create->configure->build->add",
 			"\tendfunction : build",
 			"\t$0",
-			"endclass"
+			"endclass : $1",
+			""
 		],
 		"description": "UVM reg class template"
 	},
@@ -1373,7 +1375,8 @@
 			"\tfunction void bus2reg(uvm_sequence_item bus_item,ref uvm_reg_bus_op rw);",
 			"\t",
 			"\tendfunction : bus2reg",
-			"endclass"
+			"endclass : $1",
+			""
 		],
 		"description": "UVM reg adapter template"
 	},
@@ -1389,13 +1392,13 @@
 	},
 
 	"method docs": {
-		"prefix": "docs",
+		"prefix": "mdocs",
 		"body": [
 			"// --------------${1:method name}-------------",
-			"// parameters: ${2:args}",
+			"// parameters : ${2:args}",
 			"// description: ${3:the function of method}",
-			"// author: yuzengxian",
-			"// time: ${4:day and time}",
+			"// author     : yuzengxian",
+			"// time       : ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
 			"// -------------------------------------------"
 		],
 		"description": "systemverilog method docs"
@@ -1407,5 +1410,30 @@
 			"get_arg_value(\"+${1:arg}\", ${2:value});$0"
 		],
 		"description": "uvm_cmdline_processor builtin method"
+	},
+
+	"cast":{
+		"prefix": "cast",
+		"body": [
+			"\\$cast(${1:target}, ${2:source});$0"
+		],
+		"description": "systemverilog $cast"
+	},
+
+	"FileHeader":{
+		"prefix": "title",
+		"body":[
+			"/************************************************",
+			"-------------------------------------------------",
+			"*Copyright ${CURRENT_YEAR} Tibors All Rights Reserved.",
+			"*FileName    : ${1:$TM_FILENAME_BASE}",
+			"*Author      : Yu Zengxian",
+			"*Version     : 1.0",
+			"*Date        : ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
+			"*Description : ${2:null}",
+			"*Changelog   : null",
+			"************************************************/"
+		],
+		"description" : "systemverilog file header"
 	}
 }
