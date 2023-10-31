@@ -143,6 +143,7 @@ neovim clipboard manager, not work system clipboard
 
 ## [Tagbar](https://github.com/preservim/tagbar)
 [说明文档](https://github.com/preservim/tagbar/blob/master/doc/tagbar.txt)
+不推荐在 systemverilog 中使用，由于该插件本身不支持 systemverilog 语法，因此使用了 ctags，会导致 nvim 进程内存占用过大
 
 ## 自动补全
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
@@ -151,7 +152,7 @@ neovim clipboard manager, not work system clipboard
 - [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 - [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip)
 - [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
-- [friendly-snippets](https://github.com/rafamadriz/friendly-snippets): 提供了 systemverilog 的 snippet, json 格式, 修改了 task 和 function 的snippet
+- [friendly-snippets](https://github.com/rafamadriz/friendly-snippets): 提供了 systemverilog 的 snippet, json 格式, 修改了 task 和 function 的snippet, global.json 中包含一些常用的 snippets(比如时间插入), 在 package.json 中的 global 对应下的language加入 systemverilog
 - [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
 - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag): 删除了，该插件主要是针对 html 等语言
 - [vim-surround](https://github.com/tpope/vim-surround)

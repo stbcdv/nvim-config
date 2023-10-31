@@ -1,5 +1,6 @@
 local opt = vim.opt -- for conciseness
 local g = vim.g
+local api = vim.api
 
 -- line numbers
 opt.relativenumber = true
@@ -133,6 +134,61 @@ end
 vim.api.nvim_create_user_command("InsertDateTime", function()
 	insert_date_time()
 end, {})
+
+vim.cmd([[
+	autocmd BufNewFile *.v,*.sv,*.py,*.cpp,*.c,*.h exec ":lua AddHeader()"
+]])
+function AddHeader()
+	vim.cmd([[
+		let line = getline(1)
+		let filename = expand("%")
+		call append(0,  "// --------------------------------------------------------------------------------")
+		call append(1,  "//                         Copyright (c) ".strftime("%Y") )
+		call append(2,  "//                 Sandglass.inc  ALL RIGHTS RESERVED")
+		call append(3,  "// ---------------------------------------------------------------------------------")
+		call append(4,  "// Filename      : ".filename)
+		call append(5,  "// Author        : Stbcdv YZX")
+		call append(6,  "// Created On    : ".strftime("%Y-%m-%d %H:%M"))
+		call append(7,  "// Last Modified : ")
+		call append(8,  "// ---------------------------------------------------------------------------------")
+		call append(9,  "// Description   : ")
+		call append(10, "//")
+		call append(11, "//")
+		call append(12, "// ---------------------------------------------------------------------------------")
+	]])
+end
+
+vim.cmd([[
+	autocmd BufWrite *.sv exec ":lua UpdateLastModifyTime()"
+]])
+function UpdateLastModifyTime()
+	vim.cmd([[
+		let line = getline(8)
+		if line =~ '// Last Modified : '
+			call setline(8,"// Last Modified : " . strftime("%Y-%m-%d %H:%M"))
+		endif
+	]])
+end
+
+g.DoxygenToolkit_blockHeader = "--------------------------------------------------------------------------"
+g.DoxygenToolkit_blockFooter = "--------------------------------------------------------------------------"
+
+local function setUndotreeWinSize()
+	local winList = api.nvim_list_wins()
+	for _, winHandle in ipairs(winList) do
+		if
+			api.nvim_win_is_valid(winHandle)
+			and api.nvim_buf_get_option(api.nvim_win_get_buf(winHandle), "filetype") == "undotree"
+		then
+			api.nvim_win_set_width(winHandle, vim.g.undotree_SplitWidth)
+		end
+	end
+end
+api.nvim_create_user_command("Ut", function()
+	api.nvim_cmd(api.nvim_parse_cmd("UndotreeToggle", {}), {})
+	setUndotreeWinSize()
+end, { desc = "load undotree" })
+
 -- 下面的函数是为了打开一个文件后自动打开所有的折叠，但是我好像不需要
 -- local api = vim.api
 -- local M = {}
