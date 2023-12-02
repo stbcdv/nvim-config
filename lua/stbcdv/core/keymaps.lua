@@ -15,9 +15,21 @@ keymap.set("n", "<leader>nh", "<cmd>nohl<CR>") -- search then normal, space and 
 
 keymap.set("n", "<C-u>", "9k") -- 向上移动9行
 
+-- select all context
+keymap.set("n", "<leader>sa", "ggvG") -- 向上移动9行
+
+--Keep search pattern at the center of the screen.
+keymap.set("n", "n", "nzz")
+keymap.set("n", "N", "Nzz")
+keymap.set("n", "*", "*zz")
+keymap.set("n", "#", "#zz")
+keymap.set("n", "g*", "g*zz")
+keymap.set("n", "*", "#")
+keymap.set("n", "#", "*")
+
 keymap.set("n", "<C-d>", "9j") -- 向下移动9行
 
-keymap.set("n", "x", '"_x"')
+-- keymap.set("n", "x", '"_x"')
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>") -- increment
 keymap.set("n", "<leader>-", "<C-x>") -- decrement
@@ -37,6 +49,9 @@ keymap.set("n", "<leader>sm", "<cmd>MaximizerToggle<CR>") -- 最大化当前的s
 
 -- nerd-tree
 keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>")
+
+-- Tabularize
+keymap.set({ "n", "v" }, "<leader>tl", ":Tabularize /")
 
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
@@ -66,7 +81,8 @@ keymap.set("n", "<leader>ht", "<cmd>lua _HTOP_TOGGLE()<cr>") -- belongs to toggl
 keymap.set("n", "<leader>rg", "<cmd>lua _RANGER_TOGGLE()<cr>") -- belongs to toggleterm.nvim
 
 -- undotree keymaps
-keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>")
+-- keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>")
+keymap.set("n", "<leader>u", "<cmd>Ut<cr>")
 -- Tagbar keymaps
 keymap.set("n", "<leader>tg", "<cmd>TagbarToggle<cr>")
 
@@ -93,6 +109,9 @@ end, { desc = "Treesitter Search" })
 keymap.set({ "c" }, "<c-s>", function()
 	require("flash").toggle()
 end, { desc = "Toggle Flash Search" })
+
+-- DoxygenToolkit
+keymap.set("n", "<leader>dg", "<cmd>Dox<cr>")
 
 -- other
 keymap.set("n", "<leader>it", "<cmd>InsertDateTime<cr>") -- insert time

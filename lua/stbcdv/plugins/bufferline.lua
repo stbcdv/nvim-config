@@ -116,11 +116,14 @@ vim.api.nvim_set_keymap("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", { norem
 vim.api.nvim_set_keymap("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>0", ":BufferLineGoToBuffer 10<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>bg", ":BufferLinePick<CR>", { noremap = true, silent = true })
 
 -- move buffer tab
 vim.api.nvim_set_keymap("n", "<leader>bn", ":BufferLineMoveNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>bp", ":BufferLineMovePrev<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<C-Tab>", ":BufferLineCycleNext<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<C-S-Tab>", ":BufferLineCyclePrev<CR>", { noremap = true, silent = true })
 
 --- 配置tabline快捷键，主要以 t开头代表 t
 --- 关闭当前标签页

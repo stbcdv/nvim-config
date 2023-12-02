@@ -20,6 +20,11 @@ opt.wrap = true
 opt.ignorecase = true
 opt.smartcase = true
 
+-- undodir
+opt.undofile = true
+opt.undolevels = 500
+opt.undoreload = 100
+
 -- cursor line
 opt.cursorline = true
 opt.cursorcolumn = true
@@ -142,36 +147,50 @@ function AddHeader()
 	vim.cmd([[
 		let line = getline(1)
 		let filename = expand("%")
-		call append(0,  "// --------------------------------------------------------------------------------")
-		call append(1,  "//                         Copyright (c) ".strftime("%Y") )
-		call append(2,  "//                 Sandglass.inc  ALL RIGHTS RESERVED")
-		call append(3,  "// ---------------------------------------------------------------------------------")
-		call append(4,  "// Filename      : ".filename)
-		call append(5,  "// Author        : Stbcdv YZX")
-		call append(6,  "// Created On    : ".strftime("%Y-%m-%d %H:%M"))
-		call append(7,  "// Last Modified : ")
-		call append(8,  "// ---------------------------------------------------------------------------------")
-		call append(9,  "// Description   : ")
-		call append(10, "//")
-		call append(11, "//")
-		call append(12, "// ---------------------------------------------------------------------------------")
+		let file_extension = expand("%:e")
+		if ( file_extension == "py" )
+			let cmmt = "#"
+		else
+			let cmmt = "//"
+		endif
+		call append(0,  cmmt." --------------------------------------------------------------------------------")
+		call append(1,  cmmt."                         Copyright (c) ".strftime("%Y") )
+		call append(2,  cmmt."                 Sandglass.inc  ALL RIGHTS RESERVED")
+		call append(3,  cmmt." ---------------------------------------------------------------------------------")
+		call append(4,  cmmt." Filename      : ".filename)
+		call append(5,  cmmt." Author        : Stbcdv YZX")
+		call append(6,  cmmt." Created On    : ".strftime("%Y-%m-%d %H:%M"))
+		call append(7,  cmmt." Last Modified : ")
+		call append(8,  cmmt." ---------------------------------------------------------------------------------")
+		call append(9,  cmmt." Description   : ")
+		call append(10, cmmt."")
+		call append(11, cmmt."")
+		call append(12, cmmt." ---------------------------------------------------------------------------------")
 	]])
 end
 
 vim.cmd([[
-	autocmd BufWrite *.sv exec ":lua UpdateLastModifyTime()"
+	autocmd BufWrite *.sv,*.py exec ":lua UpdateLastModifyTime()"
 ]])
 function UpdateLastModifyTime()
 	vim.cmd([[
 		let line = getline(8)
-		if line =~ '// Last Modified : '
-			call setline(8,"// Last Modified : " . strftime("%Y-%m-%d %H:%M"))
+		let file_extension = expand("%:e")
+		if ( file_extension == "py" )
+			let cmmt = "#"
+		else
+			let cmmt = "//"
+		endif
+		if line =~ cmmt.' Last Modified : '
+			call setline(8, cmmt." Last Modified : " . strftime("%Y-%m-%d %H:%M"))
 		endif
 	]])
 end
 
-g.DoxygenToolkit_blockHeader = "--------------------------------------------------------------------------"
-g.DoxygenToolkit_blockFooter = "--------------------------------------------------------------------------"
+g.DoxygenToolkit_blockHeader = "-------------------------------------------------------------------------- "
+g.DoxygenToolkit_blockFooter = "-------------------------------------------------------------------------- "
+g.DoxygenToolkit_briefTag_funcName = "yes" -- brief generate method_name
+-- g.DoxygenToolkit_python_autoFunctionReturn = "no" -- disable return when method has return value
 
 local function setUndotreeWinSize()
 	local winList = api.nvim_list_wins()

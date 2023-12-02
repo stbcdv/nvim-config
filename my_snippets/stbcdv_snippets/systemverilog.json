@@ -1059,7 +1059,8 @@
             "\t\tsuper.new(name, parent);",
             "\tendfunction\n",
             "\t$0",
-            "endclass : $1\n"
+            "endclass : $1",
+				""
         ],
         "description": "UVM driver class template"
     },
@@ -1075,7 +1076,8 @@
             "\t\tsuper.new(name, parent);",
             "\tendfunction\n",
             "\t$0",
-            "endclass : $1\n"
+            "endclass : $1",
+				""
         ],
         "description": "UVM monitor class template"
     },
@@ -1091,7 +1093,8 @@
             "\t\tsuper.new(name, parent);",
             "\tendfunction\n",
             "\t$0",
-            "endclass : $1\n"
+            "endclass : $1",
+				""
         ],
         "description": "UVM sequencer class template"
     },
@@ -1107,7 +1110,8 @@
             "\t\tsuper.new(name, parent);",
             "\tendfunction\n",
             "\t$0",
-            "endclass : $1\n"
+            "endclass : $1",
+				""
         ],
         "description": "UVM scoreboard class template"
     },
@@ -1123,7 +1127,8 @@
             "\t\tsuper.new(name, parent);",
             "\tendfunction\n",
             "\t$0",
-            "endclass : $1\n"
+            "endclass : $1",
+				""
         ],
         "description": "UVM env class template"
     },
@@ -1139,7 +1144,8 @@
             "\t\tsuper.new(name, parent);",
             "\tendfunction\n",
             "\t$0",
-            "endclass : $1\n"
+            "endclass : $1",
+				""
         ],
         "description": "UVM test class template"
     },
@@ -1155,7 +1161,8 @@
             "\t\tsuper.new(name);",
             "\tendfunction\n",
             "\t$0",
-            "endclass : $1\n"
+            "endclass : $1",
+				""
         ],
         "description": "UVM sequence class template"
     },
@@ -1171,7 +1178,8 @@
             "\tendfunction: new\n",
             "\textern virtual task body();\n",
             "\t$0",
-            "endclass: $1"
+            "endclass: $1",
+				""
         ],
         "description": "UVM sequence class template with parameters"
     },
@@ -1187,7 +1195,8 @@
             "\t\tsuper.new(name);",
             "\tendfunction\n",
             "\t$0",
-            "endclass\n\n"
+            "endclass : $1",
+				""
         ],
         "description": "UVM sequence item class template"
     },
@@ -1282,7 +1291,7 @@
 			"\t\tsuper.new(name, parent);",
 			"\tendfunction",
 			"\t$0",
-			"endclass : ${1:$TM_FILENAME_BASE}",
+			"endclass : $1",
 			""
 		],
 		"description": "UVM agent template"
@@ -1396,7 +1405,9 @@
 		"body": [
 			"// --------------${1:method name}-------------",
 			"// parameters : ${2:args}",
-			"// description: ${3:the function of method}",
+			"// default    : ${3:null}",
+			"// description: ${4:the function of method}",
+			"// -------------------------------------------",
 			"// author     : yuzengxian",
 			"// time       : ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}",
 			"// -------------------------------------------"
@@ -1420,12 +1431,42 @@
 		"description": "systemverilog $cast"
 	},
 
+	"property":{
+		"prefix": "property",
+		"body":[
+			"property ${1:name}(${2:args});",
+			"\t${3:@(posedge clk)} ${4:seqeuence};",
+			"endproperty"
+		],
+		"description": "Assertion property"
+	},
+
+	"sequence":{
+		"prefix": "assert_sequence",
+		"body":[
+			"sequence ${1,:name};",
+			"\t${2:seqs};",
+			"endsequence"
+		],
+		"description": "Assertion sequence"
+	},
+
+	"assert":{
+		"prefix": "assert",
+		"body":[
+			"${1:assert_name}: assert property(${2:property_name})",
+			"\t\t\\$display(\"ASSERTION PASS: ${3:context}\");",
+			"\telse",
+			"\t\t\\$display(\"ASSERTION ERROR: ${4:context}\");"
+		]
+	},
+
 	"FileHeader":{
 		"prefix": "title",
 		"body":[
 			"/************************************************",
-			"-------------------------------------------------",
 			"*Copyright ${CURRENT_YEAR} Tibors All Rights Reserved.",
+			"-------------------------------------------------",
 			"*FileName    : ${1:$TM_FILENAME_BASE}",
 			"*Author      : Yu Zengxian",
 			"*Version     : 1.0",

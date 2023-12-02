@@ -304,13 +304,16 @@ ft.set('systemverilog', {'//%s', '/*%s*/'}) -- 设置 systemverilog 的注释格
 
 ## Tabular
 文字对齐，需要一定的正则表达式知识, 格式 `Tabularize patten`
-|        快捷键       |           功能           |
-|  :---------------:  |     :---------------:    |
-|    Tabularize /<=   |       按照 <= 对齐       |
-|    Tabularize /=    |        按照 = 对齐       |
-|Tabularize /\|/c0c0c0|适用于 markdown 的表格对齐|
-| Tabularize /\\/\\/  |     对 // 进行对齐操作   |
+|        快捷键        |           功能           |
+|   :---------------:  |     :---------------:    |
+|    Tabularize /<=    |       按照 <= 对齐       |
+|     Tabularize /=    |        按照 = 对齐       |
+|Tabularize /^[^=]*\zs=|       对齐第一个 =       |
+| Tabularize /\|/c0c0c0|适用于 markdown 的表格对齐|
+|  Tabularize /\\/\\/  |    对 // 进行对齐操作    |
+|  Tabularize /\\w\+;  |   适合对齐带位宽的变量   |
 还可以将常使用的 pattern alias 成短语，放置在该插件的 after/plugins 文件夹中的 TabularizeMap.vim 中(为什么不单独弄一个文件,我也想啊, 但是他不同意)
+支持选中内容后使用 Tabular 对齐内容
 
 ## 其他
 - [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)

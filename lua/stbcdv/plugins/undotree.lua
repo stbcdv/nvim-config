@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = function()
-	vim.g.undotree_WindowLayout = 1
+	vim.g.undotree_WindowLayout = 2
 	vim.g.undotree_SplitWidth = 40
 	vim.g.undotree_DiffpaneHeight = 10 -- default
 	vim.g.undotree_DiffAutoOpen = 1 -- default

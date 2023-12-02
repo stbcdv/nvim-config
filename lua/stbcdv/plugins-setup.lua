@@ -157,6 +157,8 @@ return packer.startup(function(use)
 	use({ "RRethy/vim-illuminate" })
 	-- align the context
 	use({ "godlygeek/tabular", cmd = { "Tabularize" } })
+	use({ "babaybus/DoxygenToolkit.vim" })
+	use({ "HiPhish/rainbow-delimiters.nvim" })
 	if packer_bootstrap then
 		require("packer").sync()
 	end
